@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 18.3.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 19.0.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
     color: #b9ab2d;
@@ -121,14 +121,6 @@ input.task-list-item-checkbox {
 
 <script src="common/script/jquery-1.9.0.min.js"></script>
 
-
-
-<link href="common/css/mapping-tables.css" rel="stylesheet" type="text/css">
-<link href="common/css/common.css" rel="stylesheet" type="text/css">
-
-
-<script src="common/script/jquery.details.min.js"></script>
-<script src="common/script/mapping-tables.js"></script>
 <style id="respec-mainstyle">/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
@@ -402,7 +394,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-aam-1.1/"><script id="initialUserConfig" type="application/json">{
+</style>
+
+<link href="common/css/mapping-tables.css" rel="stylesheet" type="text/css">
+<link href="common/css/common.css" rel="stylesheet" type="text/css">
+
+
+<script src="common/script/jquery.details.min.js"></script>
+<script src="common/script/mapping-tables.js"></script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-aam-1.1/"><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
   "includePermalinks": true,
   "lint": true,
@@ -410,6 +410,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "diffTool": "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
   "shortName": "accname-aam-1.1",
   "copyrightStart": "2014",
+  "license": "document",
   "prevRecURI": "https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/",
   "previousDiffURI": "https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/",
   "edDraftURI": "https://w3c.github.io/accname/",
@@ -739,16 +740,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishISODate": "2017-11-28T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 28 November 2017"
-}</script><meta name="description" content="This document describes how user agents determine names and descriptions of accessible objects from web content languages and expose them in accessibility APIs. This allows assistive technologies to associate and relay the name or description of objects to users. Documenting the algorithm and mappings promotes interoperable exposure of these properties and events as implemented by different accessibility APIs, and helps to ensure that this information appears in a manner consistent with author intent."></head>
-<body aria-busy="false" class="h-entry"><div class="head">
+  "publishDate": "2018-01-05",
+  "publishISODate": "2018-01-05T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 05 January 2018"
+}</script></head>
+<body aria-busy="false" class="h-entry toc-inline" style="zoom: 1;"><div class="head">
     <p>
-      <a class="logo" href="https://www.w3.org/"><img src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C" width="72" height="48"></a>
+      <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
-  <p><!--_hyper: 564493296;--></p>
+  <p><!--_hyper: 1300997493;--></p>
   <h1 class="title p-name" id="title">Accessible Name and Description: Computation and <abbr title="Application Programming Interfaces">API</abbr> Mappings 1.1</h1>
-  <h2 id="w3c-editor-s-draft-28-november-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2017-11-28">28 November 2017</time>&nbsp;<span class="permalink"><a href="#undefined" aria-label="Permalink for W3C Editor's Draft 28 November 2017" title="Permalink for W3C Editor's Draft 28 November 2017"><span>§</span></a></span></h2>
+  <h2 id="w3c-editor-s-draft-05-january-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-01-05">05 January 2018</time>&nbsp;<span class="permalink"><a href="#undefined" aria-label="Permalink for W3C Editor's Draft 05 January 2018" title="Permalink for W3C Editor's Draft 05 January 2018"><span>§</span></a></span></h2>
   <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
@@ -769,7 +771,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </dl>
       <p class="copyright">
         <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
-        2014-2017
+        2014-2018
         
         <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
         (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
@@ -777,7 +779,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <a href="https://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
         <abbr title="World Wide Web Consortium">W3C</abbr> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
         <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
-            <a rel="license" href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a>
+            <a rel="license" href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
         rules apply.
       </p>
   <hr title="Separator for header">
