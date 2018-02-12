@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 19.0.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 19.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
     color: #b9ab2d;
@@ -121,6 +121,14 @@ input.task-list-item-checkbox {
 
 <script src="common/script/jquery-1.9.0.min.js"></script>
 
+
+
+<link href="common/css/mapping-tables.css" rel="stylesheet" type="text/css">
+<link href="common/css/common.css" rel="stylesheet" type="text/css">
+
+
+<script src="common/script/jquery.details.min.js"></script>
+<script src="common/script/mapping-tables.js"></script>
 <style id="respec-mainstyle">/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
@@ -394,15 +402,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style>
-
-<link href="common/css/mapping-tables.css" rel="stylesheet" type="text/css">
-<link href="common/css/common.css" rel="stylesheet" type="text/css">
-
-
-<script src="common/script/jquery.details.min.js"></script>
-<script src="common/script/mapping-tables.js"></script>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-aam-1.1/"><script id="initialUserConfig" type="application/json">{
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-aam-1.1/"><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
   "includePermalinks": true,
   "lint": true,
@@ -417,44 +417,50 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "editors": [
     {
       "name": "Joanmarie Diggs",
-      "url": "https://www.igalia.com",
-      "mailto": "jdiggs@igalia.com",
       "company": "Igalia, S.L.",
-      "companyURI": "https://www.igalia.com",
+      "companyURL": "https://www.igalia.com",
       "w3cid": 68182
+    },
+    {
+      "name": "Michael Cooper",
+      "company": "W3C",
+      "companyURL": "https://www.w3.org",
+      "w3cid": 34017
+    },
+    {
+      "name": "Richard Schwerdtfeger",
+      "company": "Knowbility",
+      "companyURL": "https://www.knowbility.org/",
+      "w3cid": 2460,
+      "note": "until October 2017"
     },
     {
       "name": "Joseph Scheuhammer",
       "company": "Inclusive Design Research Centre, OCAD University",
-      "companyURI": "http://idrc.ocad.ca",
-      "w3cid": 42279
-    },
-    {
-      "name": "Richard Schwerdtfeger",
-      "mailto": "richschwer@gmail.com",
-      "company": "Knowbility",
-      "companyURI": "https://www.knowbility.org/",
-      "w3cid": 2460
+      "companyURL": "http://idrc.ocad.ca",
+      "w3cid": 42279,
+      "note": "until May 2017"
     },
     {
       "name": "James Craig",
-      "url": "https://www.apple.com",
-      "mailto": "jcraig@apple.com",
       "company": "Apple Inc.",
-      "companyURI": "https://www.apple.com",
-      "w3cid": 42459
+      "companyURL": "https://www.apple.com",
+      "w3cid": 42459,
+      "note": "until May 2016"
     },
     {
-      "name": "Andi Snow-Weaver (until December 2012)",
+      "name": "Andi Snow-Weaver",
       "company": "IBM",
-      "companyURI": "http://www.ibm.com",
-      "w3cid": 35445
+      "companyURL": "http://www.ibm.com",
+      "w3cid": 35445,
+      "note": "until December 2012"
     },
     {
-      "name": "Aaron Leventhal (until January 2009)",
+      "name": "Aaron Leventhal",
       "company": "IBM",
-      "companyURI": "http://www.ibm.com",
-      "w3cid": 34329
+      "companyURL": "http://www.ibm.com",
+      "w3cid": 34329,
+      "note": "until January 2009"
     }
   ],
   "wg": "Accessible Rich Internet Applications Working Group",
@@ -740,17 +746,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2018-01-05",
-  "publishISODate": "2018-01-05T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 05 January 2018"
+  "publishDate": "2018-02-12",
+  "publishISODate": "2018-02-12T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 12 February 2018"
 }</script></head>
-<body aria-busy="false" class="h-entry toc-inline" style="zoom: 1;"><div class="head">
+<body aria-busy="false" style="zoom: 1;" class="h-entry toc-inline"><div class="head">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
-  <p><!--_hyper: 1300997493;--></p>
+  <p><!--_hyper: -912032812;--></p>
   <h1 class="title p-name" id="title">Accessible Name and Description: Computation and <abbr title="Application Programming Interfaces">API</abbr> Mappings 1.1</h1>
-  <h2 id="w3c-editor-s-draft-05-january-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-01-05">05 January 2018</time>&nbsp;<span class="permalink"><a href="#undefined" aria-label="Permalink for W3C Editor's Draft 05 January 2018" title="Permalink for W3C Editor's Draft 05 January 2018"><span>§</span></a></span></h2>
+  <h2 id="w3c-editor-s-draft-12-february-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-02-12">12 February 2018</time>&nbsp;<span class="permalink"><a href="#undefined" aria-label="Permalink for W3C Editor's Draft 12 February 2018" title="Permalink for W3C Editor's Draft 12 February 2018"><span>§</span></a></span></h2>
   <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
@@ -761,12 +767,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <dt>Latest Recommendation:</dt>
           <dd><a href="https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/">https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/</a></dd>
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard" data-editor-id="68182"><a class="u-url url p-name fn" href="https://www.igalia.com">Joanmarie Diggs</a>, Igalia, S.L., <span class="ed_mailto"><a class="u-email email" href="mailto:jdiggs@igalia.com">jdiggs@igalia.com</a></span></dd>
-<dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>, Inclusive Design Research Centre, OCAD University</dd>
-<dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>, Knowbility, <span class="ed_mailto"><a class="u-email email" href="mailto:richschwer@gmail.com">richschwer@gmail.com</a></span></dd>
-<dd class="p-author h-card vcard" data-editor-id="42459"><a class="u-url url p-name fn" href="https://www.apple.com">James Craig</a>, Apple Inc., <span class="ed_mailto"><a class="u-email email" href="mailto:jcraig@apple.com">jcraig@apple.com</a></span></dd>
-<dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver (until December 2012)</span>, IBM</dd>
-<dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal (until January 2009)</span>, IBM</dd>
+    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>, <a class="p-org org h-org h-card" href="https://www.igalia.com">Igalia, S.L.</a></dd>
+<dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>, <a class="p-org org h-org h-card" href="https://www.w3.org"><abbr title="World Wide Web Consortium">W3C</abbr></a></dd>
+<dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>, <a class="p-org org h-org h-card" href="https://www.knowbility.org/">Knowbility</a> (until October 2017)</dd>
+<dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>, <a class="p-org org h-org h-card" href="http://idrc.ocad.ca">Inclusive Design Research Centre, OCAD University</a> (until May 2017)</dd>
+<dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span>, <a class="p-org org h-org h-card" href="https://www.apple.com">Apple Inc.</a> (until May 2016)</dd>
+<dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span>, <a class="p-org org h-org h-card" href="http://www.ibm.com">IBM</a> (until December 2012)</dd>
+<dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span>, <a class="p-org org h-org h-card" href="http://www.ibm.com">IBM</a> (until January 2009)</dd>
 
   </dl>
       <p class="copyright">
@@ -824,7 +831,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
             <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section
             6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
         </p>
-          <p>This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2017/Process-20170301/">1 March 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+          <p>This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2018/Process-20180201/">1 February 2018 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
           </p>
         
 
@@ -1122,7 +1129,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                   <li><code>element1</code>'s <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a> is "hello" because this is a first traversal of its <code>aria-labelledby</code>, leading to <code>element3</code>.</li>
                   <li><code>element2</code> has no <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a>.  The computation involves a first traversal of its <code>aria-labelledby</code> leading to <code>element1</code>, but <code>element1</code>'s  <code>aria-labelledby</code> is not subsequently followed. </li>
                 </ul>
-                <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
+                <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el2"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el1"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el3"</span>&gt;</span> hello <span class="hljs-tag">&lt;/<span class="hljs-name">element3</span>&gt;</span></pre></div>
               </details></div>
@@ -1135,7 +1142,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <div><details id="details-id-2" role="group">
                 <summary role="button" aria-expanded="false" aria-controls="details-id-2">Example:</summary>
                   <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
-                  <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+                  <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row1"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/Documentation.pdf"</span>&gt;</span>Documentation.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
@@ -1170,7 +1177,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <div><details id="details-id-4" role="group">
                 <summary role="button" aria-expanded="false" aria-controls="details-id-4">Example:</summary>
                 <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
-                <div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+                <div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
               </details></div>
               </li>
             <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a> allows <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>), or is a descendant of a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a>:
