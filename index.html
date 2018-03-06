@@ -127,7 +127,9 @@ input.task-list-item-checkbox {
 <link href="common/css/common.css" rel="stylesheet" type="text/css">
 
 
-<script src="common/script/jquery.details.min.js"></script><style id="respec-mainstyle">/*****************************************************************
+<script src="common/script/jquery.details.min.js"></script>
+<script src="common/script/mapping-tables.js"></script>
+<style id="respec-mainstyle">/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
  *****************************************************************/
@@ -400,9 +402,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style>
-<script src="common/script/mapping-tables.js"></script>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-aam-1.1/"><script id="initialUserConfig" type="application/json">{
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-aam-1.1/"><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
   "includePermalinks": true,
   "lint": true,
@@ -437,7 +437,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     {
       "name": "Joseph Scheuhammer",
       "company": "Inclusive Design Research Centre, OCAD University",
-      "companyURL": "http://idrc.ocad.ca",
+      "companyURL": "https://idrc.ocad.ca",
       "w3cid": 42279,
       "note": "Editor until May 2017"
     },
@@ -451,14 +451,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     {
       "name": "Andi Snow-Weaver",
       "company": "IBM",
-      "companyURL": "http://www.ibm.com",
+      "companyURL": "https://www.ibm.com",
       "w3cid": 35445,
       "note": "Editor until December 2012"
     },
     {
       "name": "Aaron Leventhal",
       "company": "IBM",
-      "companyURL": "http://www.ibm.com",
+      "companyURL": "https://www.ibm.com",
       "w3cid": 34329,
       "note": "Editor until January 2009"
     }
@@ -750,7 +750,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "publishISODate": "2018-03-06T00:00:00.000Z",
   "generatedSubtitle": "Editor's Draft 06 March 2018"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
-<body class="h-entry toc-inline" style="zoom: 1;"><div class="head">
+<body style="zoom: 1;" class="h-entry toc-inline"><div class="head">
   <a href="https://www.w3.org/" class="logo">
       <img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C">
   </a>
@@ -767,7 +767,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/">https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/</a></dd>
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>, <a class="p-org org h-org h-card" href="https://www.igalia.com">Igalia, S.L.</a></dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>, <a class="p-org org h-org h-card" href="https://www.w3.org"><abbr title="World Wide Web Consortium">W3C</abbr></a></dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>, <a class="p-org org h-org h-card" href="https://www.knowbility.org/">Knowbility</a> (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>, <a class="p-org org h-org h-card" href="http://idrc.ocad.ca">Inclusive Design Research Centre, OCAD University</a> (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span>, <a class="p-org org h-org h-card" href="https://www.apple.com/accessibility">Apple Inc.</a> (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span>, <a class="p-org org h-org h-card" href="http://www.ibm.com">IBM</a> (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span>, <a class="p-org org h-org h-card" href="http://www.ibm.com">IBM</a> (Editor until January 2009)</dd>
+    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>, <a class="p-org org h-org h-card" href="https://www.igalia.com">Igalia, S.L.</a></dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>, <a class="p-org org h-org h-card" href="https://www.w3.org"><abbr title="World Wide Web Consortium">W3C</abbr></a></dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>, <a class="p-org org h-org h-card" href="https://www.knowbility.org/">Knowbility</a> (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>, <a class="p-org org h-org h-card" href="https://idrc.ocad.ca">Inclusive Design Research Centre, OCAD University</a> (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span>, <a class="p-org org h-org h-card" href="https://www.apple.com/accessibility">Apple Inc.</a> (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span>, <a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a> (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span>, <a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a> (Editor until January 2009)</dd>
     
     
   </dl>
@@ -792,8 +792,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </div>
 <section id="abstract" class="introductory"><!--OddPage--><h2 id="abstract-0">Abstract</h2>
 	<p>This document describes how <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">user agents</a> determine the <a class="termref internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn">names</a> and <a class="termref internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn">descriptions</a> of <a class="termref internalDFN" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a> from web content languages. This information is in turn exposed through <a class="termref internalDFN" href="#dfn-accessibility-api" data-link-type="dfn">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> so that <a class="termref internalDFN" href="#dfn-assistive-technology" data-link-type="dfn">assistive technologies</a> can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility <abbr title="Application Programming Interfaces">APIs</abbr> and helps to ensure that this information appears in a manner consistent with author intent.</p>
-	<p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="http://www.w3.org/TR/wai-aria-1.1/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite><a class="bibref" href="#bib-WAI-ARIA">WAI-ARIA</a></cite>] <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a> as well as features specific to individual content languages.</p>
-	<p>This document updates and will eventually supersede the accessible name and description guidance in the <a href="http://www.w3.org/TR/wai-aria-implementation/"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> 1.0 User Agent Implementation Guide</a> [<cite><a class="bibref" href="#bib-WAI-ARIA-IMPLEMENTATION">WAI-ARIA-IMPLEMENTATION</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="http://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
+	<p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="https://www.w3.org/TR/wai-aria-1.1/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite><a class="bibref" href="#bib-WAI-ARIA">WAI-ARIA</a></cite>] <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a> as well as features specific to individual content languages.</p>
+	<p>This document updates and will eventually supersede the accessible name and description guidance in the <a href="https://www.w3.org/TR/wai-aria-implementation/"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> 1.0 User Agent Implementation Guide</a> [<cite><a class="bibref" href="#bib-WAI-ARIA-IMPLEMENTATION">WAI-ARIA-IMPLEMENTATION</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="https://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
 </section>
 <section id="sotd" class="introductory"><!--OddPage--><h2 id="status-of-this-document">Status of This Document</h2><p>
         <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em>
@@ -1046,12 +1046,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <p>The purpose of the computation is to create a <a class="termref internalDFN" href="#dfn-perceivable" data-link-type="dfn">perceivable</a> label or description for alternative presentations, in the form of a flat string of space separated textual tokens. </p>
     <section id="terminology">
       <h4 id="x4-3-1-terminology"><span class="secno">4.3.1 </span>Terminology&nbsp;<span class="permalink"><a href="#terminology" aria-label="Permalink for 4.3.1 Terminology" title="Permalink for 4.3.1 Terminology"><span>§</span></a></span></h4>
+        <dt>Root node</dt>
         <dd>The <abbr title="Document Object Model">DOM</abbr> <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a> or <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> for which the text alternative is sought.</dd>
         <dt>Current node</dt>
         <dd>The <abbr title="Document Object Model">DOM</abbr> <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a> currently traversed to compute the <code>root node</code>'s text equivalent.  Initially, the <code>current node</code> is the <code>root node</code>, but at later stages is either some descendant of the <code>root node</code>, or another referenced node.</dd>
         <dt>Flat string</dt>
         <dd>A string of characters where all carriage returns, newlines, tabs, and form-feeds are replaced with a single space, and multiple spaces are reduced to a single space.  The string contains only character data; it does not contain any markup.  </dd> 
-        <dt>Total Accumulated text</dt>
+        <dt>Total accumulated text</dt>
         <dd>The text equivalent computed up to, but not including the <code>current node</code>.</dd>
         <dt>Accumulated text</dt>
         <dd>Text accumulated at a step or sequence of steps described below.  It is temporary storage for those steps.</dd>
@@ -1176,7 +1177,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
             <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a> allows <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>), or is a descendant of a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a>:
               <ol>
                 <li id="step2F.i">Set the <code>accumulated text</code> to the empty string.</li>
-                <li id="step2F.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="http://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements can provide textual content for <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">elements</a> that have a content model.
+                <li id="step2F.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements can provide textual content for <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">elements</a> that have a content model.
                       <ul>
                         <li>For <code>:before</code> pseudo elements, <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> <em class="rfc2119" title="MUST">MUST</em> prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
                         <li>For <code>:after</code> pseudo elements, <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> <em class="rfc2119" title="MUST">MUST</em> append <abbr title="Cascading Style Sheets">CSS</abbr>  textual content, without a space, to the textual content of the <code>current node</code>. </li>
@@ -1199,7 +1200,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </details></div>
             </li>
             <li id="step2G">Otherwise, if the <code>current node</code> is a <a class="termref internalDFN" href="#dfn-text-node" data-link-type="dfn">Text node</a>, return its textual contents.</li>
-            <li id="step2H">Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">Accessible Name</a> or <a class="termref internalDFN" href="#dfn-accessible-description" data-link-type="dfn">Accessible Description</a> is being computed, and contains desendants, proceed to 2F.i.
+            <li id="step2H">Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">Accessible Name</a> or <a class="termref internalDFN" href="#dfn-accessible-description" data-link-type="dfn">Accessible Description</a> is being computed, and contains descendants, proceed to 2F.i.
 	    </li>
             <li id="step2I">Otherwise, if the <code>current node</code> has a <a class="termref internalDFN" href="#dfn-tooltip-attribute" data-link-type="dfn">Tooltip attribute</a>, return its value. 
               <div><details id="details-id-6" role="group">
@@ -1223,7 +1224,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 	<section class="appendix" id="changelog">
 		<h3 id="x6-1-change-log"><span class="secno">6.1 </span>Change Log&nbsp;<span class="permalink"><a href="#changelog" aria-label="Permalink for 6.1 Change Log" title="Permalink for 6.1 Change Log"><span>§</span></a></span></h3>
 		<section id="substantive-changes-since-the-last-public-working-draft">
-			<h4 id="x6-1-1-substantive-changes-since-the-last-public-working-draft"><span class="secno">6.1.1 </span>Substantive changes since the <a href="http://www.w3.org/TR/2014/WD-accname-aam-1.1-20141211/">last public working draft</a>&nbsp;<span class="permalink"><a href="#substantive-changes-since-the-last-public-working-draft" aria-label="Permalink for 6.1.1 Substantive changes since the last public working draft" title="Permalink for 6.1.1 Substantive changes since the last public working draft"><span>§</span></a></span></h4>
+			<h4 id="x6-1-1-substantive-changes-since-the-last-public-working-draft"><span class="secno">6.1.1 </span>Substantive changes since the <a href="https://www.w3.org/TR/2014/WD-accname-aam-1.1-20141211/">last public working draft</a>&nbsp;<span class="permalink"><a href="#substantive-changes-since-the-last-public-working-draft" aria-label="Permalink for 6.1.1 Substantive changes since the last public working draft" title="Permalink for 6.1.1 Substantive changes since the last public working draft"><span>§</span></a></span></h4>
 			<ul>
                                 <li>5-March-2018: Remove mapping table content as it is redundant to what is in Core AAM.</li>
                                 <li>9-August-2017: Added interim step to be able to process recursions of elements who are descendants of an element whose name/description is being computed</li>
@@ -1233,7 +1234,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 			</ul>
 		</section>
 		<section id="other-substantive-changes-since-the-wai-aria-1-0-user-agent-implementation-guide-recommendation">
-			<h4 id="x6-1-2-other-substantive-changes-since-the-wai-aria-1-0-user-agent-implementation-guide-recommendation"><span class="secno">6.1.2 </span>Other substantive changes since the <a href="http://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> 1.0 User Agent Implementation Guide Recommendation</a>&nbsp;<span class="permalink"><a href="#other-substantive-changes-since-the-wai-aria-1-0-user-agent-implementation-guide-recommendation" aria-label="Permalink for 6.1.2 Other substantive changes since the WAI-ARIA 1.0 User Agent Implementation Guide Recommendation" title="Permalink for 6.1.2 Other substantive changes since the WAI-ARIA 1.0 User Agent Implementation Guide Recommendation"><span>§</span></a></span></h4>
+			<h4 id="x6-1-2-other-substantive-changes-since-the-wai-aria-1-0-user-agent-implementation-guide-recommendation"><span class="secno">6.1.2 </span>Other substantive changes since the <a href="https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> 1.0 User Agent Implementation Guide Recommendation</a>&nbsp;<span class="permalink"><a href="#other-substantive-changes-since-the-wai-aria-1-0-user-agent-implementation-guide-recommendation" aria-label="Permalink for 6.1.2 Other substantive changes since the WAI-ARIA 1.0 User Agent Implementation Guide Recommendation" title="Permalink for 6.1.2 Other substantive changes since the WAI-ARIA 1.0 User Agent Implementation Guide Recommendation"><span>§</span></a></span></h4>
 			<ul>
 				<li>04-Apr-2016: Added new <abbr title="User Interface Automation">UIA</abbr> FullDescription property for accessible description mapping.</li>
 				<li>05-Nov-2015: Removed all <abbr title="Microsoft Active Accessibility">MSAA</abbr>+<abbr title="User Interface Automation">UIA</abbr> Express mappings.</li>
