@@ -30,70 +30,6 @@ aside.example div.example {
 aside.example div.example div.example-title {
     color: #999;
 }
-</style><style>/* --- ISSUES/NOTES --- */
-div.issue-title, div.note-title , div.ednote-title, div.warning-title {
-    padding-right:  1em;
-    min-width: 7.5em;
-    color: #b9ab2d;
-}
-div.issue-title { color: #e05252; }
-div.note-title, div.ednote-title { color: #2b2; }
-div.warning-title { color: #f22; }
-div.issue-title span, div.note-title span, div.ednote-title span, div.warning-title span {
-    text-transform: uppercase;
-}
-div.note, div.issue, div.ednote, div.warning {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-.note > p:first-child, .ednote > p:first-child, .issue > p:first-child, .warning > p:first-child { margin-top: 0 }
-.issue, .note, .ednote, .warning {
-    padding: .5em;
-    border-left-width: .5em;
-    border-left-style: solid;
-}
-div.issue, div.note , div.ednote,  div.warning {
-    padding: 1em 1.2em 0.5em;
-    margin: 1em 0;
-    position: relative;
-    clear: both;
-}
-span.note, span.ednote, span.issue, span.warning { padding: .1em .5em .15em; }
-
-.issue {
-    border-color: #e05252;
-    background: #fbe9e9;
-}
-.note, .ednote {
-    border-color: #52e052;
-    background: #e9fbe9;
-}
-
-.warning {
-    border-color: #f11;
-    border-width: .2em;
-    border-style: solid;
-    background: #fbe9e9;
-}
-
-.warning-title:before{
-    content: "⚠"; /*U+26A0 WARNING SIGN*/
-    font-size: 3em;
-    float: left;
-    height: 100%;
-    padding-right: .3em;
-    vertical-align: top;
-    margin-top: -0.5em;
-}
-
-li.task-list-item {
-    list-style: none;
-}
-
-input.task-list-item-checkbox {
-    margin: 0 0.35em 0.25em -1.6em;
-    vertical-align: middle;
-}
 </style><style>/* --- PERMALINKS --- */
 
 .permalink {
@@ -1190,7 +1126,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                     <li id="step2F.iii.b">Compute the text alternative of the  <code>current node</code> beginning with step 2.  Set the <code>result</code> to that text alternative.</li>
                     <li id="step2F.iii.c">Append the <code>result</code> to the <code>accumulated text</code>. </li>
                   </ol>
-                  <div class="ednote"><div role="heading" class="ednote-title marker" id="h-ednote" aria-level="4"><span>Editor's note</span></div><p class="">(Joseph) the last step above needs work since there are cases where you "append with a space" and others where you "append without a space".  Example of the latter:  <code>&lt;label&gt; &lt;input type="checkbox"&gt; Make this the &lt;em&gt;top&lt;/em&gt;most element&lt;/label&gt;</code>.  The result is "Make this the topmost element", not "Make this the top most element" – do not append a space after "top".</p></div>
                 </li>
                 <li id="step2F.iv">Return the <code>accumulated text</code>.</li>
               </ol>
