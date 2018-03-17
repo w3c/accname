@@ -368,35 +368,35 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       "company": "Knowbility",
       "companyURL": "https://www.knowbility.org/",
       "w3cid": 2460,
-      "note": "until October 2017"
+      "note": "Editor until October 2017"
     },
     {
       "name": "Joseph Scheuhammer",
       "company": "Inclusive Design Research Centre, OCAD University",
       "companyURL": "https://idrc.ocad.ca",
       "w3cid": 42279,
-      "note": "until May 2017"
+      "note": "Editor until May 2017"
     },
     {
       "name": "James Craig",
       "company": "Apple Inc.",
       "companyURL": "https://www.apple.com/accessibility",
       "w3cid": 42459,
-      "note": "until May 2016"
+      "note": "Editor until May 2016"
     },
     {
       "name": "Andi Snow-Weaver",
       "company": "IBM",
       "companyURL": "https://www.ibm.com",
       "w3cid": 35445,
-      "note": "until December 2012"
+      "note": "Editor until December 2012"
     },
     {
       "name": "Aaron Leventhal",
       "company": "IBM",
       "companyURL": "https://www.ibm.com",
       "w3cid": 34329,
-      "note": "until January 2009"
+      "note": "Editor until January 2009"
     }
   ],
   "wg": "Accessible Rich Internet Applications Working Group",
@@ -682,9 +682,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2018-03-15",
-  "publishISODate": "2018-03-15T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 15 March 2018"
+  "publishDate": "2018-03-17",
+  "publishISODate": "2018-03-17T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 17 March 2018"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
 <body style="zoom: 1;" class="h-entry toc-inline"><div class="head">
   <a href="https://www.w3.org/" class="logo">
@@ -692,7 +692,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </a>
   <h1 class="title p-name" id="title">Accessible Name and Description Computation 1.1</h1>
   
-  <h2 id="w3c-editor-s-draft-15-march-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-03-15">15 March 2018</time></h2>
+  <h2 id="w3c-editor-s-draft-17-march-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-03-17">17 March 2018</time></h2>
   <dl>
     <dt>This version:</dt><dd><a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd><dt>Latest published version:</dt><dd><a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd>
     <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
@@ -703,7 +703,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/">https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/</a></dd>
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>, <a class="p-org org h-org h-card" href="https://www.igalia.com">Igalia, S.L.</a></dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>, <a class="p-org org h-org h-card" href="https://www.w3.org"><abbr title="World Wide Web Consortium">W3C</abbr></a></dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>, <a class="p-org org h-org h-card" href="https://www.knowbility.org/">Knowbility</a> (until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>, <a class="p-org org h-org h-card" href="https://idrc.ocad.ca">Inclusive Design Research Centre, OCAD University</a> (until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span>, <a class="p-org org h-org h-card" href="https://www.apple.com/accessibility">Apple Inc.</a> (until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span>, <a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a> (until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span>, <a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a> (until January 2009)</dd>
+    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>, <a class="p-org org h-org h-card" href="https://www.igalia.com">Igalia, S.L.</a></dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>, <a class="p-org org h-org h-card" href="https://www.w3.org"><abbr title="World Wide Web Consortium">W3C</abbr></a></dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>, <a class="p-org org h-org h-card" href="https://www.knowbility.org/">Knowbility</a> (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>, <a class="p-org org h-org h-card" href="https://idrc.ocad.ca">Inclusive Design Research Centre, OCAD University</a> (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span>, <a class="p-org org h-org h-card" href="https://www.apple.com/accessibility">Apple Inc.</a> (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span>, <a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a> (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span>, <a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a> (Editor until January 2009)</dd>
     
     
   </dl>
