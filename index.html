@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 20.0.5"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 20.7.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
     color: #b9ab2d;
@@ -55,16 +55,7 @@ aside.example div.example div.example-title {
 </style>
 <title>Accessible Name and Description Computation 1.1</title>
 
-<script src="common/script/jquery-1.9.0.min.js"></script>
 
-
-
-<link href="common/css/mapping-tables.css" rel="stylesheet" type="text/css">
-<link href="common/css/common.css" rel="stylesheet" type="text/css">
-
-
-<script src="common/script/jquery.details.min.js"></script>
-<script src="common/script/mapping-tables.js"></script>
 <style id="respec-mainstyle">/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
@@ -338,7 +329,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-1.1/"><script id="initialUserConfig" type="application/json">{
+</style>
+
+<link href="common/css/common.css" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-1.1/"><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
   "includePermalinks": true,
   "lint": true,
@@ -682,17 +678,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2018-03-17",
-  "publishISODate": "2018-03-17T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 17 March 2018"
+  "publishDate": "2018-04-10",
+  "publishISODate": "2018-04-10T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 10 April 2018"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
-<body style="zoom: 1;" class="h-entry toc-inline"><div class="head">
+<body class="h-entry toc-inline"><div class="head">
   <a href="https://www.w3.org/" class="logo">
       <img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C">
   </a>
-  <h1 class="title p-name" id="title">Accessible Name and Description Computation 1.1</h1>
+  <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.1</h1>
   
-  <h2 id="w3c-editor-s-draft-17-march-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-03-17">17 March 2018</time></h2>
+  <h2 id="w3c-editor-s-draft-10-april-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-04-10">10 April 2018</time></h2>
   <dl>
     <dt>This version:</dt><dd><a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd><dt>Latest published version:</dt><dd><a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd>
     <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
@@ -703,7 +699,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/">https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/</a></dd>
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>, <a class="p-org org h-org h-card" href="https://www.igalia.com">Igalia, S.L.</a></dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>, <a class="p-org org h-org h-card" href="https://www.w3.org"><abbr title="World Wide Web Consortium">W3C</abbr></a></dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>, <a class="p-org org h-org h-card" href="https://www.knowbility.org/">Knowbility</a> (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>, <a class="p-org org h-org h-card" href="https://idrc.ocad.ca">Inclusive Design Research Centre, OCAD University</a> (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span>, <a class="p-org org h-org h-card" href="https://www.apple.com/accessibility">Apple Inc.</a> (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span>, <a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a> (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span>, <a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a> (Editor until January 2009)</dd>
+    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span> (<a class="p-org org h-org h-card" href="https://www.igalia.com">Igalia, S.L.</a>)</dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span> (<a class="p-org org h-org h-card" href="https://www.w3.org"><abbr title="World Wide Web Consortium">W3C</abbr></a>)</dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span> (<a class="p-org org h-org h-card" href="https://www.knowbility.org/">Knowbility</a>) (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span> (<a class="p-org org h-org h-card" href="https://idrc.ocad.ca">Inclusive Design Research Centre, OCAD University</a>) (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span> (<a class="p-org org h-org h-card" href="https://www.apple.com/accessibility">Apple Inc.</a>) (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span> (<a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a>) (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span> (<a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a>) (Editor until January 2009)</dd>
+    
     
     
   </dl>
@@ -1031,8 +1028,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <li id="step2">Compute the text alternative for the <code>current node</code>:
           <ol>
             <li id="step2A">If the <code>current node</code> is <a class="termref internalDFN" href="#dfn-hidden" data-link-type="dfn">hidden</a> <strong>and is not</strong> directly referenced by <code>aria-labelledby</code> or <code>aria-describedby</code>, nor directly referenced by a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>) or <a class="termref internalDFN" href="#dfn-attribute" data-link-type="dfn">attribute</a>, return the empty string.
-              <div><details id="details-id-0" role="group">
-                <summary role="button" aria-expanded="false" aria-controls="details-id-0">Comment:</summary>
+              <div><details>
+                <summary>Comment:</summary>
                 <p>By default, <a class="termref internalDFN" href="#dfn-assistive-technology" data-link-type="dfn">assistive technologies</a> do not relay hidden information, but an author can explicitly override that and include hidden text as part of the <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a> or <a class="termref internalDFN" href="#dfn-accessible-description" data-link-type="dfn">accessible description</a> by using <code>aria-labelledby</code> or <code>aria-describedby</code>. </p>
               </details></div>
             </li>
@@ -1053,8 +1050,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                   </ol>
                 </li>
               </ul>
-              <div><details id="details-id-1" role="group">
-                <summary role="button" aria-expanded="false" aria-controls="details-id-1">Example:</summary>
+              <div><details>
+                <summary>Example:</summary>
                 <p>The following example shows the meaning of the clause "… and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal …" .</p>
                 <ul>
                   <li><code>element1</code>'s <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a> is "hello" because this is a first traversal of its <code>aria-labelledby</code>, leading to <code>element3</code>.</li>
@@ -1070,8 +1067,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <li>If traversal of the <code>current node</code> is due to recursion <strong>and</strong> the <code>current node</code> is an embedded control as defined in step 2E, ignore <code>aria-label</code> and skip to rule 2E.</li>
                 <li>Otherwise, return the value of <code>aria-label</code>.</li>
               </ul>
-              <div><details id="details-id-2" role="group">
-                <summary role="button" aria-expanded="false" aria-controls="details-id-2">Example:</summary>
+              <div><details>
+                <summary>Example:</summary>
                   <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
                   <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
@@ -1087,8 +1084,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 </details></div>
             </li>
             <li id="step2D">Otherwise, if the <code>current node</code>'s native markup provides an <a class="termref internalDFN" href="#dfn-attribute" data-link-type="dfn">attribute</a> (e.g. <code>title</code>) or <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <abbr title="Hypertext Markup Language">HTML</abbr> <code>label</code>) that defines a text alternative, return that alternative in the form of a <code>flat string</code> as defined by the host language, unless the element is marked as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
-              <div><details id="details-id-3" role="group">
-                <summary role="button" aria-expanded="false" aria-controls="details-id-3">Comment:</summary>
+              <div><details>
+                <summary>Comment:</summary>
                 <p>For example, in <abbr title="Hypertext Markup Language">HTML</abbr>, the <code>img</code> element's <code>alt</code> attribute defines a text alternative string, and the <code>label</code> element provides text for the referenced form element.  In <abbr title="SVG2">SVG2</abbr>, the <code>desc</code> and <code>title</code> elements provide a description of their parent element. </p>
               </details></div>
             </li>
@@ -1105,8 +1102,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                   </ul>
                 </li>
               </ul>
-              <div><details id="details-id-4" role="group">
-                <summary role="button" aria-expanded="false" aria-controls="details-id-4">Example:</summary>
+              <div><details>
+                <summary>Example:</summary>
                 <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
                 <div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
               </details></div>
@@ -1130,8 +1127,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <li id="step2F.iv">Return the <code>accumulated text</code>.</li>
               </ol>
               <p><strong>Important</strong>:  Each <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a> in the subtree is consulted only once. If text has been collected from a descendant, but is referenced by another IDREF in some descendant node, then that second, or subsequent, reference is not followed. This is done to avoid infinite loops.  </p>
-              <div><details id="details-id-5" role="group">
-                <summary role="button" aria-expanded="false" aria-controls="details-id-5">Comment:</summary>
+              <div><details>
+                <summary>Comment:</summary>
                 <p>This step can apply to the child nodes themselves, which means the computation is recursive and results in text collected from all the elements in the <code>current node</code>'s subtree, no matter how deep it is. However, any given descendant <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a>'s text alternative can result from higher precedent markup described in steps B through D above, where "Namefrom: author" attributes provide the text alternative for the entire subtree. </p>
               </details></div>
             </li>
@@ -1139,8 +1136,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
             <li id="step2H">Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">Accessible Name</a> or <a class="termref internalDFN" href="#dfn-accessible-description" data-link-type="dfn">Accessible Description</a> is being computed, and contains descendants, proceed to 2F.i.
 	    </li>
             <li id="step2I">Otherwise, if the <code>current node</code> has a <a class="termref internalDFN" href="#dfn-tooltip-attribute" data-link-type="dfn">Tooltip attribute</a>, return its value. 
-              <div><details id="details-id-6" role="group">
-                <summary role="button" aria-expanded="false" aria-controls="details-id-6">Comment:</summary>
+              <div><details>
+                <summary>Comment:</summary>
                 <p>Tooltip attributes are used only if nothing else, including subtree content, has provided results. </p>
               </details></div>
             </li>
