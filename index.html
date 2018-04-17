@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 20.7.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 20.7.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
     color: #b9ab2d;
@@ -452,9 +452,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2018-04-13",
-  "publishISODate": "2018-04-13T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 13 April 2018"
+  "publishDate": "2018-04-17",
+  "publishISODate": "2018-04-17T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 17 April 2018"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
 <body class="h-entry toc-inline"><div class="head">
   <a href="https://www.w3.org/" class="logo">
@@ -462,7 +462,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </a>
   <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.1</h1>
   
-  <h2 id="w3c-editor-s-draft-13-april-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-04-13">13 April 2018</time></h2>
+  <h2 id="w3c-editor-s-draft-17-april-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-04-17">17 April 2018</time></h2>
   <dl>
     <dt>This version:</dt><dd><a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd><dt>Latest published version:</dt><dd><a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd>
     <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
@@ -867,7 +867,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <ul>
                 <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#textbox">textbox</a>, return its value.</li>
                 <li>If the embedded control has role menu <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#button">button</a>, return the text alternative of the button.</li>
-                <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#combobox">combobox</a>, return the text alternative of the chosen <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#option">option</a>.</li>
+                <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#combobox">combobox</a> or <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#listbox">listbox</a>, return the text alternative of the chosen <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#option">option</a>.</li>
                 <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#range">range</a> (e.g., a <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#spinbutton">spinbutton</a> or <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#slider">slider</a>):
                   <ul>
                     <li>If the <code>aria-valuetext</code> property is present, return its value, </li>
@@ -933,6 +933,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 		<section id="substantive-changes-since-the-last-public-working-draft">
 			<h4 id="x6-1-1-substantive-changes-since-the-last-public-working-draft"><span class="secno">6.1.1 </span>Substantive changes since the <a href="https://www.w3.org/TR/2014/WD-accname-aam-1.1-20141211/">last public working draft</a>&nbsp;<span class="permalink"><a href="#substantive-changes-since-the-last-public-working-draft" aria-label="Permalink for 6.1.1 Substantive changes since the last public working draft" title="Permalink for 6.1.1 Substantive changes since the last public working draft"><span>§</span></a></span></h4>
 			<ul>
+                                <li>10-April-2018: Treat listbox in the same fashion as combobox in step 2E, i.e. returning the text alternative of the chosen option.</li>
                                 <li>5-March-2018: Remove mapping table content as it is redundant to what is in Core AAM.</li>
                                 <li>9-August-2017: Added interim step to be able to process recursions of elements who are descendants of an element whose name/description is being computed</li>
 				<li>27-July-2017: Modify step 2F to handle elements that are descendants of text alternative elements in host languages. </li>
