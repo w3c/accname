@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 20.7.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 20.11.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
     color: #b9ab2d;
@@ -350,47 +350,47 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     {
       "name": "Joanmarie Diggs",
       "company": "Igalia, S.L.",
-      "companyURL": "https://www.igalia.com",
+      "companyURL": "https://www.igalia.com/",
       "w3cid": 68182
     },
     {
       "name": "Michael Cooper",
       "company": "W3C",
-      "companyURL": "https://www.w3.org",
+      "companyURL": "https://www.w3.org/",
       "w3cid": 34017
     },
     {
       "name": "Richard Schwerdtfeger",
       "company": "Knowbility",
-      "companyURL": "https://www.knowbility.org/",
+      "companyURL": "https://knowbility.org/",
       "w3cid": 2460,
       "note": "Editor until October 2017"
     },
     {
       "name": "Joseph Scheuhammer",
       "company": "Inclusive Design Research Centre, OCAD University",
-      "companyURL": "https://idrc.ocad.ca",
+      "companyURL": "https://idrc.ocadu.ca/",
       "w3cid": 42279,
       "note": "Editor until May 2017"
     },
     {
       "name": "James Craig",
       "company": "Apple Inc.",
-      "companyURL": "https://www.apple.com/accessibility",
+      "companyURL": "https://www.apple.com/accessibility/",
       "w3cid": 42459,
       "note": "Editor until May 2016"
     },
     {
       "name": "Andi Snow-Weaver",
       "company": "IBM",
-      "companyURL": "https://www.ibm.com",
+      "companyURL": "https://www.ibm.com/",
       "w3cid": 35445,
       "note": "Editor until December 2012"
     },
     {
       "name": "Aaron Leventhal",
       "company": "IBM",
-      "companyURL": "https://www.ibm.com",
+      "companyURL": "https://www.ibm.com/",
       "w3cid": 34329,
       "note": "Editor until January 2009"
     }
@@ -452,9 +452,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2018-04-24",
-  "publishISODate": "2018-04-24T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 24 April 2018"
+  "publishDate": "2018-05-15",
+  "publishISODate": "2018-05-15T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 15 May 2018"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
 <body class="h-entry toc-inline"><div class="head">
   <a href="https://www.w3.org/" class="logo">
@@ -462,7 +462,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </a>
   <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.1</h1>
   
-  <h2 id="w3c-editor-s-draft-24-april-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-04-24">24 April 2018</time></h2>
+  <h2 id="w3c-editor-s-draft-15-may-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-05-15">15 May 2018</time></h2>
   <dl>
     <dt>This version:</dt><dd><a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd><dt>Latest published version:</dt><dd><a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd>
     <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
@@ -473,7 +473,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/">https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/</a></dd>
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span> (<a class="p-org org h-org h-card" href="https://www.igalia.com">Igalia, S.L.</a>)</dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span> (<a class="p-org org h-org h-card" href="https://www.w3.org"><abbr title="World Wide Web Consortium">W3C</abbr></a>)</dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span> (<a class="p-org org h-org h-card" href="https://www.knowbility.org/">Knowbility</a>) (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span> (<a class="p-org org h-org h-card" href="https://idrc.ocad.ca">Inclusive Design Research Centre, OCAD University</a>) (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span> (<a class="p-org org h-org h-card" href="https://www.apple.com/accessibility">Apple Inc.</a>) (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span> (<a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a>) (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span> (<a class="p-org org h-org h-card" href="https://www.ibm.com">IBM</a>) (Editor until January 2009)</dd>
+    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span> (<a class="p-org org h-org h-card" href="https://www.igalia.com/">Igalia, S.L.</a>)</dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span> (<a class="p-org org h-org h-card" href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a>)</dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span> (<a class="p-org org h-org h-card" href="https://knowbility.org/">Knowbility</a>) (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span> (<a class="p-org org h-org h-card" href="https://idrc.ocadu.ca/">Inclusive Design Research Centre, OCAD University</a>) (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span> (<a class="p-org org h-org h-card" href="https://www.apple.com/accessibility/">Apple Inc.</a>) (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span> (<a class="p-org org h-org h-card" href="https://www.ibm.com/">IBM</a>) (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span> (<a class="p-org org h-org h-card" href="https://www.ibm.com/">IBM</a>) (Editor until January 2009)</dd>
     
     
     
@@ -924,7 +924,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </section>
   <section id="accessible-name-and-description-mapping">
     <!--OddPage--><h2 id="x5-accessible-name-and-description-mapping"><span class="secno">5. </span>Accessible Name and Description Mapping&nbsp;<span class="permalink"><a href="#accessible-name-and-description-mapping" aria-label="Permalink for 5. Accessible Name and Description Mapping" title="Permalink for 5. Accessible Name and Description Mapping"><span>§</span></a></span></h2>
-    <p>Information concerning name and description accessibility <abbr title="Application Programming Interface">API</abbr> mappings, including relationships, such as labelled-by/label-for and described-by/description-for, is documented in the <a href="https://w3c.github.io/aria/core-aam/core-aam.html" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a> specification [<cite><a class="bibref" href="#bib-CORE-AAM">CORE-AAM</a></cite>]. See the mapping table entries for <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabel"><code>aria-label</code></a>, <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabelledBy"><code>aria-labelledby</code></a>, and <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaDescribedBy"><code>aria-describedby</code></a>.</p>
+    <p>Information concerning name and description accessibility <abbr title="Application Programming Interface">API</abbr> mappings, including relationships, such as labelled-by/label-for and described-by/description-for, is documented in the <a href="https://w3c.github.io/aria/core-aam/core-aam.html" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a> specification [<cite><a class="bibref" href="#bib-CORE-AAM-1.1">CORE-AAM-1.1</a></cite>]. See the mapping table entries for <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabel"><code>aria-label</code></a>, <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabelledBy"><code>aria-labelledby</code></a>, and <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaDescribedBy"><code>aria-describedby</code></a>.</p>
   </section>
 <section id="appendices">
   <!--OddPage--><h2 id="x6-appendices"><span class="secno">6. </span>Appendices&nbsp;<span class="permalink"><a href="#appendices" aria-label="Permalink for 6. Appendices" title="Permalink for 6. Appendices"><span>§</span></a></span></h2>
@@ -1154,14 +1154,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </section>
 
 
-<section id="references" class="appendix"><!--OddPage--><h2 id="a-references"><span class="secno">A. </span>References&nbsp;<span class="permalink"><a href="#references" aria-label="Permalink for A. References" title="Permalink for A. References"><span>§</span></a></span></h2><section id="normative-references"><h3 id="a-1-normative-references"><span class="secno">A.1 </span>Normative references&nbsp;<span class="permalink"><a href="#normative-references" aria-label="Permalink for A.1 Normative references" title="Permalink for A.1 Normative references"><span>§</span></a></span></h3><dl class="bibliography"><dt id="bib-CORE-AAM">[CORE-AAM]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.1/"><cite>Core Accessibility API Mappings 1.1</cite></a>. Joanmarie Diggs; Joseph Scheuhammer; Richard Schwerdtfeger; Michael Cooper; Andi Snow-Weaver; Aaron Leventhal. W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/core-aam-1.1/">https://www.w3.org/TR/core-aam-1.1/</a>
+<section id="references" class="appendix"><!--OddPage--><h2 id="a-references"><span class="secno">A. </span>References&nbsp;<span class="permalink"><a href="#references" aria-label="Permalink for A. References" title="Permalink for A. References"><span>§</span></a></span></h2><section id="normative-references"><h3 id="a-1-normative-references"><span class="secno">A.1 </span>Normative references&nbsp;<span class="permalink"><a href="#normative-references" aria-label="Permalink for A.1 Normative references" title="Permalink for A.1 Normative references"><span>§</span></a></span></h3><dl class="bibliography"><dt id="bib-CORE-AAM-1.1">[CORE-AAM-1.1]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.1/"><cite>Core Accessibility API Mappings 1.1</cite></a>. Joanmarie Diggs; Joseph Scheuhammer; Richard Schwerdtfeger; Michael Cooper; Andi Snow-Weaver; Aaron Leventhal. W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/core-aam-1.1/">https://www.w3.org/TR/core-aam-1.1/</a>
 </dd><dt id="bib-RFC2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner. IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
 </dd><dt id="bib-WAI-ARIA">[WAI-ARIA]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig. W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a>
 </dd><dt id="bib-WAI-ARIA-IMPLEMENTATION">[WAI-ARIA-IMPLEMENTATION]</dt><dd><a href="https://www.w3.org/TR/wai-aria-implementation/"><cite>WAI-ARIA 1.0 User Agent Implementation Guide</cite></a>. Joseph Scheuhammer; Michael Cooper. W3C. 20 March 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-implementation/">https://www.w3.org/TR/wai-aria-implementation/</a>
 </dd></dl></section><section id="informative-references"><h3 id="a-2-informative-references"><span class="secno">A.2 </span>Informative references&nbsp;<span class="permalink"><a href="#informative-references" aria-label="Permalink for A.2 Informative references" title="Permalink for A.2 Informative references"><span>§</span></a></span></h3><dl class="bibliography"><dt id="bib-AT-SPI">[AT-SPI]</dt><dd><a href="https://developer.gnome.org/libatspi/stable/"><cite>Assistive Technology Service Provider Interface</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/libatspi/stable/">https://developer.gnome.org/libatspi/stable/</a>
 </dd><dt id="bib-ATK">[ATK]</dt><dd><a href="https://developer.gnome.org/atk/stable/"><cite>ATK - Accessibility Toolkit</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/atk/stable/">https://developer.gnome.org/atk/stable/</a>
 </dd><dt id="bib-AXAPI">[AXAPI]</dt><dd><a href="https://developer.apple.com/documentation/appkit/nsaccessibility"><cite>The NSAccessibility Protocol for macOS</cite></a>.  Apple, Inc. URL: <a href="https://developer.apple.com/documentation/appkit/nsaccessibility">https://developer.apple.com/documentation/appkit/nsaccessibility</a>
-</dd><dt id="bib-CORE-AAM-1.1">[CORE-AAM-1.1]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.1/"><cite>Core Accessibility API Mappings 1.1</cite></a>. Joanmarie Diggs; Joseph Scheuhammer; Richard Schwerdtfeger; Michael Cooper; Andi Snow-Weaver; Aaron Leventhal. W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/core-aam-1.1/">https://www.w3.org/TR/core-aam-1.1/</a>
 </dd><dt id="bib-IAccessible2">[IAccessible2]</dt><dd><a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2"><cite>IAccessible2</cite></a>.  Linux Foundation. URL: <a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2">https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2</a>
 </dd><dt id="bib-MSAA">[MSAA]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/ms697707.aspx"><cite>Microsoft Active Accessibility (MSAA) 2.0</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/ms697707.aspx">https://msdn.microsoft.com/en-us/library/ms697707.aspx</a>
 </dd><dt id="bib-UI-AUTOMATION">[UI-AUTOMATION]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx"><cite>UI Automation</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx">https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx</a>
