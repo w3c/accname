@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 21.0.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 22.3.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
     color: #b9ab2d;
@@ -56,11 +56,6 @@ aside.example div.example div.example-title {
 <title>Accessible Name and Description Computation 1.1</title>
 
 
-
-
-<link href="common/css/common.css" rel="stylesheet" type="text/css">
-
-
 <style id="respec-mainstyle">/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
@@ -100,6 +95,10 @@ a.externalDFN {
 
 a.bibref {
   text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
 }
 
 cite .bibref {
@@ -209,9 +208,9 @@ details.respec-tests-details[open] {
   z-index: 999999;
   position: absolute;
   border: thin solid #cad3e2;
-  border-radius: .3em;
+  border-radius: 0.3em;
   background-color: white;
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
 }
 
 details.respec-tests-details[open] > summary {
@@ -334,7 +333,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-1.1/"><script id="initialUserConfig" type="application/json">{
+</style>
+
+<link href="common/css/common.css" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-1.1/"><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
   "includePermalinks": true,
   "lint": true,
@@ -355,8 +359,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     },
     {
       "name": "Bryan Garaventa",
-      "company": "SSB BART Group",
-      "companyURL": "http://www.ssbbartgroup.com/",
+      "company": "Level Access",
+      "companyURL": "https://www.levelaccess.com/",
       "w3cid": 67215
     },
     {
@@ -460,9 +464,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2018-06-15",
-  "publishISODate": "2018-06-15T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 15 June 2018"
+  "publishDate": "2018-07-19",
+  "publishISODate": "2018-07-19T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 19 July 2018"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
 <body class="h-entry toc-inline"><div class="head">
   <a href="https://www.w3.org/" class="logo">
@@ -470,7 +474,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </a>
   <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.1</h1>
   
-  <h2 id="w3c-editor-s-draft-15-june-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-06-15">15 June 2018</time></h2>
+  <h2 id="w3c-editor-s-draft-19-july-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-07-19">19 July 2018</time></h2>
   <dl>
     <dt>This version:</dt><dd><a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd><dt>Latest published version:</dt><dd><a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd>
     <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
@@ -481,7 +485,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/">https://www.w3.org/TR/2014/REC-wai-aria-implementation-20140320/</a></dd>
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span> (<a class="p-org org h-org h-card" href="https://www.igalia.com/">Igalia, S.L.</a>)</dd><dd class="p-author h-card vcard" data-editor-id="67215"><span class="p-name fn">Bryan Garaventa</span> (<a class="p-org org h-org h-card" href="http://www.ssbbartgroup.com/">SSB BART Group</a>)</dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span> (<a class="p-org org h-org h-card" href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a>)</dd>
+    <dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span> (<a class="p-org org h-org h-card" href="https://www.igalia.com/">Igalia, S.L.</a>)</dd><dd class="p-author h-card vcard" data-editor-id="67215"><span class="p-name fn">Bryan Garaventa</span> (<a class="p-org org h-org h-card" href="https://www.levelaccess.com/">Level Access</a>)</dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span> (<a class="p-org org h-org h-card" href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a>)</dd>
     <dt>Former editors:</dt><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span> (<a class="p-org org h-org h-card" href="https://knowbility.org/">Knowbility</a>) (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span> (<a class="p-org org h-org h-card" href="https://idrc.ocadu.ca/">Inclusive Design Research Centre, OCAD University</a>) (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span> (<a class="p-org org h-org h-card" href="https://www.apple.com/accessibility/">Apple Inc.</a>) (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span> (<a class="p-org org h-org h-card" href="https://www.ibm.com/">IBM</a>) (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span> (<a class="p-org org h-org h-card" href="https://www.ibm.com/">IBM</a>) (Editor until January 2009)</dd>
     
     
@@ -507,8 +511,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </div>
 <section id="abstract" class="introductory"><!--OddPage--><h2 id="abstract-0">Abstract</h2>
 	<p>This document describes how <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">user agents</a> determine the <a class="termref internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn">names</a> and <a class="termref internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn">descriptions</a> of <a class="termref internalDFN" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a> from web content languages. This information is in turn exposed through <a class="termref internalDFN" href="#dfn-accessibility-api" data-link-type="dfn">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> so that <a class="termref internalDFN" href="#dfn-assistive-technology" data-link-type="dfn">assistive technologies</a> can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility <abbr title="Application Programming Interfaces">APIs</abbr> and helps to ensure that this information appears in a manner consistent with author intent.</p>
-	<p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="https://www.w3.org/TR/wai-aria-1.1/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite><a class="bibref" href="#bib-WAI-ARIA">WAI-ARIA</a></cite>] <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a> as well as features specific to individual content languages.</p>
-	<p>This document updates and will eventually supersede the accessible name and description guidance in the <a href="https://www.w3.org/TR/wai-aria-implementation/"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> 1.0 User Agent Implementation Guide</a> [<cite><a class="bibref" href="#bib-WAI-ARIA-IMPLEMENTATION">WAI-ARIA-IMPLEMENTATION</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="https://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
+	<p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="https://www.w3.org/TR/wai-aria-1.1/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite><a class="bibref" href="#bib-wai-aria">WAI-ARIA</a></cite>] <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a> as well as features specific to individual content languages.</p>
+	<p>This document updates and will eventually supersede the accessible name and description guidance in the <a href="https://www.w3.org/TR/wai-aria-implementation/"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> 1.0 User Agent Implementation Guide</a> [<cite><a class="bibref" href="#bib-wai-aria-implementation">WAI-ARIA-IMPLEMENTATION</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="https://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
 </section>
 <section id="sotd" class="introductory"><!--OddPage--><h2 id="status-of-this-document">Status of This Document</h2><p>
         <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em>
@@ -565,7 +569,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   and notes in this specification are non-normative. Everything else in this specification is
   normative.
 </p><p id="respecRFC2119">The key word  <em class="rfc2119">MUST</em> is 
-  to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
+  to be interpreted as described in [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>].
 </p>
 <section id="rfc-2119-keywords">
 <h3 id="x2-1-rfc-2119-keywords"><span class="secno">2.1 </span>RFC-2119 Keywords&nbsp;<span class="permalink"><a href="#rfc-2119-keywords" aria-label="Permalink for 2.1 RFC-2119 Keywords" title="Permalink for 2.1 RFC-2119 Keywords"><span>§</span></a></span></h3>
@@ -583,8 +587,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <dl class="termlist">
     <dt><dfn data-lt="accessibility api|accessibility apis" id="dfn-accessibility-api" data-dfn-type="dfn">Accessibility <abbr title="Application Programming Interface">API</abbr></dfn></dt>
     <dd>
-      <p>Operating systems and other platforms provide a set of interfaces that expose information about <a class="termref internalDFN" data-lt="object" href="#dfn-object" data-link-type="dfn">objects</a> and <a class="termref internalDFN" data-lt="event" href="#dfn-event" data-link-type="dfn">events</a> to <a href="#dfn-assistive-technology" class="internalDFN" data-link-type="dfn">assistive technologies</a>. Assistive technologies use these interfaces to get information about and interact with those <a class="termref internalDFN" data-lt="widget" href="#dfn-widget" data-link-type="dfn">widgets</a>. Examples of accessibility <abbr title="Application Programming Interfaces">APIs</abbr> are <a href="https://msdn.microsoft.com/en-us/library/ms697270(VS.85).aspx">Microsoft Active Accessibility</a> [<cite><a class="bibref" href="#bib-MSAA">MSAA</a></cite>], <a href="https://msdn.microsoft.com/en-us/library/ee684013%28VS.85%29.aspx">Microsoft User Interface Automation</a> [<cite><a class="bibref" href="#bib-UI-AUTOMATION">UI-AUTOMATION</a></cite>], <abbr title="Microsoft Active Accessibility">MSAA</abbr> with <cite><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898(v=vs.85).aspx"><abbr title="User Interface Automation">UIA</abbr> Express</a></cite> [<cite><a class="bibref" href="#bib-UIA-EXPRESS">UIA-EXPRESS</a></cite>], the
-      	<a href="https://developer.apple.com/documentation/appkit/accessibility/nsaccessibility">Mac <abbr title="OS Ten">OS X</abbr> Accessibility Protocol</a> [<cite><a class="bibref" href="#bib-AXAPI">AXAPI</a></cite>], the <cite><a href="https://developer.gnome.org/atk/unstable/">Linux/Unix Accessibility Toolkit</a></cite> [<cite><a class="bibref" href="#bib-ATK">ATK</a></cite>] and <cite><a href="https://developer.gnome.org/libatspi/stable/">Assistive Technology Service Provider Interface</a></cite> [<cite><a class="bibref" href="#bib-AT-SPI">AT-SPI</a></cite>], and <a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a> [<cite><a class="bibref" href="#bib-IAccessible2">IAccessible2</a></cite>].</p>
+      <p>Operating systems and other platforms provide a set of interfaces that expose information about <a class="termref internalDFN" data-lt="object" href="#dfn-object" data-link-type="dfn">objects</a> and <a class="termref internalDFN" data-lt="event" href="#dfn-event" data-link-type="dfn">events</a> to <a href="#dfn-assistive-technology" class="internalDFN" data-link-type="dfn">assistive technologies</a>. Assistive technologies use these interfaces to get information about and interact with those <a class="termref internalDFN" data-lt="widget" href="#dfn-widget" data-link-type="dfn">widgets</a>. Examples of accessibility <abbr title="Application Programming Interfaces">APIs</abbr> are <a href="https://msdn.microsoft.com/en-us/library/ms697270(VS.85).aspx">Microsoft Active Accessibility</a> [<cite><a class="bibref" href="#bib-msaa">MSAA</a></cite>], <a href="https://msdn.microsoft.com/en-us/library/ee684013%28VS.85%29.aspx">Microsoft User Interface Automation</a> [<cite><a class="bibref" href="#bib-ui-automation">UI-AUTOMATION</a></cite>], <abbr title="Microsoft Active Accessibility">MSAA</abbr> with <cite><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898(v=vs.85).aspx"><abbr title="User Interface Automation">UIA</abbr> Express</a></cite> [<cite><a class="bibref" href="#bib-uia-express">UIA-EXPRESS</a></cite>], the
+      	<a href="https://developer.apple.com/documentation/appkit/accessibility/nsaccessibility">Mac <abbr title="OS Ten">OS X</abbr> Accessibility Protocol</a> [<cite><a class="bibref" href="#bib-axapi">AXAPI</a></cite>], the <cite><a href="https://developer.gnome.org/atk/unstable/">Linux/Unix Accessibility Toolkit</a></cite> [<cite><a class="bibref" href="#bib-atk">ATK</a></cite>] and <cite><a href="https://developer.gnome.org/libatspi/stable/">Assistive Technology Service Provider Interface</a></cite> [<cite><a class="bibref" href="#bib-at-spi">AT-SPI</a></cite>], and <a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a> [<cite><a class="bibref" href="#bib-iaccessible2">IAccessible2</a></cite>].</p>
     </dd>
     
     
@@ -687,7 +691,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     <dt><dfn id="dfn-perceivable" data-dfn-type="dfn">Perceivable</dfn></dt>
     <dd>
-      <p>Presentable to users in ways they can sense. References in this document relate to <cite><a href="http://www.w3.org/TR/WCAG21/#perceivable"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 Principle 1: Content must be perceivable</a></cite> [<cite><a class="bibref" href="#bib-WCAG21">WCAG21</a></cite>].</p>
+      <p>Presentable to users in ways they can sense. References in this document relate to <cite><a href="https://www.w3.org/TR/WCAG21/#perceivable"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 Principle 1: Content must be perceivable</a></cite> [<cite><a class="bibref" href="#bib-wcag21">WCAG21</a></cite>].</p>
     </dd>
     <dt><dfn data-lt="property|properties" id="dfn-property" data-dfn-type="dfn">Property</dfn></dt>
     <dd>
@@ -705,7 +709,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     <dt><dfn data-lt="state|states" id="dfn-state" data-dfn-type="dfn">State</dfn></dt>
     <dd>
-      <p>A state is a dynamic <a class="termref" href="#dfn-property">property</a> expressing characteristics of an <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a> that may change in response to user action or automated processes. States do not affect the essential nature of the object, but represent data associated with the object or user interaction possibilities. See <a href="http://www.w3.org/TR/wai-aria-1.1/#statevsprop">clarification of states versus properties</a>.</p>
+      <p>A state is a dynamic <a class="termref" href="#dfn-property">property</a> expressing characteristics of an <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a> that may change in response to user action or automated processes. States do not affect the essential nature of the object, but represent data associated with the object or user interaction possibilities. See <a href="https://www.w3.org/TR/wai-aria-1.1/#statevsprop">clarification of states versus properties</a>.</p>
     </dd>
     
     
@@ -746,7 +750,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <dt>contents</dt>
     <dd>name is generated from the <a class="termref internalDFN" data-lt="text node" href="#dfn-text-node" data-link-type="dfn">Text nodes</a> associated with the <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a>. Although this may be allowed in addition to "author" in some <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, "content" is used only if higher priority "author" features are not provided. Priority is defined by the <a href="#mapping_additional_nd_te">text alternative computation</a> algorithm.</dd>
   </dl>
-  <p>The <cite><a class="specref" href="https://w3c.github.io/aria/aria/aria.html#">Accessible Rich Internet Applications (<abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr>) 1.1</a></cite> [<cite><a class="bibref" href="#bib-WAI-ARIA">WAI-ARIA</a></cite>] specification provides lists of roles that support <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromauthor">name from author</a> and <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromcontent">name from content</a>. </p>
+  <p>The <cite><a class="specref" href="https://w3c.github.io/aria/aria/aria.html#">Accessible Rich Internet Applications (<abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr>) 1.1</a></cite> [<cite><a class="bibref" href="#bib-wai-aria">WAI-ARIA</a></cite>] specification provides lists of roles that support <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromauthor">name from author</a> and <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromcontent">name from content</a>. </p>
   <section id="mapping_additional_nd_name">
     <h3 id="x4-1-name-computation"><span class="secno">4.1 </span>Name Computation&nbsp;<span class="permalink"><a href="#mapping_additional_nd_name" aria-label="Permalink for 4.1 Name Computation" title="Permalink for 4.1 Name Computation"><span>§</span></a></span></h3>
     <p><a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> <em class="rfc2119" title="MUST">MUST</em> compute an <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a> using the rules outlined below in the section titled <a href="#mapping_additional_nd_te">Text Alternative Computation</a>.</p>
@@ -893,7 +897,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
             <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a> allows <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>), or is a descendant of a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a>:
               <ol>
                 <li id="step2F.i">Set the <code>accumulated text</code> to the empty string.</li>
-                <li id="step2F.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements can provide textual content for <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">elements</a> that have a content model.
+                <li id="step2F.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements [<cite><a class="bibref" href="#bib-css2">CSS2</a></cite>] can provide textual content for <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">elements</a> that have a content model.
                       <ul>
                         <li>For <code>:before</code> pseudo elements, <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> <em class="rfc2119" title="MUST">MUST</em> prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
                         <li>For <code>:after</code> pseudo elements, <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> <em class="rfc2119" title="MUST">MUST</em> append <abbr title="Cascading Style Sheets">CSS</abbr>  textual content, without a space, to the textual content of the <code>current node</code>. </li>
@@ -932,7 +936,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </section>
   <section id="accessible-name-and-description-mapping">
     <!--OddPage--><h2 id="x5-accessible-name-and-description-mapping"><span class="secno">5. </span>Accessible Name and Description Mapping&nbsp;<span class="permalink"><a href="#accessible-name-and-description-mapping" aria-label="Permalink for 5. Accessible Name and Description Mapping" title="Permalink for 5. Accessible Name and Description Mapping"><span>§</span></a></span></h2>
-    <p>Information concerning name and description accessibility <abbr title="Application Programming Interface">API</abbr> mappings, including relationships, such as labelled-by/label-for and described-by/description-for, is documented in the <a href="https://w3c.github.io/aria/core-aam/core-aam.html" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a> specification [<cite><a class="bibref" href="#bib-CORE-AAM-1.1">CORE-AAM-1.1</a></cite>]. See the mapping table entries for <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabel"><code>aria-label</code></a>, <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabelledBy"><code>aria-labelledby</code></a>, and <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaDescribedBy"><code>aria-describedby</code></a>.</p>
+    <p>Information concerning name and description accessibility <abbr title="Application Programming Interface">API</abbr> mappings, including relationships, such as labelled-by/label-for and described-by/description-for, is documented in the <a href="https://w3c.github.io/aria/core-aam/core-aam.html" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a> specification [<cite><a class="bibref" href="#bib-core-aam-1.1">CORE-AAM-1.1</a></cite>]. See the mapping table entries for <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabel"><code>aria-label</code></a>, <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabelledBy"><code>aria-labelledby</code></a>, and <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaDescribedBy"><code>aria-describedby</code></a>.</p>
   </section>
 <section id="appendices">
   <!--OddPage--><h2 id="x6-appendices"><span class="secno">6. </span>Appendices&nbsp;<span class="permalink"><a href="#appendices" aria-label="Permalink for 6. Appendices" title="Permalink for 6. Appendices"><span>§</span></a></span></h2>
@@ -1162,16 +1166,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </section>
 
 
-<section id="references" class="appendix"><!--OddPage--><h2 id="a-references"><span class="secno">A. </span>References&nbsp;<span class="permalink"><a href="#references" aria-label="Permalink for A. References" title="Permalink for A. References"><span>§</span></a></span></h2><section id="normative-references"><h3 id="a-1-normative-references"><span class="secno">A.1 </span>Normative references&nbsp;<span class="permalink"><a href="#normative-references" aria-label="Permalink for A.1 Normative references" title="Permalink for A.1 Normative references"><span>§</span></a></span></h3><dl class="bibliography"><dt id="bib-CORE-AAM-1.1">[CORE-AAM-1.1]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.1/"><cite>Core Accessibility API Mappings 1.1</cite></a>. Joanmarie Diggs; Joseph Scheuhammer; Richard Schwerdtfeger; Michael Cooper; Andi Snow-Weaver; Aaron Leventhal. W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/core-aam-1.1/">https://www.w3.org/TR/core-aam-1.1/</a>
-</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner. IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
-</dd><dt id="bib-WAI-ARIA">[WAI-ARIA]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig. W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a>
-</dd><dt id="bib-WAI-ARIA-IMPLEMENTATION">[WAI-ARIA-IMPLEMENTATION]</dt><dd><a href="https://www.w3.org/TR/wai-aria-implementation/"><cite>WAI-ARIA 1.0 User Agent Implementation Guide</cite></a>. Joseph Scheuhammer; Michael Cooper. W3C. 20 March 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-implementation/">https://www.w3.org/TR/wai-aria-implementation/</a>
-</dd></dl></section><section id="informative-references"><h3 id="a-2-informative-references"><span class="secno">A.2 </span>Informative references&nbsp;<span class="permalink"><a href="#informative-references" aria-label="Permalink for A.2 Informative references" title="Permalink for A.2 Informative references"><span>§</span></a></span></h3><dl class="bibliography"><dt id="bib-AT-SPI">[AT-SPI]</dt><dd><a href="https://developer.gnome.org/libatspi/stable/"><cite>Assistive Technology Service Provider Interface</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/libatspi/stable/">https://developer.gnome.org/libatspi/stable/</a>
-</dd><dt id="bib-ATK">[ATK]</dt><dd><a href="https://developer.gnome.org/atk/stable/"><cite>ATK - Accessibility Toolkit</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/atk/stable/">https://developer.gnome.org/atk/stable/</a>
-</dd><dt id="bib-AXAPI">[AXAPI]</dt><dd><a href="https://developer.apple.com/documentation/appkit/nsaccessibility"><cite>The NSAccessibility Protocol for macOS</cite></a>.  Apple, Inc. URL: <a href="https://developer.apple.com/documentation/appkit/nsaccessibility">https://developer.apple.com/documentation/appkit/nsaccessibility</a>
-</dd><dt id="bib-IAccessible2">[IAccessible2]</dt><dd><a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2"><cite>IAccessible2</cite></a>.  Linux Foundation. URL: <a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2">https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2</a>
-</dd><dt id="bib-MSAA">[MSAA]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/ms697707.aspx"><cite>Microsoft Active Accessibility (MSAA) 2.0</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/ms697707.aspx">https://msdn.microsoft.com/en-us/library/ms697707.aspx</a>
-</dd><dt id="bib-UI-AUTOMATION">[UI-AUTOMATION]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx"><cite>UI Automation</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx">https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx</a>
-</dd><dt id="bib-UIA-EXPRESS">[UIA-EXPRESS]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx"><cite>The IAccessibleEx Interface</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx">https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx</a>
-</dd><dt id="bib-WCAG21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper. W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a>
-</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
+<section id="references" class="appendix">
+      <!--OddPage--><h2 id="a-references"><span class="secno">A. </span>References&nbsp;<span class="permalink"><a href="#references" aria-label="Permalink for A. References" title="Permalink for A. References"><span>§</span></a></span></h2>
+      
+    <section id="normative-references">
+        <h3 id="a-1-normative-references"><span class="secno">A.1 </span>Normative references&nbsp;<span class="permalink"><a href="#normative-references" aria-label="Permalink for A.1 Normative references" title="Permalink for A.1 Normative references"><span>§</span></a></span></h3>
+      <dl class="bibliography">
+        <dt id="bib-core-aam-1.1">[CORE-AAM-1.1]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.1/"><cite>Core Accessibility API Mappings 1.1</cite></a>. Joanmarie Diggs; Joseph Scheuhammer; Richard Schwerdtfeger; Michael Cooper; Andi Snow-Weaver; Aaron Leventhal. W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/core-aam-1.1/">https://www.w3.org/TR/core-aam-1.1/</a></dd><dt id="bib-css2">[CSS2]</dt><dd><a href="https://www.w3.org/TR/CSS2/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie et al. W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS2/">https://www.w3.org/TR/CSS2/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner. IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd><dt id="bib-wai-aria">[WAI-ARIA]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig. W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a></dd><dt id="bib-wai-aria-implementation">[WAI-ARIA-IMPLEMENTATION]</dt><dd><a href="https://www.w3.org/TR/wai-aria-implementation/"><cite>WAI-ARIA 1.0 User Agent Implementation Guide</cite></a>. Joseph Scheuhammer; Michael Cooper. W3C. 20 March 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-implementation/">https://www.w3.org/TR/wai-aria-implementation/</a></dd>
+      </dl></section><section id="informative-references">
+        <h3 id="a-2-informative-references"><span class="secno">A.2 </span>Informative references&nbsp;<span class="permalink"><a href="#informative-references" aria-label="Permalink for A.2 Informative references" title="Permalink for A.2 Informative references"><span>§</span></a></span></h3>
+      <dl class="bibliography">
+        <dt id="bib-at-spi">[AT-SPI]</dt><dd><a href="https://developer.gnome.org/libatspi/stable/"><cite>Assistive Technology Service Provider Interface</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/libatspi/stable/">https://developer.gnome.org/libatspi/stable/</a></dd><dt id="bib-atk">[ATK]</dt><dd><a href="https://developer.gnome.org/atk/stable/"><cite>ATK - Accessibility Toolkit</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/atk/stable/">https://developer.gnome.org/atk/stable/</a></dd><dt id="bib-axapi">[AXAPI]</dt><dd><a href="https://developer.apple.com/documentation/appkit/nsaccessibility"><cite>The NSAccessibility Protocol for macOS</cite></a>.  Apple, Inc. URL: <a href="https://developer.apple.com/documentation/appkit/nsaccessibility">https://developer.apple.com/documentation/appkit/nsaccessibility</a></dd><dt id="bib-iaccessible2">[IAccessible2]</dt><dd><a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2"><cite>IAccessible2</cite></a>.  Linux Foundation. URL: <a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2">https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2</a></dd><dt id="bib-msaa">[MSAA]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/ms697707.aspx"><cite>Microsoft Active Accessibility (MSAA) 2.0</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/ms697707.aspx">https://msdn.microsoft.com/en-us/library/ms697707.aspx</a></dd><dt id="bib-ui-automation">[UI-AUTOMATION]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx"><cite>UI Automation</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx">https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx</a></dd><dt id="bib-uia-express">[UIA-EXPRESS]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx"><cite>The IAccessibleEx Interface</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx">https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper. W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd>
+      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
