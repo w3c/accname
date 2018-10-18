@@ -449,13 +449,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/83726/status",
   "tocIntroductory": true,
   "ariaSpecURLs": {
-    "ED": "https://w3c.github.io/aria/aria/aria.html",
+    "ED": "https://w3c.github.io/aria/",
     "WD": "https://www.w3.org/TR/wai-aria-1.1/",
     "FPWD": "https://www.w3.org/TR/wai-aria-1.1/",
     "REC": "https://www.w3.org/TR/wai-aria/"
   },
   "coreMappingURLs": {
-    "ED": "https://w3c.github.io/aria/core-aam/core-aam.html",
+    "ED": "https://w3c.github.io/core-aam/",
     "WD": "https://www.w3.org/TR/core-aam-1.1/",
     "FPWD": "https://www.w3.org/TR/core-aam-1.1/",
     "REC": "https://www.w3.org/TR/wai-aria-implementation/"
@@ -500,9 +500,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2018-10-17",
-  "publishISODate": "2018-10-17T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 17 October 2018"
+  "publishDate": "2018-10-18",
+  "publishISODate": "2018-10-18T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 18 October 2018"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
 <body class="h-entry toc-inline"><div class="head">
   <a href="https://www.w3.org/" class="logo">
@@ -510,7 +510,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </a>
   <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.1</h1>
   
-  <h2><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-10-17">17 October 2018</time></h2>
+  <h2><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-10-18">18 October 2018</time></h2>
   <dl>
     <dt>This version:</dt><dd><a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd><dt>Latest published version:</dt><dd><a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd>
     <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
@@ -729,7 +729,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </dd>
     <dt><dfn data-lt="property|properties" id="dfn-property" data-dfn-type="dfn">Property</dfn></dt>
     <dd>
-      <p><a class="termref internalDFN" data-lt="attribute" href="#dfn-attribute" data-link-type="dfn">Attributes</a> that are essential to the nature of a given <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a>, or that represent a data value associated with the object. A change of a property may significantly impact the meaning or presentation of an object. Certain properties (for example, <a href="https://w3c.github.io/aria/aria/aria.html#aria-multiline" class="property-reference"><code>aria-multiline</code></a>) are less likely to change than <a class="termref" href="#dfn-state">states</a>, but note that the frequency of change difference is not a rule. A few properties, such as <a href="https://w3c.github.io/aria/aria/aria.html#aria-activedescendant" class="property-reference"><code>aria-activedescendant</code></a>, <a href="https://w3c.github.io/aria/aria/aria.html#aria-valuenow" class="property-reference"><code>aria-valuenow</code></a>, and <a href="https://w3c.github.io/aria/aria/aria.html#aria-valuetext" class="property-reference"><code>aria-valuetext</code></a> are expected to change often. See <a href="https://www.w3.org/TR/wai-aria-1.1/#statevsprop">clarification of states versus properties</a>.</p>
+      <p><a class="termref internalDFN" data-lt="attribute" href="#dfn-attribute" data-link-type="dfn">Attributes</a> that are essential to the nature of a given <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a>, or that represent a data value associated with the object. A change of a property may significantly impact the meaning or presentation of an object. Certain properties (for example, <a href="https://w3c.github.io/aria/#aria-multiline" class="property-reference"><code>aria-multiline</code></a>) are less likely to change than <a class="termref" href="#dfn-state">states</a>, but note that the frequency of change difference is not a rule. A few properties, such as <a href="https://w3c.github.io/aria/#aria-activedescendant" class="property-reference"><code>aria-activedescendant</code></a>, <a href="https://w3c.github.io/aria/#aria-valuenow" class="property-reference"><code>aria-valuenow</code></a>, and <a href="https://w3c.github.io/aria/#aria-valuetext" class="property-reference"><code>aria-valuetext</code></a> are expected to change often. See <a href="https://www.w3.org/TR/wai-aria-1.1/#statevsprop">clarification of states versus properties</a>.</p>
     </dd>
     
     
@@ -784,14 +784,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <dt>contents</dt>
     <dd>name is generated from the <a class="termref internalDFN" data-lt="text node" href="#dfn-text-node" data-link-type="dfn">Text nodes</a> associated with the <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a>. Although this may be allowed in addition to "author" in some <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, "content" is used only if higher priority "author" features are not provided. Priority is defined by the <a href="#mapping_additional_nd_te">text alternative computation</a> algorithm.</dd>
   </dl>
-  <p>The <cite><a class="specref" href="https://w3c.github.io/aria/aria/aria.html#">Accessible Rich Internet Applications (<abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr>) 1.1</a></cite> [<cite><a class="bibref" href="#bib-wai-aria">WAI-ARIA</a></cite>] specification provides lists of roles that support <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromauthor">name from author</a> and <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromcontent">name from content</a>. </p>
+  <p>The <cite><a class="specref" href="https://w3c.github.io/aria/#">Accessible Rich Internet Applications (<abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr>) 1.1</a></cite> [<cite><a class="bibref" href="#bib-wai-aria">WAI-ARIA</a></cite>] specification provides lists of roles that support <a class="specref" href="https://w3c.github.io/aria/#namefromauthor">name from author</a> and <a class="specref" href="https://w3c.github.io/aria/#namefromcontent">name from content</a>. </p>
   <section id="mapping_additional_nd_name">
     <h3 id="x4-1-name-computation"><span class="secno">4.1 </span>Name Computation<a class="self-link" aria-label="§" href="#mapping_additional_nd_name"></a></h3>
     <p><a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> <em class="rfc2119" title="MUST">MUST</em> compute an <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a> using the rules outlined below in the section titled <a href="#mapping_additional_nd_te">Text Alternative Computation</a>.</p>
   </section>
   <section id="mapping_additional_nd_description">
     <h3 id="x4-2-description-computation"><span class="secno">4.2 </span>Description Computation<a class="self-link" aria-label="§" href="#mapping_additional_nd_description"></a></h3>
-    <p>If <a class="property-reference" href="https://w3c.github.io/aria/aria/aria.html#aria-describedby"><code>aria-describedby</code></a> is present, <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">user agents</a> <em class="rfc2119" title="MUST">MUST</em> compute the accessible description by	concatenating the text alternatives for elements referenced by an <code>aria-describedby</code> attribute on the current element. The text alternatives for the referenced elements are computed using a  							number of methods, outlined below in the section titled <a href="#mapping_additional_nd_te">Text Alternative Computation</a>. </p>
+    <p>If <a class="property-reference" href="https://w3c.github.io/aria/#aria-describedby"><code>aria-describedby</code></a> is present, <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">user agents</a> <em class="rfc2119" title="MUST">MUST</em> compute the accessible description by	concatenating the text alternatives for elements referenced by an <code>aria-describedby</code> attribute on the current element. The text alternatives for the referenced elements are computed using a  							number of methods, outlined below in the section titled <a href="#mapping_additional_nd_te">Text Alternative Computation</a>. </p>
   </section>
   <section id="mapping_additional_nd_te">
     <h3 id="x4-3-text-alternative-computation"><span class="secno">4.3 </span>Text Alternative Computation<a class="self-link" aria-label="§" href="#mapping_additional_nd_te"></a></h3>
@@ -917,10 +917,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
             </li>
             <li id="step2E">Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. the <code>label</code> element in <abbr title="Hypertext Markup Language">HTML</abbr> or any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref internalDFN" href="#dfn-widget" data-link-type="dfn">widget</a>, where the user can adjust the embedded control's value, then include the embedded control as part of the text alternative in the following manner:
               <ul>
-                <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#textbox">textbox</a>, return its value.</li>
-                <li>If the embedded control has role menu <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#button">button</a>, return the text alternative of the button.</li>
-                <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#combobox">combobox</a> or <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#listbox">listbox</a>, return the text alternative of the chosen <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#option">option</a>.</li>
-                <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#range">range</a> (e.g., a <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#spinbutton">spinbutton</a> or <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#slider">slider</a>):
+                <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, return its value.</li>
+                <li>If the embedded control has role menu <a class="role-reference" href="https://w3c.github.io/aria/#button">button</a>, return the text alternative of the button.</li>
+                <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#combobox">combobox</a> or <a class="role-reference" href="https://w3c.github.io/aria/#listbox">listbox</a>, return the text alternative of the chosen <a class="role-reference" href="https://w3c.github.io/aria/#option">option</a>.</li>
+                <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#range">range</a> (e.g., a <a class="role-reference" href="https://w3c.github.io/aria/#spinbutton">spinbutton</a> or <a class="role-reference" href="https://w3c.github.io/aria/#slider">slider</a>):
                   <ul>
                     <li>If the <code>aria-valuetext</code> property is present, return its value, </li>
                     <li>Otherwise, if the <code>aria-valuenow</code> property is present, return its value,</li>
@@ -930,14 +930,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </ul>
               <div><details>
                 <summary>Example:</summary>
-                <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/aria/aria.html#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
+                <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
                 <div class="example" id="ex-3-example-3-div-role-checkbox-aria-checked-false-flash-the-screen-span-role-textbox-aria-multiline-false-5-span-times-div">
           <div class="marker"><a class="self-link" href="#ex-3-example-3-div-role-checkbox-aria-checked-false-flash-the-screen-span-role-textbox-aria-multiline-false-5-span-times-div">Example 3</a></div>
           <pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
         </div>
               </details></div>
               </li>
-            <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a> allows <a class="specref" href="https://w3c.github.io/aria/aria/aria.html#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>), or is a descendant of a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a>:
+            <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a> allows <a class="specref" href="https://w3c.github.io/aria/#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>), or is a descendant of a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a>:
               <ol>
                 <li id="step2F.i">Set the <code>accumulated text</code> to the empty string.</li>
                 <li id="step2F.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements [<cite><a class="bibref" href="#bib-css2">CSS2</a></cite>] can provide textual content for <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">elements</a> that have a content model.
@@ -979,7 +979,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </section>
   <section id="accessible-name-and-description-mapping">
     <!--OddPage--><h2 id="x5-accessible-name-and-description-mapping"><span class="secno">5. </span>Accessible Name and Description Mapping<a class="self-link" aria-label="§" href="#accessible-name-and-description-mapping"></a></h2>
-    <p>Information concerning name and description accessibility <abbr title="Application Programming Interface">API</abbr> mappings, including relationships, such as labelled-by/label-for and described-by/description-for, is documented in the <a href="https://w3c.github.io/aria/core-aam/core-aam.html" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a> specification [<cite><a class="bibref" href="#bib-core-aam-1.1">CORE-AAM-1.1</a></cite>]. See the mapping table entries for <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabel"><code>aria-label</code></a>, <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaLabelledBy"><code>aria-labelledby</code></a>, and <a class="core-mapping" href="https://w3c.github.io/aria/core-aam/core-aam.html#ariaDescribedBy"><code>aria-describedby</code></a>.</p>
+    <p>Information concerning name and description accessibility <abbr title="Application Programming Interface">API</abbr> mappings, including relationships, such as labelled-by/label-for and described-by/description-for, is documented in the <a href="https://w3c.github.io/core-aam/" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a> specification [<cite><a class="bibref" href="#bib-core-aam-1.1">CORE-AAM-1.1</a></cite>]. See the mapping table entries for <a class="core-mapping" href="https://w3c.github.io/core-aam/#ariaLabel"><code>aria-label</code></a>, <a class="core-mapping" href="https://w3c.github.io/core-aam/#ariaLabelledBy"><code>aria-labelledby</code></a>, and <a class="core-mapping" href="https://w3c.github.io/core-aam/#ariaDescribedBy"><code>aria-describedby</code></a>.</p>
   </section>
 <section id="appendices">
   <!--OddPage--><h2 id="x6-appendices"><span class="secno">6. </span>Appendices<a class="self-link" aria-label="§" href="#appendices"></a></h2>
