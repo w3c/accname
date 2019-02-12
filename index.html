@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 24.2.3"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 24.3.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 span.example-title {
     text-transform: none;
 }
@@ -500,23 +500,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2019-01-28",
-  "publishISODate": "2019-01-28T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 28 January 2019"
+  "publishDate": "2019-02-12",
+  "publishISODate": "2019-02-12T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 12 February 2019"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
 <body class="h-entry"><div class="head">
       <a href="https://www.w3.org/" class="logo"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.2</h1>
       
       <h2>
         <abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft
-        <time class="dt-published" datetime="2019-01-28">28 January 2019</time>
+        <time class="dt-published" datetime="2019-02-12">12 February 2019</time>
       </h2>
       <dl>
         <dt>This version:</dt><dd>
-                  <a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a>
-                </dd><dt>Latest published version:</dt><dd>
-                  <a href="https://www.w3.org/TR/accname-1.2/">https://www.w3.org/TR/accname-1.2/</a>
-                </dd>
+                <a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a>
+              </dd><dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/accname-1.2/">https://www.w3.org/TR/accname-1.2/</a>
+              </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
         
         
@@ -533,8 +533,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
             (<a class="p-org org h-org h-card" href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a>)
           </dd>
         <dt>
-                  Former editors:
-                </dt><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>
+                Former editors:
+              </dt><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>
             (<a class="p-org org h-org h-card" href="https://knowbility.org/">Knowbility</a>)
            (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>
             (<a class="p-org org h-org h-card" href="https://idrc.ocadu.ca/">Inclusive Design Research Centre, OCAD University</a>)
@@ -572,49 +572,47 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </section>
 <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p>
 <p>
-                              This document was published by the <a href="https://www.w3.org/WAI/ARIA/">Accessible Rich Internet Applications Working Group</a> as
-                              an Editor's Draft.
-                              
-                            </p><p>
+                        This document was published by the <a href="https://www.w3.org/WAI/ARIA/">Accessible Rich Internet Applications Working Group</a> as
+                        an Editor's Draft.
+                        
+                      </p><p>
       
       Comments regarding this document are welcome.
-              Please send them to
-              <a href="mailto:public-aria@w3.org">public-aria@w3.org</a>
-              (<a href="https://lists.w3.org/Archives/Public/public-aria/">archives</a>).
-            
+            Please send them to
+            <a href="mailto:public-aria@w3.org">public-aria@w3.org</a>
+            (<a href="https://lists.w3.org/Archives/Public/public-aria/">archives</a>).
+          
     </p><p>
-                              Publication as an Editor's Draft
-                              does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership.
-                              This is a draft document and may be updated,
-                              replaced or obsoleted by other documents at any
-                              time. It is inappropriate to cite this document as
-                              other than work in progress.
-                            </p><p>
+                        Publication as an Editor's Draft does not
+                        imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft
+                        document and may be updated, replaced or obsoleted by
+                        other documents at any time. It is inappropriate to cite
+                        this document as other than work in progress.
+                      </p><p>
+                  
+                        This document was produced by
+                        a group operating
+                        under the
+                        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
                       
-                              This document was produced by
-                              a group
-                              operating under the
-                              <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-                            
+                  
+                  
+                              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                              <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/83726/status">public list of any patent disclosures</a>
+                        made in connection with the deliverables of
+                        the group; that page also includes
+                        instructions for disclosing a patent. An individual who
+                        has actual knowledge of a patent which the individual
+                        believes contains
+                        <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+                        must disclose the information in accordance with
+                        <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
                       
-                      
-                                      <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
-                                      <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/83726/status">public list of any patent
-                                        disclosures</a>
-                              made in connection with the deliverables of
-                              the group; that page also includes
-                              instructions for disclosing a patent. An
-                              individual who has actual knowledge of a patent
-                              which the individual believes contains
-                              <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
-                              must disclose the information in accordance with
-                              <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-                            
-                      
-                    </p><p>
-                      This document is governed by the
-                      <a id="w3c_process_revision" href="https://www.w3.org/2018/Process-20180201/">1 February 2018 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><span class="secno">1. </span>Introduction</a></li><li class="tocline"><a class="tocxref" href="#conformance"><span class="secno">2. </span>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rfc-2119-keywords"><span class="secno">2.1 </span>RFC-2119 Keywords</a></li><li class="tocline"><a class="tocxref" href="#normative-and-informative-sections"><span class="secno">2.2 </span>Normative and Informative Sections</a></li></ol></li><li class="tocline"><a class="tocxref" href="#glossary"><span class="secno">3. </span>Important Terms</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd"><span class="secno">4. </span>Name and Description</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_name"><span class="secno">4.1 </span>Name Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_description"><span class="secno">4.2 </span>Description Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_te"><span class="secno">4.3 </span>Accessible Name and Description Computation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><span class="secno">4.3.1 </span>Terminology</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessible-name-and-description-mapping"><span class="secno">5. </span>Accessible Name and Description Mapping</a></li><li class="tocline"><a class="tocxref" href="#appendices"><span class="secno">6. </span>Appendices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changelog"><span class="secno">6.1 </span>Change Log</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-last-public-working-draft"><span class="secno">6.1.1 </span>Substantive changes since the last public working draft</a></li><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><span class="secno">6.1.2 </span>Substantive changes since the <span class="formerLink">Accessible Name and Description Computation 1.1 Recommendation</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><span class="secno">6.2 </span>Acknowledgments</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><span class="secno">A.2 </span>Informative references</a></li></ol></li></ol></nav>
+                  
+                </p><p>
+                  This document is governed by the
+                  <a id="w3c_process_revision" href="https://www.w3.org/2018/Process-20180201/">1 February 2018 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><span class="secno">1. </span>Introduction</a></li><li class="tocline"><a class="tocxref" href="#conformance"><span class="secno">2. </span>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rfc-2119-keywords"><span class="secno">2.1 </span>RFC-2119 Keywords</a></li><li class="tocline"><a class="tocxref" href="#normative-and-informative-sections"><span class="secno">2.2 </span>Normative and Informative Sections</a></li></ol></li><li class="tocline"><a class="tocxref" href="#glossary"><span class="secno">3. </span>Important Terms</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd"><span class="secno">4. </span>Name and Description</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_name"><span class="secno">4.1 </span>Name Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_description"><span class="secno">4.2 </span>Description Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_te"><span class="secno">4.3 </span>Accessible Name and Description Computation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><span class="secno">4.3.1 </span>Terminology</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessible-name-and-description-mapping"><span class="secno">5. </span>Accessible Name and Description Mapping</a></li><li class="tocline"><a class="tocxref" href="#appendices"><span class="secno">6. </span>Appendices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changelog"><span class="secno">6.1 </span>Change Log</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-last-public-working-draft"><span class="secno">6.1.1 </span>Substantive changes since the last public working draft</a></li><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><span class="secno">6.1.2 </span>Substantive changes since the <span class="formerLink">Accessible Name and Description Computation 1.1 Recommendation</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><span class="secno">6.2 </span>Acknowledgments</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><span class="secno">A.2 </span>Informative references</a></li></ol></li></ol></nav>
 <section id="intro" class="informative">
 	<!--OddPage--><h2 id="x1-introduction"><span class="secno">1. </span>Introduction<a class="self-link" aria-label="§" href="#intro"></a></h2><p><em>This section is non-normative.</em></p>
       <p><a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> acquire information from the <abbr title="Document Object Model">DOM</abbr> [<cite><a class="bibref" href="#bib-dom">DOM</a></cite>] and create a parallel structure called the <a class="termref internalDFN" href="#dfn-accessibility-tree" data-link-type="dfn">accessibility tree</a>, made up of <a class="termref internalDFN" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a>. An accessible object provides information about its <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a>. An example is an accessible object whose role is <code>menuitem</code>, is currently in an <code>enabled</code> state, with a <code>haspopup</code> property, indicating that it leads to a sub-menu. </p>
@@ -900,8 +898,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                   <li><code>element1</code>'s <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a> is "hello" because this is a first traversal of its <code>aria-labelledby</code>, leading to <code>element3</code>.</li>
                   <li><code>element2</code> has no <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a>.  The computation involves a first traversal of its <code>aria-labelledby</code> leading to <code>element1</code>, but <code>element1</code>'s  <code>aria-labelledby</code> is not subsequently followed. </li>
                 </ul>
-                <div class="example" id="ex-1-example-1-element1-id-el1-aria-labelledby-el3-element2-id-el2-aria-labelledby-el1-element3-id-el3-hello-element3">
-          <div class="marker"><a class="self-link" href="#ex-1-example-1-element1-id-el1-aria-labelledby-el3-element2-id-el2-aria-labelledby-el1-element3-id-el3-hello-element3">Example 1</a></div>
+                <div class="example" id="example-1">
+          <div class="marker">
+      <a class="self-link" href="#example-1">Example 1</a>
+    </div>
           <pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el2"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el1"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el3"</span>&gt;</span> hello <span class="hljs-tag">&lt;/<span class="hljs-name">element3</span>&gt;</span></pre>
@@ -916,8 +916,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <div><details>
                 <summary>Example:</summary>
                   <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
-                  <div class="example" id="ex-2-example-2-h1-files-h1-ul-li-a-id-file_row1-href-files-documentation-pdf-documentation-pdf-a-span-role-button-tabindex-0-id-del_row1-aria-label-delete-aria-labelledby-del_row1-file_row1-span-li-li-a-id-file_row2-href-files-holidayletter-pdf-holidayletter-pdf-a-span-role-button-tabindex-0-id-del_row2-aria-label-delete-aria-labelledby-del_row2-file_row2-span-li-ul">
-          <div class="marker"><a class="self-link" href="#ex-2-example-2-h1-files-h1-ul-li-a-id-file_row1-href-files-documentation-pdf-documentation-pdf-a-span-role-button-tabindex-0-id-del_row1-aria-label-delete-aria-labelledby-del_row1-file_row1-span-li-li-a-id-file_row2-href-files-holidayletter-pdf-holidayletter-pdf-a-span-role-button-tabindex-0-id-del_row2-aria-label-delete-aria-labelledby-del_row2-file_row2-span-li-ul">Example 2</a></div>
+                  <div class="example" id="example-2">
+          <div class="marker">
+      <a class="self-link" href="#example-2">Example 2</a>
+    </div>
           <pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
@@ -954,8 +956,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <div><details>
                 <summary>Example:</summary>
                 <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
-                <div class="example" id="ex-3-example-3-div-role-checkbox-aria-checked-false-flash-the-screen-span-role-textbox-aria-multiline-false-5-span-times-div">
-          <div class="marker"><a class="self-link" href="#ex-3-example-3-div-role-checkbox-aria-checked-false-flash-the-screen-span-role-textbox-aria-multiline-false-5-span-times-div">Example 3</a></div>
+                <div class="example" id="example-3">
+          <div class="marker">
+      <a class="self-link" href="#example-3">Example 3</a>
+    </div>
           <pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
         </div>
               </details></div>
