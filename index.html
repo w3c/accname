@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 24.3.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 24.5.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 span.example-title {
     text-transform: none;
 }
@@ -269,7 +269,13 @@ h6>a.self-link::before {
     display: none;
   }
 }
-</style><style>/*
+</style>
+
+
+<link href="common/css/common.css" rel="stylesheet" type="text/css">
+
+
+<link rel="canonical" href="https://www.w3.org/TR/accname-1.2/"><style>/*
 
 github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
@@ -368,13 +374,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style>
-
-
-<link href="common/css/common.css" rel="stylesheet" type="text/css">
-
-
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/accname-1.2/"><script id="initialUserConfig" type="application/json">{
+</style><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
   "includePermalinks": true,
   "lint": true,
@@ -500,16 +500,16 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2019-02-12",
-  "publishISODate": "2019-02-12T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 12 February 2019"
-}</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."></head>
+  "publishDate": "2019-03-20",
+  "publishISODate": "2019-03-20T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 20 March 2019"
+}</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry"><div class="head">
       <a href="https://www.w3.org/" class="logo"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.2</h1>
       
       <h2>
         <abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft
-        <time class="dt-published" datetime="2019-02-12">12 February 2019</time>
+        <time class="dt-published" datetime="2019-03-20">20 March 2019</time>
       </h2>
       <dl>
         <dt>This version:</dt><dd>
@@ -558,7 +558,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       
       <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
       <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>,
-      <a href="http://ev.buaa.edu.cn/">Beihang</a>). 
+      <a href="https://ev.buaa.edu.cn/">Beihang</a>). 
       <abbr title="World Wide Web Consortium">W3C</abbr> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
       <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules
       apply.
@@ -567,8 +567,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </div>
 <section id="abstract" class="introductory"><h2>Abstract</h2>
 	<p>This document describes how <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">user agents</a> determine the <a class="termref internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn">names</a> and <a class="termref internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn">descriptions</a> of <a class="termref internalDFN" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a> from web content languages. This information is in turn exposed through <a class="termref internalDFN" href="#dfn-accessibility-api" data-link-type="dfn">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> so that <a class="termref internalDFN" href="#dfn-assistive-technology" data-link-type="dfn">assistive technologies</a> can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility <abbr title="Application Programming Interfaces">APIs</abbr> and helps to ensure that this information appears in a manner consistent with author intent.</p>
-	<p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="https://www.w3.org/TR/wai-aria-1.2/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite><a class="bibref" href="#bib-wai-aria">WAI-ARIA</a></cite>] <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a> as well as features specific to individual content languages.</p>
-	<p>This document supersedes the accessible name and description guidance in the <a href="https://www.w3.org/TR/wai-aria-implementation/"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> 1.0 User Agent Implementation Guide</a> [<cite><a class="bibref" href="#bib-wai-aria-implementation">WAI-ARIA-IMPLEMENTATION</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="https://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
+	<p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="https://www.w3.org/TR/wai-aria-1.2/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite class="respec-offending-element" title="Normative references in informative sections are not allowed. Remove '!' from the start of the reference `[[!!WAI-ARIA]]`" id="respec-offender-normative-references-in-informative-sections-are-not-allowed-remove-from-the-start-of-the-reference-wai-aria"><a class="bibref" href="#bib-wai-aria">WAI-ARIA</a></cite>] <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a> as well as features specific to individual content languages.</p>
+	<p>This document supersedes the accessible name and description guidance in the <a href="https://www.w3.org/TR/wai-aria-implementation/"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> 1.0 User Agent Implementation Guide</a> [<cite class="respec-offending-element" title="Normative references in informative sections are not allowed. Remove '!' from the start of the reference `[[!!WAI-ARIA-IMPLEMENTATION]]`" id="respec-offender-normative-references-in-informative-sections-are-not-allowed-remove-from-the-start-of-the-reference-wai-aria-implementation"><a class="bibref" href="#bib-wai-aria-implementation">WAI-ARIA-IMPLEMENTATION</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="https://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
 </section>
 <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p>
 <p>
@@ -611,7 +611,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                   
                 </p><p>
                   This document is governed by the
-                  <a id="w3c_process_revision" href="https://www.w3.org/2018/Process-20180201/">1 February 2018 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                  <a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/">1 March 2019 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
                 </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><span class="secno">1. </span>Introduction</a></li><li class="tocline"><a class="tocxref" href="#conformance"><span class="secno">2. </span>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rfc-2119-keywords"><span class="secno">2.1 </span>RFC-2119 Keywords</a></li><li class="tocline"><a class="tocxref" href="#normative-and-informative-sections"><span class="secno">2.2 </span>Normative and Informative Sections</a></li></ol></li><li class="tocline"><a class="tocxref" href="#glossary"><span class="secno">3. </span>Important Terms</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd"><span class="secno">4. </span>Name and Description</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_name"><span class="secno">4.1 </span>Name Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_description"><span class="secno">4.2 </span>Description Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_te"><span class="secno">4.3 </span>Accessible Name and Description Computation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><span class="secno">4.3.1 </span>Terminology</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessible-name-and-description-mapping"><span class="secno">5. </span>Accessible Name and Description Mapping</a></li><li class="tocline"><a class="tocxref" href="#appendices"><span class="secno">6. </span>Appendices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changelog"><span class="secno">6.1 </span>Change Log</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-last-public-working-draft"><span class="secno">6.1.1 </span>Substantive changes since the last public working draft</a></li><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><span class="secno">6.1.2 </span>Substantive changes since the <span class="formerLink">Accessible Name and Description Computation 1.1 Recommendation</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><span class="secno">6.2 </span>Acknowledgments</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><span class="secno">A.2 </span>Informative references</a></li></ol></li></ol></nav>
 <section id="intro" class="informative">
 	<!--OddPage--><h2 id="x1-introduction"><span class="secno">1. </span>Introduction<a class="self-link" aria-label="§" href="#intro"></a></h2><p><em>This section is non-normative.</em></p>
@@ -625,7 +625,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       As well as sections marked as non-normative, all authoring guidelines,
       diagrams, examples, and notes in this specification are non-normative.
       Everything else in this specification is normative.
-    </p><p id="respecRFC2119">The key word  <em class="rfc2119">MUST</em> is to be interpreted as described in [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>].</p>
+    </p><p>
+            The key word <em class="rfc2119">MUST</em>
+            is to be interpreted as described in
+            [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>].
+          </p>
 <section id="rfc-2119-keywords">
 <h3 id="x2-1-rfc-2119-keywords"><span class="secno">2.1 </span>RFC-2119 Keywords<a class="self-link" aria-label="§" href="#rfc-2119-keywords"></a></h3>
 <p>RFC-2119 keywords are formatted in uppercase and contained in a <code>strong</code> element with <code>class="rfc2119"</code>. When the keywords shown above are used, but do not share this format, they do not convey formal information in the RFC 2119 sense, and are merely explanatory, i.e., informative. As much as possible, such usages are avoided in this specification.</p>
@@ -902,9 +906,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <div class="marker">
       <a class="self-link" href="#example-1">Example 1</a>
     </div>
-          <pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
+          <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el2"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el1"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">element3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el3"</span>&gt;</span> hello <span class="hljs-tag">&lt;/<span class="hljs-name">element3</span>&gt;</span></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">element3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el3"</span>&gt;</span> hello <span class="hljs-tag">&lt;/<span class="hljs-name">element3</span>&gt;</span></code></pre>
         </div>
               </details></div>
             </li>
@@ -920,7 +924,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <div class="marker">
       <a class="self-link" href="#example-2">Example 2</a>
     </div>
-          <pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+          <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row1"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/Documentation.pdf"</span>&gt;</span>Documentation.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
@@ -930,7 +934,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row2"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/HolidayLetter.pdf"</span>&gt;</span>HolidayLetter.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"del_row2"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Delete"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"del_row2 file_row2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
         </div>
                 </details></div>
             </li>
@@ -960,7 +964,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <div class="marker">
       <a class="self-link" href="#example-3">Example 3</a>
     </div>
-          <pre class="highlight hljs xml" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+          <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
         </div>
               </details></div>
               </li>
