@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 24.17.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 24.19.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 span.example-title {
     text-transform: none;
 }
@@ -422,6 +422,50 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
+</style><style>var {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+var[data-type]::before,
+var[data-type]::after {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+/* the triangle or arrow or caret or whatever */
+var[data-type]::before {
+  content: "";
+  transform: translateX(-50%);
+  border-width: 4px 6px 0 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #000;
+}
+
+/* actual text */
+var[data-type]::after {
+  content: attr(data-type);
+  transform: translateX(-50%) translateY(-100%);
+  background: #000;
+  text-align: center;
+  /* additional styling */
+  font-family: "Dank Mono", "Fira Code", monospace;
+  font-style: normal;
+  padding: 6px;
+  border-radius: 3px;
+  color: #daca88;
+}
+
+var[data-type]:hover::after,
+var[data-type]:hover::before {
+  opacity: 1;
+}
 </style><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
   "includePermalinks": true,
@@ -548,16 +592,16 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "preProcess": [
     null
   ],
-  "publishDate": "2019-04-18",
-  "publishISODate": "2019-04-18T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 18 April 2019"
+  "publishDate": "2019-04-23",
+  "publishISODate": "2019-04-23T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 23 April 2019"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry"><div class="head">
       <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.2</h1>
       
       <h2>
         W3C Editor's Draft
-        <time class="dt-published" datetime="2019-04-18">18 April 2019</time>
+        <time class="dt-published" datetime="2019-04-23">23 April 2019</time>
       </h2>
       <dl>
         <dt>This version:</dt><dd>
@@ -737,8 +781,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <dd>
       <p>In this specification, attribute is used as it is in markup languages. Attributes are structural features added to <a class="termref" href="#dfn-element">elements</a> to provide information about the <a class="termref" href="#dfn-state">states</a> and <a class="termref" href="#dfn-property">properties</a> of the <a class="termref" href="#dfn-object">object</a> represented by the element.</p>
     </dd>
-    
-    
+    <dt><dfn data-lt="class|classes" id="dfn-class" data-dfn-type="dfn">Class</dfn></dt>
+    <dd>
+      <p>A set of instance <a class="termref" href="#dfn-object">objects</a> that share similar characteristics.</p>
+    </dd>
     
     
     
@@ -747,8 +793,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <dd>
       <p>In this specification, element is used as it is in markup languages. Elements are the structural elements in markup language that contains the data profile for <a class="termref internalDFN" data-lt="object" href="#dfn-object" data-link-type="dfn">objects</a>.</p>
     </dd>
-    
-    
+    <dt><dfn data-lt="event|events" id="dfn-event" data-dfn-type="dfn">Event</dfn></dt>
+    <dd>
+      <p>A programmatic message used to communicate discrete changes in the <a href="#dfn-state" class="internalDFN" data-link-type="dfn">state</a> of an <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a> to other objects in a computational system. User input to a web page is commonly mediated through abstract events that describe the interaction and can provide notice of changes to the state of a document object. In some programming languages, events are more commonly known as notifications.</p>
+    </dd>
     
     
 	
@@ -781,8 +829,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <dd>
       <p>Required for conformance. By contrast, content identified as <a href="#dfn-informative" class="internalDFN" data-link-type="dfn">informative</a> or "non-normative" is not required for conformance.</p>
     </dd>
-    
-    
+    <dt><dfn data-lt="object|objects" id="dfn-object" data-dfn-type="dfn">Object</dfn></dt>
+    <dd>
+      <p>In the context of user interfaces,  an item in the   perceptual user experience, represented in markup languages by one or   more <a class="termref internalDFN" data-lt="element" href="#dfn-element" data-link-type="dfn">elements</a>, and rendered by <a class="termref internalDFN" data-lt="user agent" href="#dfn-user-agent" data-link-type="dfn">user agents</a>.</p>
+    In the context of programming, the instantiation of one or more <a class="termref internalDFN" data-lt="class" href="#dfn-class" data-link-type="dfn">classes</a> and interfaces which define the general characteristics of similar objects. An object in an <a href="#dfn-accessibility-api" class="internalDFN" data-link-type="dfn">accessibility <abbr title="Application Programming Interfaces">API</abbr></a> may represent one or more <abbr title="Document Object Model">DOM</abbr> objects. <a class="termref internalDFN" data-lt="accessibility api" href="#dfn-accessibility-api" data-link-type="dfn">Accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> have defined interfaces that are distinct from <abbr title="Document Object Model">DOM</abbr> interfaces.</dd>
   
     
     
@@ -808,8 +858,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </dd>
     
     
-    
-    
+    <dt><dfn data-lt="semantics|semantic|semantically" id="dfn-semantics" data-dfn-type="dfn">Semantics</dfn></dt>
+    <dd>
+      <p>The meaning of something as understood by a human, defined in a way that computers can process a representation of an <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a>, such as <a class="termref internalDFN" data-lt="element" href="#dfn-element" data-link-type="dfn">elements</a> and <a class="termref internalDFN" data-lt="attribute" href="#dfn-attribute" data-link-type="dfn">attributes</a>, and reliably represent the object in a way that various humans will achieve a mutually consistent understanding of the object.</p>
+    </dd>
     <dt><dfn data-lt="state|states" id="dfn-state" data-dfn-type="dfn">State</dfn></dt>
     <dd>
       <p>A state is a dynamic <a class="termref" href="#dfn-property">property</a> expressing characteristics of an <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a> that may change in response to user action or automated processes. States do not affect the essential nature of the object, but represent data associated with the object or user interaction possibilities. See <a href="https://www.w3.org/TR/wai-aria-1.1/#statevsprop">clarification of states versus properties</a>.</p>
@@ -949,8 +1001,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <div class="example" id="example-1">
           <div class="marker">
       <a class="self-link" href="#example-1">Example 1</a>
-    </div>
-          <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
+    </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el2"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el1"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el3"</span>&gt;</span> hello <span class="hljs-tag">&lt;/<span class="hljs-name">element3</span>&gt;</span></code></pre>
         </div>
@@ -967,8 +1018,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                   <div class="example" id="example-2">
           <div class="marker">
       <a class="self-link" href="#example-2">Example 2</a>
-    </div>
-          <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row1"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/Documentation.pdf"</span>&gt;</span>Documentation.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
@@ -1007,8 +1057,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <div class="example" id="example-3">
           <div class="marker">
       <a class="self-link" href="#example-3">Example 3</a>
-    </div>
-          <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+    </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
         </div>
               </details></div>
               </li>
