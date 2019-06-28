@@ -593,16 +593,16 @@ var[data-type]:hover::before {
   "preProcess": [
     null
   ],
-  "publishDate": "2019-06-27",
-  "publishISODate": "2019-06-27T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 27 June 2019"
+  "publishDate": "2019-06-28",
+  "publishISODate": "2019-06-28T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 28 June 2019"
 }</script><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry"><div class="head">
       <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title p-name">Accessible Name and Description Computation 1.2</h1>
       
       <h2>
         W3C Editor's Draft
-        <time class="dt-published" datetime="2019-06-27">27 June 2019</time>
+        <time class="dt-published" datetime="2019-06-28">28 June 2019</time>
       </h2>
       <dl>
         <dt>This version:</dt><dd>
@@ -969,7 +969,7 @@ var[data-type]:hover::before {
     </section>
       <p>The text alternative for a given element is computed as follows:</p>
       <ol>
-        <li id="step1">Initialize:  Set the <code>root node</code> to the given element, the <code>current node</code> to the <code>root node</code>, and the <code>total accumulated text</code> to the empty string ("").</li>
+        <li id="step1">Set the <code>root node</code> to the given element, the <code>current node</code> to the <code>root node</code>, and the <code>total accumulated text</code> to the empty string (""). If the <code>root node</code>'s role prohibits naming, return the empty string ("").</li>
         <li id="step2">Compute the text alternative for the <code>current node</code>:
           <ol>
             <li id="step2A">If the <code>current node</code> is <a class="termref internalDFN" href="#dfn-hidden" data-link-type="dfn">hidden</a> <strong>and is not</strong> directly referenced by <code>aria-labelledby</code> or <code>aria-describedby</code>, nor directly referenced by a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>) or <a class="termref internalDFN" href="#dfn-attribute" data-link-type="dfn">attribute</a>, return the empty string.
@@ -1117,6 +1117,7 @@ var[data-type]:hover::before {
                         <h4 id="x6-1-1-substantive-changes-since-the-last-public-working-draft"><bdi class="secno">6.1.1 </bdi>Substantive changes since the last public working draft<a class="self-link" aria-label="§" href="#substantive-changes-since-the-last-public-working-draft"></a></h4>
 			<ul>
 				
+				<li>27-June-2019: Add statement allowing for the possibility of naming being prohibited on the root node. Note: This change in and of itself has no implementation impact, but it allows other specifications to optionally prohibit naming for a top-level element. Furthermore, even if this prohibition is made within a specification, that prohibition will not have any impact on calculating name from contents.</li>
 			</ul>
 		</section>
 		<section id="substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation">
