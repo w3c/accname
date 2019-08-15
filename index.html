@@ -334,23 +334,24 @@
                 <pre class="example highlight"><code>&lt;div role="checkbox" aria-checked="false"&gt;Flash the screen &lt;span role="textbox" aria-multiline="false"&gt; 5 &lt;/span&gt; times&lt;/div&gt;</code></pre>
               </details></div>
               </li>
-            <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref">role</a> allows <a class="specref" href="#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref">element</a> (e.g. <code>label</code> in HTML), or is a descendant of a native host language text alternative <a class="termref">element</a>:
+            <li id="step2F">Otherwise, if the <code>root node</code> and the <code>current node</code> are the same, and the <code>current node</code> is a <a class="termref">role</a> that supports label encapsulation, and the <code>current node</code> has an ancestor with <code>role="label"</code>, then move the <code>current node</code> to the closest <a class="termref">element</a> with <code>role="label"</code>, and return the computed name for the label.
+            <li id="step2G">Otherwise, if the <code>current node's</code> <a class="termref">role</a> allows <a class="specref" href="#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref">element</a> (e.g. <code>label</code> in HTML), or is a descendant of a native host language text alternative <a class="termref">element</a>:
               <ol>
-                <li id="step2F.i">Set the <code>accumulated text</code> to the empty string.</li>
-                <li id="step2F.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements [[!CSS2]] can provide textual content for <a class="termref">elements</a> that have a content model.
+                <li id="step2G.i">Set the <code>accumulated text</code> to the empty string.</li>
+                <li id="step2G.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements [[!CSS2]] can provide textual content for <a class="termref">elements</a> that have a content model.
                       <ul>
                         <li>For <code>:before</code> pseudo elements, <a class="termref">User agents</a> MUST prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
                         <li>For <code>:after</code> pseudo elements, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr>  textual content, without a space, to the textual content of the <code>current node</code>. </li>
                       </ul>
                 </li>
-                <li id="step2F.iii">For each child node of the <code>current node</code>:
+                <li id="step2G.iii">For each child node of the <code>current node</code>:
                   <ol>
-                    <li id="step2F.iii.a">Set the <code>current node</code> to the child node.</li>
-                    <li id="step2F.iii.b">Compute the text alternative of the  <code>current node</code> beginning with step 2.  Set the <code>result</code> to that text alternative.</li>
-                    <li id="step2F.iii.c">Append the <code>result</code> to the <code>accumulated text</code>. </li>
+                    <li id="step2G.iii.a">Set the <code>current node</code> to the child node.</li>
+                    <li id="step2G.iii.b">Compute the text alternative of the  <code>current node</code> beginning with step 2.  Set the <code>result</code> to that text alternative.</li>
+                    <li id="step2G.iii.c">Append the <code>result</code> to the <code>accumulated text</code>. </li>
                   </ol>
                 </li>
-                <li id="step2F.iv">Return the <code>accumulated text</code>.</li>
+                <li id="step2G.iv">Return the <code>accumulated text</code>.</li>
               </ol>
               <p><strong>Important</strong>:  Each <a class="termref">node</a> in the subtree is consulted only once. If text has been collected from a descendant, but is referenced by another IDREF in some descendant node, then that second, or subsequent, reference is not followed. This is done to avoid infinite loops.  </p>
               <div><details>
@@ -358,10 +359,10 @@
                 <p>This step can apply to the child nodes themselves, which means the computation is recursive and results in text collected from all the elements in the <code>current node</code>'s subtree, no matter how deep it is. However, any given descendant <a class="termref">node</a>'s text alternative can result from higher precedent markup described in steps B through D above, where "Namefrom: author" attributes provide the text alternative for the entire subtree. </p>
               </details></div>
             </li>
-            <li id="step2G">Otherwise, if the <code>current node</code> is a <a class="termref">Text node</a>, return its textual contents.</li>
-            <li id="step2H">Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref">Accessible Name</a> or <a class="termref">Accessible Description</a> is being computed, and contains descendants, proceed to 2F.i.
+            <li id="step2H">Otherwise, if the <code>current node</code> is a <a class="termref">Text node</a>, return its textual contents.</li>
+            <li id="step2I">Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref">Accessible Name</a> or <a class="termref">Accessible Description</a> is being computed, and contains descendants, proceed to 2G.i.
 	    </li>
-            <li id="step2I">Otherwise, if the <code>current node</code> has a <a class="termref">Tooltip attribute</a>, return its value. 
+            <li id="step2J">Otherwise, if the <code>current node</code> has a <a class="termref">Tooltip attribute</a>, return its value. 
               <div><details>
                 <summary>Comment:</summary>
                 <p>Tooltip attributes are used only if nothing else, including subtree content, has provided results. </p>
