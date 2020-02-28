@@ -1,4 +1,4 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 25.3.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 25.3.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 span.example-title {
     text-transform: none;
 }
@@ -94,6 +94,12 @@ dfn {
 }
 </style>
 <title>Accessible Name and Description Computation 1.2</title>
+
+
+
+
+<link href="common/css/common.css" rel="stylesheet" type="text/css">
+
 
 <style id="respec-mainstyle">/*****************************************************************
  * ReSpec specific CSS
@@ -381,13 +387,7 @@ h6 > a.self-link::before {
     display: none;
   }
 }
-</style>
-
-
-<link href="common/css/common.css" rel="stylesheet" type="text/css">
-
-
-<meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."><link rel="canonical" href="https://www.w3.org/TR/accname-1.2/"><style>/*
+</style><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."><link rel="canonical" href="https://www.w3.org/TR/accname-1.2/"><style>/*
 Atom One Light by Daniel Gamage
 Original One Light Syntax theme from https://github.com/atom/one-light-syntax
 base:    #fafafa
@@ -658,16 +658,16 @@ var[data-type]:hover::before {
   "preProcess": [
     null
   ],
-  "publishDate": "2020-02-21",
-  "publishISODate": "2020-02-21T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 21 February 2020"
+  "publishDate": "2020-02-28",
+  "publishISODate": "2020-02-28T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 28 February 2020"
 }</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry"><div class="head">
       <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1>
       
       <h2>
         W3C Editor's Draft
-        <time class="dt-published" datetime="2020-02-21">21 February 2020</time>
+        <time class="dt-published" datetime="2020-02-28">28 February 2020</time>
       </h2>
       <dl>
         <dt>This version:</dt><dd>
@@ -802,8 +802,10 @@ var[data-type]:hover::before {
       <p>Operating systems and other platforms provide a set of interfaces that expose information about <a class="termref internalDFN" data-lt="object" href="#dfn-object" data-link-type="dfn">objects</a> and <a class="termref internalDFN" data-lt="event" href="#dfn-event" data-link-type="dfn">events</a> to <a href="#dfn-assistive-technology" class="internalDFN" data-link-type="dfn">assistive technologies</a>. Assistive technologies use these interfaces to get information about and interact with those <a class="termref internalDFN" data-lt="widget" href="#dfn-widget" data-link-type="dfn">widgets</a>. Examples of accessibility <abbr title="Application Programming Interfaces">APIs</abbr> are <a href="https://msdn.microsoft.com/en-us/library/ms697270(VS.85).aspx">Microsoft Active Accessibility</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-msaa" title="Microsoft Active Accessibility (MSAA) 2.0">MSAA</a></cite>], <a href="https://msdn.microsoft.com/en-us/library/ee684013%28VS.85%29.aspx">Microsoft User Interface Automation</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-ui-automation" title="UI Automation">UI-AUTOMATION</a></cite>], <abbr title="Microsoft Active Accessibility">MSAA</abbr> with <cite><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898(v=vs.85).aspx"><abbr title="User Interface Automation">UIA</abbr> Express</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-uia-express" title="The IAccessibleEx Interface">UIA-EXPRESS</a></cite>], the
       	<a href="https://developer.apple.com/documentation/appkit/accessibility/nsaccessibility">Mac <abbr title="OS Ten">OS X</abbr> Accessibility Protocol</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-axapi" title="The NSAccessibility Protocol for macOS">AXAPI</a></cite>], the <cite><a href="https://developer.gnome.org/atk/unstable/">Linux/Unix Accessibility Toolkit</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-atk" title="ATK - Accessibility Toolkit">ATK</a></cite>] and <cite><a href="https://developer.gnome.org/libatspi/stable/">Assistive Technology Service Provider Interface</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-at-spi" title="Assistive Technology Service Provider Interface">AT-SPI</a></cite>], and <a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-iaccessible2" title="IAccessible2">IAccessible2</a></cite>].</p>
     </dd>
-    
-    
+    <dt><dfn id="dfn-accessibility-subtree" data-dfn-type="dfn">Accessibility Subtree</dfn></dt>
+    <dd>
+      <p>An <a href="#dfn-accessible-object" class="internalDFN" data-link-type="dfn">accessible object</a> in the <a href="#dfn-accessibility-tree" class="internalDFN" data-link-type="dfn">accessibility tree</a> and its descendants in that tree. It does not include objects which have relationships other than parent-child in that tree. For example, it does not include objects linked via <a href="https://w3c.github.io/aria/#aria-flowto" class="property-reference"><code>aria-flowto</code></a> unless those objects are also descendants in the <a href="#dfn-accessibility-tree" class="internalDFN" data-link-type="dfn">accessibility tree</a>.</p>
+    </dd>
     <dt><dfn id="dfn-accessibility-tree" data-dfn-type="dfn">Accessibility Tree</dfn></dt>
     <dd>
       <p>Tree of <a class="termref internalDFN" data-lt="accessible object" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a> that represents the structure of the user interface (<abbr title="user interface">UI</abbr>). Each node in the accessibility tree represents an element in the <abbr title="user interface">UI</abbr> as exposed through the <a href="#dfn-accessibility-api" class="internalDFN" data-link-type="dfn">accessibility <abbr title="Application Programming Interface">API</abbr></a>; for example, a push button, a check box, or container.</p>
