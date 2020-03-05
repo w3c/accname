@@ -187,12 +187,12 @@
     <dt>author</dt>
     <dd>name is generated from values provided by the author in explicit markup features such as the <code>aria-label</code> and <code>aria-labelledby</code> <a class="termref">attribute</a>, or a host language labeling mechanism, such as the <code>alt</code> or <code>title</code> <a class="termref">attribute</a> in <abbr title="Hypertext Markup Language">HTML</abbr>, or the <code>desc</code> <a class="termref">element</a> in <abbr title="Scalable Vector Graphics">SVG</abbr>. </dd>
     <dt>contents</dt>
-    <dd>name is generated from the <a class="termref" data-lt="text node">Text nodes</a> associated with the <a class="termref">element</a>. Although this may be allowed in addition to "author" in some <a class="termref">roles</a>, "content" is used only if higher priority "author" features are not provided. Priority is defined by the <a href="#mapping_additional_nd_te">text content computation</a> algorithm.</dd>
+    <dd>name is generated from the <a class="termref" data-lt="text node">Text nodes</a> associated with the <a class="termref">element</a>. Although this may be allowed in addition to "author" in some <a class="termref">roles</a>, "content" is used only if higher priority "author" features are not provided. Priority is defined by the <a href="#mapping_additional_nd_te">text equivalent computation</a> algorithm.</dd>
   </dl>
   <p>The <cite><a class="specref" href="#">Accessible Rich Internet Applications (WAI-ARIA) 1.2</a></cite> [[!WAI-ARIA]] specification provides lists of roles that support <a class="specref" href="#namefromauthor">name from author</a> and <a class="specref" href="#namefromcontent">name from content</a>. </p>
   <section id="mapping_additional_nd_name">
     <h3>Name Computation</h3>
-    <p><a class="termref">User agents</a> MUST compute an <a class="termref">accessible name</a> using the rules outlined below in the section titled <a href="#mapping_additional_nd_te">Text Content Computation</a>.</p>
+    <p><a class="termref">User agents</a> MUST compute an <a class="termref">accessible name</a> using the rules outlined below in the section titled <a href="#mapping_additional_nd_te">Text Equivalent Computation</a>.</p>
   </section>
 
   <section id="mapping_additional_nd_description">
@@ -212,7 +212,7 @@
           <th>1</th>
           <td><a class="property-reference" href="#aria-describedby"><code>aria-describedby</code></a> attribute</td>
           <td>Use on any element</td>
-          <td><a href="#mapping_additional_nd_te">Text content computation</a> on any relevant nodes, concatenated, and separated by a space character</td>
+          <td><a href="#mapping_additional_nd_te">Text equivalent computation</a> on any relevant nodes, concatenated, and separated by a space character</td>
         </tr>
         <tr>
           <th>2</th>
@@ -240,7 +240,7 @@
               <li>Only use if not already used for the accessible name of the corresponding <code>&lt;table&gt;</code></li>
             </ul>
           </td>
-          <td><a href="#mapping_additional_nd_te">Text content computation</a> on the caption element</td>
+          <td><a href="#mapping_additional_nd_te">Text equivalent computation</a> on the caption element</td>
         </tr>
         <tr>
           <th>5</th>
@@ -251,7 +251,7 @@
               <li>Only use if not already used for the accessible name of the corresponding <code>&lt;details&gt;</code></li>
             </ul>
           </td>
-          <td><a href="#mapping_additional_nd_te">Text content computation</a> on the summary element</td>
+          <td><a href="#mapping_additional_nd_te">Text equivalent computation</a> on the summary element</td>
         </tr>
         <tr>
           <th>6</th>
@@ -268,8 +268,8 @@
     </table>
   </section>
   <section id="mapping_additional_nd_te">
-    <h3>Text Content Computation</h3>
-    <p>The text content computation is used to by both the <a class="termref">accessible name</a> and <a class="termref">accessible description</a>. There are different rules provided for several different types of <a class="termref">elements</a>, <a class="termref" data-lt="node">nodes</a>, and combinations of markup. Text alternatives are built up, when appropriate, from all the relevant content contained within an <a class="termref">element</a>. This is accomplished via steps 2B and 2F, which are recursive, using the full set of rules to retrieve text from its own children or nodes it references. </p>
+    <h3>Text Equivalent Computation</h3>
+    <p>The text equivalent computation is used to by both the <a class="termref">accessible name</a> and <a class="termref">accessible description</a>. There are different rules provided for several different types of <a class="termref">elements</a>, <a class="termref" data-lt="node">nodes</a>, and combinations of markup. Text alternatives are built up, when appropriate, from all the relevant content contained within an <a class="termref">element</a>. This is accomplished via steps 2B and 2F, which are recursive, using the full set of rules to retrieve text from its own children or nodes it references. </p>
     <p>The purpose of the computation is to create a <a class="termref">perceivable</a> label or description for alternative presentations, in the form of a flat string of space separated textual tokens. </p>
     <section id="terminology">
       <h4>Terminology</h4>
