@@ -13,16 +13,16 @@
     <dd>
       <p>Tree of <a class="termref" data-lt="accessible object">accessible objects</a> that represents the structure of the user interface (UI). Each node in the accessibility tree represents an element in the <abbr title="user interface">UI</abbr> as exposed through the <a>accessibility <abbr title="Application Programming Interface">API</abbr></a>; for example, a push button, a check box, or container.</p>
     </dd>
-    <dt><dfn>Accessible Description</dfn></dt>
+    <dt><dfn data-export="">Accessible Description</dfn></dt>
     <dd>
       <p>An accessible description provides additional information, related to an interface element, that complements the <a>accessible name</a>. The accessible description might or might not be visually perceivable. </p>
     </dd>
-	<dt><dfn data-lt="accessible name|accessible names">Accessible Name</dfn></dt>
+	<dt><dfn data-lt="accessible name|accessible names" data-export="">Accessible Name</dfn></dt>
     <dd>
       <p>The accessible name is the name of a user interface element. Each platform <a>accessibility <abbr title="application programming interface">API</abbr></a> provides the accessible name property. The value of the accessible name may be derived from a visible (e.g., the visible text on a button) or invisible (e.g., the text alternative that describes an icon) property of the user interface element.  See related <a>accessible description</a>.</p>
       <p>A simple use for the accessible name property may be illustrated by an &quot;OK&quot; button. The text &quot;OK&quot; is the accessible name. When the button receives focus, assistive technologies may concatenate the platform's role description with the accessible name. For example, a screen reader may speak &quot;push-button OK&quot; or &quot;OK button&quot;. The order of concatenation and specifics of the role description (e.g., &quot;button&quot;, &quot;push-button&quot;, &quot;clickable button&quot;) are determined by platform <a class="termref" data-lt="accessibility api">accessibility API</a>s or <a>assistive technologies</a>.</p>
     </dd>
-	<dt><dfn data-lt="accessible object|accessible objects">Accessible object</dfn></dt>
+	<dt><dfn data-lt="accessible object|accessible objects" data-export="">Accessible object</dfn></dt>
     <dd>
       <p>A <a>node</a> in the <a>accessibility tree</a> of a platform <a>accessibility <abbr title="application programming interface">API</abbr></a>. Accessible objects expose various <a class="termref" data-lt="state">states</a>, <a class="termref" data-lt="property">properties</a>, and <a class="termref" data-lt="event">events</a> for use by <a>assistive technologies</a>.  In the context of markup languages (e.g., HTML and SVG) in general, and of WAI-ARIA in particular, markup <a class="termref" data-lt="element">elements</a> and their <a class="termref" data-lt="attribute">attributes</a> are represented as accessible objects.  </p>
     </dd>
