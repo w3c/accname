@@ -199,7 +199,7 @@
     <p>If <a class="property-reference" href="#aria-describedby"><code>aria-describedby</code></a> is present, <a class="termref">user agents</a> MUST compute the accessible description by concatenating the text alternatives for elements referenced by an <code>aria-describedby</code> attribute on the current element. The text alternatives for the referenced elements are computed using a number of methods, outlined below in the section titled <a href="#mapping_additional_nd_te">Accessible Name and Description Computation</a>. </p>
   </section>
   <section id="mapping_additional_nd_te">
-    <h3><dfn data-export="">Accessible Name and Description Computation</dfn></h3>
+    <h3>Accessible Name and Description Computation</h3>
     <p>The accessible name and description computation is used to generate both the <a class="termref">accessible name</a> and <a class="termref">accessible description</a>. There are different rules provided for several different types of <a class="termref">elements</a>, <a class="termref" data-lt="node">nodes</a>, and combinations of markup. Text alternatives are built up, when appropriate, from all the relevant content contained within an <a class="termref">element</a>. This is accomplished via steps 2B and 2F, which are recursive, using the full set of rules to retrieve text from its own children or nodes it references. </p>
     <p>The purpose of the computation is to create a <a class="termref">perceivable</a> label or description for alternative presentations, in the form of a flat string of space separated textual tokens. </p>
     <section id="terminology">
@@ -247,7 +247,7 @@
         </dd>
       </dl>
     </section>
-      <p>The <dfn data-export="">text alternative for a given element</dfn> is computed as follows:</p>
+      <p>The text alternative for a given element is computed as follows:</p>
       <ol>
         <li id="step1">Set the <code>root node</code> to the given element, the <code>current node</code> to the <code>root node</code>, and the <code>total accumulated text</code> to the empty string (""). If the <code>root node</code>'s role prohibits naming, return the empty string ("").</li>
         <li id="step2">Compute the text alternative for the <code>current node</code>:
