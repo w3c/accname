@@ -146,6 +146,25 @@
     preProcess: [ linkCrossReferences ]
   }
 </script>
+<script>
+  var definitions_to_export = [ "accessible name", "accessible description" ];
+  function exportDefinitions( utils, content, url ){
+    var $dfnDiv = document.createElement("div"),
+        $dfns;
+    $dfnDiv.innerHTML = content;
+    $dfns = $dfnDiv.querySelector('dfn:not([data-export])');
+    $dfns.forEach(function($el){
+      var text = $el.innerText.toLowerCase();
+      console.log( text, definitions_to_export.indexOf( text ) );
+      if ( definitions_to_export.indexOf( text ) > -1 )
+      {
+        $el.dataset.export = "";
+      }
+      //return $el;
+    });
+    return content;
+  }
+</script>
 </head>
 <body>
 <section id="abstract">
@@ -176,7 +195,7 @@
 </section>
 <section id="glossary">
   <h2>Important Terms</h2>
-  <div data-include="common/terms.html" data-oninclude="restrictReferences"></div>
+  <div data-include="common/terms.html" data-oninclude="restrictReferences exportDefinitions"></div>
 </section>
 <section id="mapping_additional_nd" class="normative">
   <h2>Name and Description</h2>
@@ -195,7 +214,7 @@
   </section>
   <section id="mapping_additional_nd_description">
     <h3>Description Computation</h3>
-    <p>If <a class="property-reference" href="#aria-describedby"><code>aria-describedby</code></a> is present, <a class="termref">user agents</a> MUST compute the accessible description by concatenating the text alternatives for elements referenced by an <code>aria-describedby</code> attribute on the current element. The text alternatives for the referenced elements are computed using a number of methods, outlined below in the section titled <a href="#mapping_additional_nd_te">Accessible Name and Description Computation</a>. </p>
+    <p>If <a class="property-reference" href="#aria-describedby"><code>aria-describedby</code></a> is present, <a class="termref">user agents</a> MUST compute the <a class="termref">accessible description</a> by concatenating the text alternatives for elements referenced by an <code>aria-describedby</code> attribute on the current element. The text alternatives for the referenced elements are computed using a number of methods, outlined below in the section titled <a href="#mapping_additional_nd_te">Accessible Name and Description Computation</a>. </p>
   </section>
   <section id="mapping_additional_nd_te">
     <h3>Accessible Name and Description Computation</h3>
