@@ -144,17 +144,19 @@
   var definitions_to_export = [ "accessible name", "accessible description" ];
   function exportDefinitions( utils, content, url ){
     var $dfnDiv = document.createElement("div"),
-        $dfns;
+        $dfns,
+        i;
     $dfnDiv.innerHTML = content;
     $dfns = $dfnDiv.querySelectorAll('dfn:not([data-export])');
-    $dfns.forEach(function($el){
-      var text = $el.innerText.toLowerCase();
+    i = $dfns.length;
+    while( i-- )
+    {
+      var text = $dfns[i].innerText.toLowerCase();
       if ( definitions_to_export.indexOf( text ) > -1 )
       {
-        $el.dataset.export = "";
+        $dfns[i].dataset.export = "";
       }
-      //return $el;
-    });
+    }
     return $dfnDiv.innerHTML;
   }
 </script>
@@ -190,7 +192,7 @@
 </section>
 <section id="glossary">
   <h2>Important Terms</h2>
-  <div data-include="common/terms.html" data-oninclude="exportDefinitions restrictReferences"></div>
+  <div data-include="common/terms.html" data-oninclude="restrictReferences exportDefinitions"></div>
 </section>
 <section id="mapping_additional_nd" class="normative">
   <h2>Name and Description</h2>
