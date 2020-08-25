@@ -1,536 +1,18 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 25.3.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
-span.example-title {
-    text-transform: none;
-}
-aside.example, div.example, div.illegal-example {
-    padding: 0.5em;
-    margin: 1em 0;
-    position: relative;
-    clear: both;
-}
-div.illegal-example { color: red }
-div.illegal-example p { color: black }
-aside.example, div.example {
-    padding: .5em;
-    border-left-width: .5em;
-    border-left-style: solid;
-    border-color: #e0cb52;
-    background: #fcfaee;
-}
-
-aside.example div.example {
-    border-left-width: .1em;
-    border-color: #999;
-    background: #fff;
-}
-aside.example div.example span.example-title {
-    color: #999;
-}
-</style><style>/* dfn popup panel that list all local references to a dfn */
-dfn {
-  cursor: pointer;
-}
-
-.dfn-panel {
-  position: absolute;
-  left: var(--left); /* set via JS */
-  top: var(--top); /* set via JS */
-  z-index: 35;
-  height: auto;
-  width: max-content;
-  max-width: 300px;
-  max-height: 500px;
-  overflow: auto;
-  padding: 0.5em 0.75em;
-  font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-  background: #dddddd;
-  color: black;
-  border: outset 0.2em;
-}
-
-.dfn-panel * {
-  margin: 0;
-}
-
-.dfn-panel > b {
-  display: block;
-}
-
-.dfn-panel ul a[href] {
-  color: black;
-}
-
-.dfn-panel a:not(:hover) {
-  text-decoration: none !important;
-  border-bottom: none !important;
-}
-
-.dfn-panel a[href]:hover {
-  border-bottom-width: 1px;
-}
-
-.dfn-panel > b + b {
-  margin-top: 0.25em;
-}
-
-.dfn-panel ul {
-  padding: 0;
-}
-
-.dfn-panel li {
-  list-style: inside;
-}
-
-.dfn-panel.docked {
-  display: inline-block;
-  position: fixed;
-  left: 0.5em;
-  top: unset;
-  bottom: 2em;
-  margin: 0 auto;
-  /* 0.75em from padding (x2), 0.5em from left position, 0.2em border (x2) */
-  max-width: calc(100vw - 0.75em * 2 - 0.5em - 0.2em * 2);
-  max-height: 30vh;
-}
-</style>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta name="generator" content="ReSpec 25.6.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>span.example-title{text-transform:none}aside.example,div.example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}div.illegal-example{color:red}div.illegal-example p{color:#000}aside.example,div.example{padding:.5em;border-left-width:.5em;border-left-style:solid;border-color:#e0cb52;background:#fcfaee}aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}aside.example div.example span.example-title{color:#999}</style>
 <title>Accessible Name and Description Computation 1.2</title>
 
-
-
-
-<link href="common/css/common.css" rel="stylesheet" type="text/css">
-
-
-<style id="respec-mainstyle">/*****************************************************************
- * ReSpec specific CSS
- *****************************************************************/
-@keyframes pop {
-  0% {
-    transform: scale(1, 1);
-  }
-  25% {
-    transform: scale(1.25, 1.25);
-    opacity: 0.75;
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
-/* Override code highlighter background */
-.hljs {
-  background: transparent !important;
-}
-
-/* --- INLINES --- */
-h1 abbr,
-h2 abbr,
-h3 abbr,
-h4 abbr,
-h5 abbr,
-h6 abbr,
-a abbr {
-  border: none;
-}
-
-dfn {
-  font-weight: bold;
-}
-
-a.internalDFN {
-  color: inherit;
-  border-bottom: 1px solid #99c;
-  text-decoration: none;
-}
-
-a.externalDFN {
-  color: inherit;
-  border-bottom: 1px dotted #ccc;
-  text-decoration: none;
-}
-
-a.bibref {
-  text-decoration: none;
-}
-
-.respec-offending-element:target {
-  animation: pop 0.25s ease-in-out 0s 1;
-}
-
-.respec-offending-element,
-a[href].respec-offending-element {
-  text-decoration: red wavy underline;
-}
-@supports not (text-decoration: red wavy underline) {
-  .respec-offending-element:not(pre) {
-    display: inline-block;
-  }
-  .respec-offending-element {
-    /* Red squiggly line */
-    background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=)
-      bottom repeat-x;
-  }
-}
-
-#references :target {
-  background: #eaf3ff;
-  animation: pop 0.4s ease-in-out 0s 1;
-}
-
-cite .bibref {
-  font-style: normal;
-}
-
-code {
-  color: #c83500;
-}
-
-th code {
-  color: inherit;
-}
-
-a[href].orcid {
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-a[href].orcid > svg {
-    margin-bottom: -2px;
-}
-
-/* --- TOC --- */
-
-.toc a,
-.tof a {
-  text-decoration: none;
-}
-
-a .secno,
-a .figno {
-  color: #000;
-}
-
-ul.tof,
-ol.tof {
-  list-style: none outside none;
-}
-
-.caption {
-  margin-top: 0.5em;
-  font-style: italic;
-}
-
-/* --- TABLE --- */
-
-table.simple {
-  border-spacing: 0;
-  border-collapse: collapse;
-  border-bottom: 3px solid #005a9c;
-}
-
-.simple th {
-  background: #005a9c;
-  color: #fff;
-  padding: 3px 5px;
-  text-align: left;
-}
-
-.simple th a {
-  color: #fff;
-  padding: 3px 5px;
-  text-align: left;
-}
-
-.simple th[scope="row"] {
-  background: inherit;
-  color: inherit;
-  border-top: 1px solid #ddd;
-}
-
-.simple td {
-  padding: 3px 10px;
-  border-top: 1px solid #ddd;
-}
-
-.simple tr:nth-child(even) {
-  background: #f0f6ff;
-}
-
-/* --- DL --- */
-
-.section dd > p:first-child {
-  margin-top: 0;
-}
-
-.section dd > p:last-child {
-  margin-bottom: 0;
-}
-
-.section dd {
-  margin-bottom: 1em;
-}
-
-.section dl.attrs dd,
-.section dl.eldef dd {
-  margin-bottom: 0;
-}
-
-#issue-summary > ul,
-.respec-dfn-list {
-  column-count: 2;
-}
-
-#issue-summary li,
-.respec-dfn-list li {
-  list-style: none;
-}
-
-details.respec-tests-details {
-  margin-left: 1em;
-  display: inline-block;
-  vertical-align: top;
-}
-
-details.respec-tests-details > * {
-  padding-right: 2em;
-}
-
-details.respec-tests-details[open] {
-  z-index: 999999;
-  position: absolute;
-  border: thin solid #cad3e2;
-  border-radius: 0.3em;
-  background-color: white;
-  padding-bottom: 0.5em;
-}
-
-details.respec-tests-details[open] > summary {
-  border-bottom: thin solid #cad3e2;
-  padding-left: 1em;
-  margin-bottom: 1em;
-  line-height: 2em;
-}
-
-details.respec-tests-details > ul {
-  width: 100%;
-  margin-top: -0.3em;
-}
-
-details.respec-tests-details > li {
-  padding-left: 1em;
-}
-
-a[href].self-link:hover {
-  opacity: 1;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  position: relative;
-}
-
-aside.example .marker > a.self-link {
-  color: inherit;
-}
-
-h2 > a.self-link,
-h3 > a.self-link,
-h4 > a.self-link,
-h5 > a.self-link,
-h6 > a.self-link {
-  border: none;
-  color: inherit;
-  font-size: 83%;
-  height: 2em;
-  left: -1.6em;
-  opacity: 0.5;
-  position: absolute;
-  text-align: center;
-  text-decoration: none;
-  top: 0;
-  transition: opacity 0.2s;
-  width: 2em;
-}
-
-h2 > a.self-link::before,
-h3 > a.self-link::before,
-h4 > a.self-link::before,
-h5 > a.self-link::before,
-h6 > a.self-link::before {
-  content: "§";
-  display: block;
-}
-
-@media (max-width: 767px) {
-  dd {
-    margin-left: 0;
-  }
-
-  /* Don't position self-link in headings off-screen */
-  h2 > a.self-link,
-  h3 > a.self-link,
-  h4 > a.self-link,
-  h5 > a.self-link,
-  h6 > a.self-link {
-    left: auto;
-    top: auto;
-  }
-}
-
-@media print {
-  .removeOnSave {
-    display: none;
-  }
-}
-</style><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."><link rel="canonical" href="https://www.w3.org/TR/accname-1.2/"><style>/*
-Atom One Light by Daniel Gamage
-Original One Light Syntax theme from https://github.com/atom/one-light-syntax
-base:    #fafafa
-mono-1:  #383a42
-mono-2:  #686b77
-mono-3:  #a0a1a7
-hue-1:   #0184bb
-hue-2:   #4078f2
-hue-3:   #a626a4
-hue-4:   #50a14f
-hue-5:   #e45649
-hue-5-2: #c91243
-hue-6:   #986801
-hue-6-2: #c18401
-*/
-
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  color: #383a42;
-  background: #fafafa;
-}
-
-.hljs-comment,
-.hljs-quote {
-  color: #717277;
-  font-style: italic;
-}
-
-.hljs-doctag,
-.hljs-keyword,
-.hljs-formula {
-  color: #a626a4;
-}
-
-.hljs-section,
-.hljs-name,
-.hljs-selector-tag,
-.hljs-deletion,
-.hljs-subst {
-  color: #e45649;
-}
-
-.hljs-literal {
-  color: #0184bb;
-}
-
-.hljs-string,
-.hljs-regexp,
-.hljs-addition,
-.hljs-attribute,
-.hljs-meta-string {
-  color: #42803C;
-}
-
-.hljs-built_in,
-.hljs-class .hljs-title {
-  color: #c18401;
-}
-
-.hljs-attr,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-type,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-number {
-  color: #986801;
-}
-
-.hljs-symbol,
-.hljs-bullet,
-.hljs-link,
-.hljs-meta,
-.hljs-selector-id,
-.hljs-title {
-  color: #4078f2;
-}
-
-.hljs-emphasis {
-  font-style: italic;
-}
-
-.hljs-strong {
-  font-weight: bold;
-}
-
-.hljs-link {
-  text-decoration: underline;
-}
-</style><style>var {
-  position: relative;
-  cursor: pointer;
-}
-
-var[data-type]::before,
-var[data-type]::after {
-  position: absolute;
-  left: 50%;
-  top: -6px;
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
-
-/* the triangle or arrow or caret or whatever */
-var[data-type]::before {
-  content: "";
-  transform: translateX(-50%);
-  border-width: 4px 6px 0 6px;
-  border-style: solid;
-  border-color: transparent;
-  border-top-color: #000;
-}
-
-/* actual text */
-var[data-type]::after {
-  content: attr(data-type);
-  transform: translateX(-50%) translateY(-100%);
-  background: #000;
-  text-align: center;
-  /* additional styling */
-  font-family: "Dank Mono", "Fira Code", monospace;
-  font-style: normal;
-  padding: 6px;
-  border-radius: 3px;
-  color: #daca88;
-  text-indent: 0;
-  font-weight: normal;
-}
-
-var[data-type]:hover::after,
-var[data-type]:hover::before {
-  opacity: 1;
-}
-</style><script id="initialUserConfig" type="application/json">{
-  "useExperimentalStyles": true,
-  "includePermalinks": true,
+  <script src="https://www.w3.org/scripts/jquery/1.11.3/jquery.min.js"></script>
+  
+  
+  
+  
+  
+
+<style id="respec-mainstyle">@keyframes pop{0%{transform:scale(1,1)}25%{transform:scale(1.25,1.25);opacity:.75}100%{transform:scale(1,1)}}.hljs{background:0 0!important}a abbr,h1 abbr,h2 abbr,h3 abbr,h4 abbr,h5 abbr,h6 abbr{border:none}dfn{font-weight:700}a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}a.bibref{text-decoration:none}.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}@supports not (text-decoration:red wavy underline){.respec-offending-element:not(pre){display:inline-block}.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}}#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}cite .bibref{font-style:normal}code{color:#c63501}th code{color:inherit}a[href].orcid{padding-left:4px;padding-right:4px}a[href].orcid>svg{margin-bottom:-2px}.toc a,.tof a{text-decoration:none}a .figno,a .secno{color:#000}ol.tof,ul.tof{list-style:none outside none}.caption{margin-top:.5em;font-style:italic}table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}.simple th a{color:#fff;padding:3px 5px;text-align:left}.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}.simple td{padding:3px 10px;border-top:1px solid #ddd}.simple tr:nth-child(even){background:#f0f6ff}.section dd>p:first-child{margin-top:0}.section dd>p:last-child{margin-bottom:0}.section dd{margin-bottom:1em}.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}#issue-summary>ul,.respec-dfn-list{column-count:2}#issue-summary li,.respec-dfn-list li{list-style:none}details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}details.respec-tests-details>*{padding-right:2em}details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}details.respec-tests-details>ul{width:100%;margin-top:-.3em}details.respec-tests-details>li{padding-left:1em}a[href].self-link:hover{opacity:1;text-decoration:none;background-color:transparent}h2,h3,h4,h5,h6{position:relative}aside.example .marker>a.self-link{color:inherit}h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{border:none;color:inherit;font-size:83%;height:2em;left:-1.6em;opacity:.5;position:absolute;text-align:center;text-decoration:none;top:0;transition:opacity .2s;width:2em}h2>a.self-link::before,h3>a.self-link::before,h4>a.self-link::before,h5>a.self-link::before,h6>a.self-link::before{content:"§";display:block}@media (max-width:767px){dd{margin-left:0}h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{left:auto;top:auto}}@media print{.removeOnSave{display:none}}</style><meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent."><link rel="canonical" href="https://www.w3.org/TR/accname-1.2/"><style>.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}.hljs-comment,.hljs-quote{color:#717277;font-style:italic}.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;font-weight:700}.hljs-literal{color:#0b76c5}.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c}.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01}.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.hljs-link{text-decoration:underline}</style><style>var{position:relative;cursor:pointer}var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#000}var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#000;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}</style><script id="initialUserConfig" type="application/json">{
+  "github": "w3c/accname",
+  "doJsonLd": true,
   "lint": true,
   "specStatus": "ED",
-  "diffTool": "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
   "shortName": "accname-1.2",
   "copyrightStart": "2014",
   "license": "document",
@@ -610,88 +92,43 @@ var[data-type]:hover::before {
     "FPWD": "https://www.w3.org/TR/core-aam-1.2/",
     "REC": "https://www.w3.org/TR/core-aam-1.2/"
   },
-  "localBiblio": {
-    "ACCNAME-AAM": {
-      "aliasOf": "ACCNAME-AAM-1.1"
-    },
-    "ARIA-PRACTICES": {
-      "aliasOf": "WAI-ARIA-PRACTICES-1.1"
-    },
-    "CORE-AAM": {
-      "aliasOf": "CORE-AAM-1.1"
-    },
-    "DPUB-ARIA": {
-      "aliasOf": "DPUB-ARIA-1.0"
-    },
-    "GRAPHICS-ARIA": {
-      "aliasOf": "GRAPHICS-ARIA-1.0"
-    },
-    "GRAPHICS-AAM": {
-      "aliasOf": "GRAPHICS-AAM-1.0"
-    },
-    "EPUB-Content": {
-      "href": "http://www.idpf.org/epub/31/spec/epub-contentdocs.html",
-      "title": "EPUB Content Documents 3.1",
-      "publisher": "IDPF"
-    },
-    "HTML-AAM": {
-      "aliasOf": "HTML-AAM-1.0"
-    },
-    "MathML-Core": {
-      "href": "https://mathml-refresh.github.io/mathml-core/",
-      "title": "MathML Core",
-      "authors": [
-        "David Carlisle",
-        "Frédéric Wang"
-      ]
-    },
-    "SVG-AAM": {
-      "aliasOf": "SVG-AAM-1.0"
-    },
-    "SVG1": {
-      "aliasOf": "SVG"
-    },
-    "WAI-ARIA": {
-      "aliasOf": "WAI-ARIA-1.1"
-    }
-  },
   "preProcess": [
     null
   ],
-  "publishDate": "2020-03-05",
-  "publishISODate": "2020-03-05T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 05 March 2020"
+  "publishDate": "2020-08-25",
+  "publishISODate": "2020-08-25T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 25 August 2020"
 }</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry"><div class="head">
-      <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1>
+    <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1>
+    
+    <h2>
+      W3C Editor's Draft
+      <time class="dt-published" datetime="2020-08-25">25 August 2020</time>
+    </h2>
+    <dl>
+      <dt>This version:</dt><dd>
+              <a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a>
+            </dd><dt>Latest published version:</dt><dd>
+              <a href="https://www.w3.org/TR/accname-1.2/">https://www.w3.org/TR/accname-1.2/</a>
+            </dd>
+      <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
       
-      <h2>
-        W3C Editor's Draft
-        <time class="dt-published" datetime="2020-03-05">05 March 2020</time>
-      </h2>
-      <dl>
-        <dt>This version:</dt><dd>
-                <a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a>
-              </dd><dt>Latest published version:</dt><dd>
-                <a href="https://www.w3.org/TR/accname-1.2/">https://www.w3.org/TR/accname-1.2/</a>
-              </dd>
-        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
-        
-        
-        
-        
-        <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/accname/">https://www.w3.org/TR/accname/</a></dd>
-        <dt>Editors:</dt>
-        <dd class="p-author h-card vcard" data-editor-id="67215"><span class="p-name fn">Bryan Garaventa</span>
+      
+      
+      
+      <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/accname/">https://www.w3.org/TR/accname/</a></dd>
+      <dt>Editors:</dt>
+      <dd class="p-author h-card vcard" data-editor-id="67215"><span class="p-name fn">Bryan Garaventa</span>
             (<a class="p-org org h-org h-card" href="https://www.levelaccess.com/">Level Access</a>)
           </dd><dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>
             (<a class="p-org org h-org h-card" href="https://www.igalia.com/">Igalia, S.L.</a>)
           </dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>
             (<a class="p-org org h-org h-card" href="https://www.w3.org/">W3C</a>)
           </dd>
-        <dt>
-                Former editors:
-              </dt><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>
+      <dt>
+              Former editors:
+            </dt><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>
             (<a class="p-org org h-org h-card" href="https://knowbility.org/">Knowbility</a>)
            (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>
             (<a class="p-org org h-org h-card" href="https://idrc.ocadu.ca/">Inclusive Design Research Centre, OCAD University</a>)
@@ -702,70 +139,89 @@ var[data-type]:hover::before {
            (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span>
             (<a class="p-org org h-org h-card" href="https://www.ibm.com/">IBM</a>)
            (Editor until January 2009)</dd>
-        
-        
-      </dl>
       
-      
-      
-      <p class="copyright">
-      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
-      ©
-      2014-2020
-      
-      <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
-      <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>,
-      <a href="https://ev.buaa.edu.cn/">Beihang</a>). 
-      W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
-      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules
-      apply.
-    </p>
-      <hr title="Separator for header">
-    </div>
+      <dt>Participate:</dt><dd>
+    <a href="https://github.com/w3c/accname/">GitHub w3c/accname</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/accname/issues/">File a bug</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/accname/commits/gh-pages">Commit history</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/accname/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+    ©
+    2014-2020
+    
+    <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+    <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>,
+    <a href="https://ev.buaa.edu.cn/">Beihang</a>). 
+    W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules
+    apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
 <section id="abstract" class="introductory"><h2>Abstract</h2>
 	<p>This document describes how <a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">user agents</a> determine the <a class="termref internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn">names</a> and <a class="termref internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn">descriptions</a> of <a class="termref internalDFN" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a> from web content languages. This information is in turn exposed through <a class="termref internalDFN" href="#dfn-accessibility-api" data-link-type="dfn">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> so that <a class="termref internalDFN" href="#dfn-assistive-technology" data-link-type="dfn">assistive technologies</a> can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility <abbr title="Application Programming Interfaces">APIs</abbr> and helps to ensure that this information appears in a manner consistent with author intent.</p>
 	<p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="https://www.w3.org/TR/wai-aria-1.2/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-wai-aria" title="Accessible Rich Internet Applications (WAI-ARIA) 1.1">WAI-ARIA</a></cite>] <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">roles</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a> as well as features specific to individual content languages.</p>
 	<p>This document updates and will eventually supersede the accessible name and description guidance in the <a href="https://www.w3.org/TR/accname-1.1/">Accessible Name and Description Computation 1.1</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-accname-1.1" title="Accessible Name and Description Computation 1.1">ACCNAME-1.1</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="https://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
 </section>
-<section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p>
+<section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+      document at the time of its publication. Other documents may supersede
+      this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision
+      of this technical report can be found in the
+      <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      https://www.w3.org/TR/.</em></p>
 <p>
-      This document was published by the <a href="https://www.w3.org/WAI/ARIA/">Accessible Rich Internet Applications Working Group</a> as an
-      Editor's Draft.
-      
-    </p><p>
-      
-      Comments regarding this document are welcome.
-            Please send them to
-            <a href="mailto:public-aria@w3.org">public-aria@w3.org</a>
-            (<a href="https://lists.w3.org/Archives/Public/public-aria/">archives</a>).
-          
-    </p><p>
-      Publication as an Editor's Draft does not imply endorsement by the
-      <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or
-      obsoleted by other documents at any time. It is inappropriate to cite this
-      document as other than work in progress.
-    </p><p>
-      
+    This document was published by the <a href="https://www.w3.org/WAI/ARIA/">Accessible Rich Internet Applications Working Group</a> as an
+    Editor's Draft.
+    
+  </p><p>
+    <a href="https://github.com/w3c/accname/issues/">GitHub Issues</a> are preferred for
+          discussion of this specification.
+        
+    Alternatively, you can send comments to our mailing list.
+          Please send them to
+          <a href="mailto:public-aria@w3.org">public-aria@w3.org</a>
+          (<a href="https://lists.w3.org/Archives/Public/public-aria/">archives</a>).
+        
+  </p><p>
+    Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+    Membership. This is a draft document and may be updated, replaced or
+    obsoleted by other documents at any time. It is inappropriate to cite this
+    document as other than work in progress.
+  </p><p>
+    
         This document was produced by a group
         operating under the
         <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
        
-      
-                  <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
-                  <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/83726/status">public list of any patent disclosures</a>
-            made in connection with the deliverables of
-            the group; that page also includes
-            instructions for disclosing a patent. An individual who has actual
-            knowledge of a patent which the individual believes contains
-            <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
-            must disclose the information in accordance with
-            <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-          
-      
-    </p><p>
+    
+                <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/83726/status">public list of any patent disclosures</a>
+          made in connection with the deliverables of
+          the group; that page also includes
+          instructions for disclosing a patent. An individual who has actual
+          knowledge of a patent which the individual believes contains
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+          must disclose the information in accordance with
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+        
+    
+  </p><p>
                   This document is governed by the
                   <a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/">1 March 2019 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">2. </bdi>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rfc-2119-keywords"><bdi class="secno">2.1 </bdi>RFC-2119 Keywords</a></li><li class="tocline"><a class="tocxref" href="#normative-and-informative-sections"><bdi class="secno">2.2 </bdi>Normative and Informative Sections</a></li></ol></li><li class="tocline"><a class="tocxref" href="#glossary"><bdi class="secno">3. </bdi>Important Terms</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd"><bdi class="secno">4. </bdi>Name and Description</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_name"><bdi class="secno">4.1 </bdi>Name Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_description"><bdi class="secno">4.2 </bdi>Description Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_te"><bdi class="secno">4.3 </bdi>Accessible Name and Description Computation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">4.3.1 </bdi>Terminology</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessible-name-and-description-mapping"><bdi class="secno">5. </bdi>Accessible Name and Description Mapping</a></li><li class="tocline"><a class="tocxref" href="#appendices"><bdi class="secno">6. </bdi>Appendices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changelog"><bdi class="secno">6.1 </bdi>Change Log</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-last-public-working-draft"><bdi class="secno">6.1.1 </bdi>Substantive changes since the last public working draft</a></li><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><bdi class="secno">6.1.2 </bdi>Substantive changes since the <span class="formerLink">Accessible Name and Description Computation 1.1 Recommendation</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">6.2 </bdi>Acknowledgments</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">2. </bdi>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rfc-2119-keywords"><bdi class="secno">2.1 </bdi>RFC-2119 Keywords</a></li><li class="tocline"><a class="tocxref" href="#normative-and-informative-sections"><bdi class="secno">2.2 </bdi>Normative and Informative Sections</a></li></ol></li><li class="tocline"><a class="tocxref" href="#glossary"><bdi class="secno">3. </bdi>Important Terms</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd"><bdi class="secno">4. </bdi>Name and Description</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_name"><bdi class="secno">4.1 </bdi>Name Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_description"><bdi class="secno">4.2 </bdi>Description Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_te"><bdi class="secno">4.3 </bdi>Accessible Name and Description Computation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">4.3.1 </bdi>Terminology</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessible-name-and-description-mapping"><bdi class="secno">5. </bdi>Accessible Name and Description Mapping</a></li><li class="tocline"><a class="tocxref" href="#appendices"><bdi class="secno">6. </bdi>Appendices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changelog"><bdi class="secno">6.1 </bdi>Change Log</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-last-public-working-draft"><bdi class="secno">6.1.1 </bdi>Substantive changes since the last public working draft</a></li><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><bdi class="secno">6.1.2 </bdi>Substantive changes since the <span class="formerLink">Accessible Name and Description Computation 1.1 Recommendation</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">6.2 </bdi>Acknowledgments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ack_group"><bdi class="secno">6.2.1 </bdi>Participants active in the ARIA WG at the time of publication</a></li><li class="tocline"><a class="tocxref" href="#ack_others"><bdi class="secno">6.2.2 </bdi>Other ARIA contributors, commenters, and previously active participants</a></li><li class="tocline"><a class="tocxref" href="#ack_funders"><bdi class="secno">6.2.3 </bdi>Enabling funders</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>
+        Normative references
+      </a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>
+        Informative references
+      </a></li></ol></li></ol></nav>
 <section id="intro" class="informative">
 	<h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction<a class="self-link" aria-label="§" href="#intro"></a></h2><p><em>This section is non-normative.</em></p>
       <p><a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> acquire information from the <abbr title="Document Object Model">DOM</abbr> [<cite><a class="bibref" data-link-type="biblio" href="#bib-dom" title="DOM Standard">DOM</a></cite>] and create a parallel structure called the <a class="termref internalDFN" href="#dfn-accessibility-tree" data-link-type="dfn">accessibility tree</a>, made up of <a class="termref internalDFN" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a>. An accessible object provides information about its <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a>. An example is an accessible object whose role is <code>menuitem</code>, is currently in an <code>enabled</code> state, with a <code>haspopup</code> property, indicating that it leads to a sub-menu. </p>
@@ -777,12 +233,12 @@ var[data-type]:hover::before {
 <section id="conformance"><h2 id="x2-conformance"><bdi class="secno">2. </bdi>Conformance<a class="self-link" aria-label="§" href="#conformance"></a></h2><p>
       As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.
     </p><p>
-          The key word <em class="rfc2119">MUST</em> in this document
-          is to be interpreted as described in
-          <a href="https://tools.ietf.org/html/bcp14">BCP 14</a>
-          [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
-          when, and only when, they appear in all capitals, as shown here.
-        </p>
+        The key word <em class="rfc2119">MUST</em> in this document
+        is to be interpreted as described in
+        <a href="https://tools.ietf.org/html/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all capitals, as shown here.
+      </p>
 <section id="rfc-2119-keywords">
 <h3 id="x2-1-rfc-2119-keywords"><bdi class="secno">2.1 </bdi>RFC-2119 Keywords<a class="self-link" aria-label="§" href="#rfc-2119-keywords"></a></h3>
 <p>RFC-2119 keywords are formatted in uppercase and contained in a <code>strong</code> element with <code>class="rfc2119"</code>. When the keywords shown above are used, but do not share this format, they do not convey formal information in the RFC 2119 sense, and are merely explanatory, i.e., informative. As much as possible, such usages are avoided in this specification.</p>
@@ -799,8 +255,8 @@ var[data-type]:hover::before {
 <dl class="termlist">
     <dt><dfn data-lt="accessibility api|accessibility apis|Accessibility API" id="dfn-accessibility-api" data-dfn-type="dfn">Accessibility <abbr title="Application Programming Interface">API</abbr></dfn></dt>
     <dd>
-      <p>Operating systems and other platforms provide a set of interfaces that expose information about <a class="termref internalDFN" data-lt="object" href="#dfn-object" data-link-type="dfn">objects</a> and <a class="termref internalDFN" data-lt="event" href="#dfn-event" data-link-type="dfn">events</a> to <a href="#dfn-assistive-technology" class="internalDFN" data-link-type="dfn">assistive technologies</a>. Assistive technologies use these interfaces to get information about and interact with those <a class="termref internalDFN" data-lt="widget" href="#dfn-widget" data-link-type="dfn">widgets</a>. Examples of accessibility <abbr title="Application Programming Interfaces">APIs</abbr> are <a href="https://msdn.microsoft.com/en-us/library/ms697270(VS.85).aspx">Microsoft Active Accessibility</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-msaa" title="Microsoft Active Accessibility (MSAA) 2.0">MSAA</a></cite>], <a href="https://msdn.microsoft.com/en-us/library/ee684013%28VS.85%29.aspx">Microsoft User Interface Automation</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-ui-automation" title="UI Automation">UI-AUTOMATION</a></cite>], <abbr title="Microsoft Active Accessibility">MSAA</abbr> with <cite><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898(v=vs.85).aspx"><abbr title="User Interface Automation">UIA</abbr> Express</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-uia-express" title="The IAccessibleEx Interface">UIA-EXPRESS</a></cite>], the
-      	<a href="https://developer.apple.com/documentation/appkit/accessibility/nsaccessibility">Mac <abbr title="OS Ten">OS X</abbr> Accessibility Protocol</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-axapi" title="The NSAccessibility Protocol for macOS">AXAPI</a></cite>], the <cite><a href="https://developer.gnome.org/atk/unstable/">Linux/Unix Accessibility Toolkit</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-atk" title="ATK - Accessibility Toolkit">ATK</a></cite>] and <cite><a href="https://developer.gnome.org/libatspi/stable/">Assistive Technology Service Provider Interface</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-at-spi" title="Assistive Technology Service Provider Interface">AT-SPI</a></cite>], and <a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-iaccessible2" title="IAccessible2">IAccessible2</a></cite>].</p>
+      <p>Operating systems and other platforms provide a set of interfaces that expose information about <a class="termref internalDFN" data-lt="object" href="#dfn-object" data-link-type="dfn">objects</a> and <a class="termref internalDFN" data-lt="event" href="#dfn-event" data-link-type="dfn">events</a> to <a href="#dfn-assistive-technology" class="internalDFN" data-link-type="dfn">assistive technologies</a>. Assistive technologies use these interfaces to get information about and interact with those <a class="termref internalDFN" data-lt="widget" href="#dfn-widget" data-link-type="dfn">widgets</a>. Examples of accessibility <abbr title="Application Programming Interfaces">APIs</abbr> are <a href="https://docs.microsoft.com/en-us/windows/win32/winauto/microsoft-active-accessibility">Microsoft Active Accessibility</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-msaa" title="Microsoft Active Accessibility (MSAA)">MSAA</a></cite>], <a href="https://docs.microsoft.com/en-us/windows/win32/winauto/entry-uiauto-win32">Microsoft User Interface Automation</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-ui-automation" title="UI Automation">UI-AUTOMATION</a></cite>], <abbr title="Microsoft Active Accessibility">MSAA</abbr> with <cite><a href="https://docs.microsoft.com/en-us/windows/win32/winauto/iaccessibleex"><abbr title="User Interface Automation">UIA</abbr> Express</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-uia-express" title="The IAccessibleEx Interface">UIA-EXPRESS</a></cite>], the
+      	<a href="https://developer.apple.com/documentation/appkit/nsaccessibility">Mac <abbr title="OS Ten">OS X</abbr> Accessibility Protocol</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-axapi" title="The NSAccessibility Protocol for macOS">AXAPI</a></cite>], the <cite><a href="https://developer.gnome.org/atk/unstable/">Linux/Unix Accessibility Toolkit</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-atk" title="ATK - Accessibility Toolkit">ATK</a></cite>] and <cite><a href="https://developer.gnome.org/libatspi/stable/">Assistive Technology Service Provider Interface</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-at-spi" title="Assistive Technology Service Provider Interface">AT-SPI</a></cite>], and <a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-iaccessible2" title="IAccessible2">IAccessible2</a></cite>].</p>
     </dd>
     <dt><dfn id="dfn-accessibility-subtree" data-dfn-type="dfn">Accessibility Subtree</dfn></dt>
     <dd>
@@ -872,7 +328,7 @@ var[data-type]:hover::before {
     </dd>
     <dt><dfn id="dfn-expose" data-dfn-type="dfn">Expose</dfn></dt>
     <dd>
-      <p>Translated to platform-specific <a class="termref internalDFN" data-lt="accessibility api" href="#dfn-accessibility-api" data-link-type="dfn">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> as defined in the <a href="" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a>. [<cite><a class="bibref" data-link-type="biblio" href="#bib-core-aam-1.1" title="Core Accessibility API Mappings 1.1">CORE-AAM-1.1</a></cite>]</p>
+      <p>Translated to platform-specific <a class="termref internalDFN" data-lt="accessibility api" href="#dfn-accessibility-api" data-link-type="dfn">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> as defined in the <a href="" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a>.</p>
     </dd>
 	<dt><dfn data-lt="graphical document|graphical documents|Graphical Document" id="dfn-graphical-document" data-dfn-type="dfn">Graphical Document</dfn></dt>
     <dd>
@@ -896,7 +352,7 @@ var[data-type]:hover::before {
     </dd>
     <dt><dfn data-lt="live region|live regions|Live Region" id="dfn-live-region" data-dfn-type="dfn">Live Region</dfn></dt>
     <dd>
-      <p>Live regions are perceivable regions of a web page that are typically updated as a result of an external event when user focus may be elsewhere. These regions are not always updated as a result of a user interaction. This practice has become commonplace with the growing use of Ajax. Examples of live regions include a chat log, stock ticker, or a sport scoring section that updates periodically to reflect game statistics. Since these asynchronous areas are expected to update outside the user's area of focus, assistive technologies such as screen readers have either been unaware of their existence or unable to process them for the user. <abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> has provided a collection of properties that allow the author to identify these live regions and process them: aria-live, aria-relevant, aria-atomic, and aria-busy.</p>
+      <p>Live regions are perceivable regions of a web page that are typically updated as a result of an external event when user focus may be elsewhere. These regions are not always updated as a result of a user interaction. Examples of live regions include a chat log, stock ticker, or a sport scoring section that updates periodically to reflect game statistics. Since these asynchronous areas are expected to update outside the user's area of focus, assistive technologies such as screen readers have either been unaware of their existence or unable to process them for the user. <abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> has provided a collection of properties that allow the author to identify these live regions and process them: aria-live, aria-relevant, aria-atomic, and aria-busy.</p>
     </dd>
     <dt><dfn id="dfn-primary-content-element" data-dfn-type="dfn">Primary Content Element</dfn></dt>
     <dd>
@@ -945,7 +401,7 @@ var[data-type]:hover::before {
     </dd>
     <dt><dfn data-lt="property|properties|Property" id="dfn-property" data-dfn-type="dfn">Property</dfn></dt>
     <dd>
-      <p><a class="termref internalDFN" data-lt="attribute" href="#dfn-attribute" data-link-type="dfn">Attributes</a> that are essential to the nature of a given <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a>, or that represent a data value associated with the object. A change of a property may significantly impact the meaning or presentation of an object. Certain properties (for example, <a href="https://w3c.github.io/aria/#aria-multiline" class="property-reference"><code>aria-multiline</code></a>) are less likely to change than <a class="termref" href="#dfn-state">states</a>, but note that the frequency of change difference is not a rule. A few properties, such as <a href="https://w3c.github.io/aria/#aria-activedescendant" class="property-reference"><code>aria-activedescendant</code></a>, <a href="https://w3c.github.io/aria/#aria-valuenow" class="property-reference"><code>aria-valuenow</code></a>, and <a href="https://w3c.github.io/aria/#aria-valuetext" class="property-reference"><code>aria-valuetext</code></a> are expected to change often. See <a href="https://www.w3.org/TR/wai-aria-1.1/#statevsprop">clarification of states versus properties</a>.</p>
+      <p><a class="termref internalDFN" data-lt="attribute" href="#dfn-attribute" data-link-type="dfn">Attributes</a> that are essential to the nature of a given <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a>, or that represent a data value associated with the object. A change of a property may significantly impact the meaning or presentation of an object. Certain properties (for example, <a href="https://w3c.github.io/aria/#aria-multiline" class="property-reference"><code>aria-multiline</code></a>) are less likely to change than <a class="termref" href="#dfn-state">states</a>, but note that the frequency of change difference is not a rule. A few properties, such as <a href="https://w3c.github.io/aria/#aria-activedescendant" class="property-reference"><code>aria-activedescendant</code></a>, <a href="https://w3c.github.io/aria/#aria-valuenow" class="property-reference"><code>aria-valuenow</code></a>, and <a href="https://w3c.github.io/aria/#aria-valuetext" class="property-reference"><code>aria-valuetext</code></a> are expected to change often. See <a class="specref respec-offending-element" href="#statevsprop" title="Linter (local-refs-exist): Broken local reference found in document. Please fix the links mentioned. See developer console. Occured" id="respec-offender-linter-local-refs-exist-broken-local-reference-found-in-document-please-fix-the-links-mentioned-see-developer-console-occured-0">clarification of states versus properties</a>.</p>
     </dd>
     <dt><dfn data-lt="relationship|relationships|Relationship" id="dfn-relationship" data-dfn-type="dfn">Relationship</dfn></dt>
     <dd>
@@ -965,7 +421,7 @@ var[data-type]:hover::before {
     </dd>
     <dt><dfn data-lt="state|states|State" id="dfn-state" data-dfn-type="dfn">State</dfn></dt>
     <dd>
-      <p>A state is a dynamic <a class="termref" href="#dfn-property">property</a> expressing characteristics of an <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a> that may change in response to user action or automated processes. States do not affect the essential nature of the object, but represent data associated with the object or user interaction possibilities. See <a href="https://www.w3.org/TR/wai-aria-1.1/#statevsprop">clarification of states versus properties</a>.</p>
+      <p>A state is a dynamic <a class="termref" href="#dfn-property">property</a> expressing characteristics of an <a href="#dfn-object" class="internalDFN" data-link-type="dfn">object</a> that may change in response to user action or automated processes. States do not affect the essential nature of the object, but represent data associated with the object or user interaction possibilities. See <a class="specref respec-offending-element" href="#statevsprop" title="Linter (local-refs-exist): Broken local reference found in document. Please fix the links mentioned. See developer console. Occured" id="respec-offender-linter-local-refs-exist-broken-local-reference-found-in-document-please-fix-the-links-mentioned-see-developer-console-occured-1">clarification of states versus properties</a>.</p>
     </dd>
     <dt><dfn id="dfn-sub-document" data-dfn-type="dfn">Sub-document</dfn></dt>
     <dd>
@@ -1110,12 +566,12 @@ var[data-type]:hover::before {
                   <li><code>element2</code> has no <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a>.  The computation involves a first traversal of its <code>aria-labelledby</code> leading to <code>element1</code>, but <code>element1</code>'s  <code>aria-labelledby</code> is not subsequently followed. </li>
                 </ul>
                 <div class="example" id="example-1">
-          <div class="marker">
-      <a class="self-link" href="#example-1">Example<bdi> 1</bdi></a>
-    </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
+        <div class="marker">
+    <a class="self-link" href="#example-1">Example<bdi> 1</bdi></a>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el2"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el1"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">element3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el3"</span>&gt;</span> hello <span class="hljs-tag">&lt;/<span class="hljs-name">element3</span>&gt;</span></code></pre>
-        </div>
+      </div>
               </details></div>
             </li>
             <li id="step2C">Otherwise, if computing a <a class="termref internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn">name</a>, and if the <code>current node</code> has an <code>aria-label</code> <a class="termref internalDFN" href="#dfn-attribute" data-link-type="dfn">attribute</a> whose value is not the empty string, nor, when trimmed of white space, is not the empty string:
@@ -1127,9 +583,9 @@ var[data-type]:hover::before {
                 <summary>Example:</summary>
                   <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
                   <div class="example" id="example-2">
-          <div class="marker">
-      <a class="self-link" href="#example-2">Example<bdi> 2</bdi></a>
-    </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <div class="marker">
+    <a class="self-link" href="#example-2">Example<bdi> 2</bdi></a>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row1"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/Documentation.pdf"</span>&gt;</span>Documentation.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
@@ -1140,7 +596,7 @@ var[data-type]:hover::before {
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"del_row2"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Delete"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"del_row2 file_row2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
-        </div>
+      </div>
                 </details></div>
             </li>
             <li id="step2D">Otherwise, if the <code>current node</code>'s native markup provides an <a class="termref internalDFN" href="#dfn-attribute" data-link-type="dfn">attribute</a> (e.g. <code>title</code>) or <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <abbr title="Hypertext Markup Language">HTML</abbr> <code>label</code>) that defines a text alternative, return that alternative in the form of a <code>flat string</code> as defined by the host language, unless the element is marked as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
@@ -1166,10 +622,10 @@ var[data-type]:hover::before {
                 <summary>Example:</summary>
                 <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
                 <div class="example" id="example-3">
-          <div class="marker">
-      <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
-    </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        </div>
+        <div class="marker">
+    <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </div>
               </details></div>
               </li>
             <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a> allows <a class="specref" href="https://w3c.github.io/aria/#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>), or is a descendant of a native host language text alternative <a class="termref internalDFN" href="#dfn-element" data-link-type="dfn">element</a>:
@@ -1233,23 +689,224 @@ var[data-type]:hover::before {
 				<li>27-June-2019: Add statement allowing for the possibility of naming being prohibited on the root node. Note: This change in and of itself has no implementation impact, but it allows other specifications to optionally prohibit naming for a top-level element. Furthermore, even if this prohibition is made within a specification, that prohibition will not have any impact on calculating name from contents.</li>
 			</ul>
 		</section>
-	</section>  <section class="appendix informative section" id="acknowledgements">
-	<h3 id="x6-2-acknowledgments"><bdi class="secno">6.2 </bdi>Acknowledgments<a class="self-link" aria-label="§" href="#acknowledgements"></a></h3><p><em>This section is non-normative.</em></p>
-	<p>The following people contributed to the development of this document.</p>
-	<div data-include="acknowledgements/aria-wg-active.html" data-include-replace="true"></div>
-	<div data-include="acknowledgements/aria-contributors.html" data-include-replace="true"></div>
-	<div data-include="acknowledgements/funders.html" data-include-replace="true"></div>
+	</section>
+	<section class="appendix informative section" id="acknowledgements">
+		<h3 id="x6-2-acknowledgments"><bdi class="secno">6.2 </bdi>Acknowledgments<a class="self-link" aria-label="§" href="#acknowledgements"></a></h3><p><em>This section is non-normative.</em></p>
+		<p>The following people contributed to the development of this document.</p>
+		<section class="section" id="ack_group">
+	<h4 id="x6-2-1-participants-active-in-the-aria-wg-at-the-time-of-publication"><bdi class="secno">6.2.1 </bdi>Participants active in the ARIA WG at the time of publication<a class="self-link" aria-label="§" href="#ack_group"></a></h4>
+	<ul>
+		<li>Ann Abbott (Invited Expert)</li>
+		<li>Irfan Ali (Educational Testing Service)</li>
+		<li>Amelia Bellamy-Royds (Invited Expert)</li>
+		<li>Zoë Bijl (Invited Expert)</li>
+		<li>David Bolter (Mozilla Foundation)</li>
+		<li>Bogdan Brinza (Microsoft Corporation)</li>
+		<li>Shari Butler (Pearson plc)</li>
+		<li>Thaddeus Cambron (Invited Expert)</li>
+		<li>Michael Cooper (<abbr title="World Wide Web Consortium">W3C</abbr> Staff)</li>
+		<li>James Craig (Apple Inc.) </li>
+		<li>Joanmarie Diggs (Igalia)</li>
+		<li>John Foliot (Deque Systems, Inc.)</li>
+		<li>Bryan Garaventa (SSB BART Group)</li>
+		<li>Matt Garrish (DAISY Consortium)</li>
+		<li>Becky Gibson (Invited Expert)</li>
+		<li>Glen Gordon (The Paciello Group, LLC)</li>
+		<li>Jon Gunderson (University of Illinois at Urbana-Champaign)</li>
+		<li>Matthew King (Facebook)</li>
+		<li>JaEun Jemma Ku (University of Illinois at Urbana-Champaign)</li>
+		<li>Charles LaPierre (Benetech)</li>
+		<li>Aaron Leventhal (Google, Inc.)</li>
+		<li>Dominic Mazzoni (Google, Inc.)</li>
+		<li>Shane McCarron (Invited Expert, Aptest)</li>
+		<li>Jan McSorley (Pearson plc)</li>
+		<li>James Nurthen (Adobe) </li>
+		<li>Ian Pouncey (The Paciello Group, LLC)</li>
+		<li>Ruoxi Ran (<abbr title="World Wide Web Consortium">W3C</abbr> Staff)</li>
+		<li>Janina Sajka (Invited Expert, The Linux Foundation)</li>
+		<li>Stefan Schnabel (SAP SE) </li>
+		<li>Lisa Seeman-Kestenbaum (Invited Expert) </li>
+		<li>Tzviya Siegman (Wiley)</li>
+		<li>Alexander Surkov (Mozilla Foundation)</li>
+		<li>Job van Achterberg (Invited Expert)</li>
+		<li>Evan Yamanishi (W. W. Norton)</li>
+		<li>Jason White (Educational Testing Service)</li>
+	</ul>
 </section>
 
+		<section class="section" id="ack_others">
+	<h4 id="x6-2-2-other-aria-contributors-commenters-and-previously-active-participants"><bdi class="secno">6.2.2 </bdi>Other ARIA contributors, commenters, and previously active participants<a class="self-link" aria-label="§" href="#ack_others"></a></h4>
+	<ul>
+		<li>Shadi Abou-Zahra (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
+		<li>Jim Allan (TSB)</li>
+		<li>Jonny Axelsson (Opera Software)</li>
+		<li>David Baron (Mozilla Foundation)</li>
+		<li>Art Barstow (Nokia Corporation)</li>
+		<li>Simon Bates</li>
+		<li>Christy Blew (University of Illinois at Urbana-Champaign)</li>
+		<li>Chris Blouch (AOL)</li>
+		<li>Judy Brewer (<abbr title="World Wide Web Consortium">W3C</abbr>/<abbr title="Massachusetts Institute of Technology">MIT</abbr>)</li>
+		<li>Mark Birbeck (Sidewinder Labs)</li>
+		<li>Sally Cain (Royal National Institute of Blind People (RNIB))</li>
+		<li>Gerardo Capiel (Benetech)</li>
+		<li>Ben Caldwell (Trace)</li>
+		<li>Sofia Celic-Li</li>
+		<li>Jaesik Chang (Samsung Electronics Co., Ltd.)</li>
+		<li>Alex Qiang Chen (University of Manchester)</li>
+		<li>Charles Chen (Google, Inc.)</li>
+		<li>Christian Cohrs</li>
+		<li>Deborah Dahl</li>
+		<li>Erik Dahlström (Opera Software)</li>
+		<li>Dimitar Denev (Frauenhofer Gesellschaft)</li>
+		<li>Micah Dubinko (Invited Expert)</li>
+		<li>Mandana Eibegger</li>
+		<li>Beth Epperson (Websense)</li>
+		<li>Fred Esch (IBM Corporation)</li>
+		<li>Donald Evans (AOL)</li>
+		<li>Steve Faulkner (The Paciello Group, LLC) </li>
+		<li>Chris Fleizach (Apple Inc.)</li>
+		<li>Kelly Ford (Microsoft Corporation)</li>
+		<li>Geoff Freed (Invited Expert, NCAM)</li>
+		<li>Christopher Gallelo (Microsoft Corporation)</li>
+		<li>Billy Gregory (The Paciello Group, LLC)</li>
+		<li>Karl Groves (The Paciello Group, LLC)</li>
+		<li>Birkir Gunnarsson (Deque Systems, Inc.)</li>
+		<li>Kentarou Fukuda (IBM Corporation)</li>
+		<li>Bryan Garaventa</li>
+		<li>Guido Geloso</li>
+		<li>Ali Ghassemi</li>
+		
+		<li>Alfred S. Gilman</li>
+		<li>Andres Gonzalez (Adobe Systems Inc.)</li>
+		<li>Scott González (JQuery Foundation)</li>
+		<li>James Graham</li>
+		<li>Georgios Grigoriadis (SAP AG)</li>
+		<li>Jeff Grimes (Oracle)</li>
+		<li>Loretta Guarino Reid (Google, Inc.)</li>
+		<li>Markus Gylling (DAISY Consortium)</li>
+		<li>Markku Hakkinen (Educational Testing Service)</li>
+		<li>Katie Haritos-Shea (Knowbility)</li>
+		<li>Barbara Hartel</li>
+		<li>James Hawkins (Google, Inc.)</li>
+		<li>Benjamin Hawkes-Lewis</li>
+		<li>Sean Hayes (Microsoft Corporation)</li>
+		<li>Mona Heath (University of Illinois at Urbana-Champaign)</li>
+		<li>Jan Heck</li>
+		<li>Shawn Henry</li>
+		<li>Tina Homboe</li>
+		<li>Nicholas Hoyt</li>
+		<li>John Hrvatin (Microsoft Corporation)</li>
+		<li>Takahiro Inada</li>
+		<li>Masayasu Ishikawa (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
+		<li>Jim Jewitt</li>
+		<li>Kenny Johar (Microsoft Corporation)</li>
+		<li>Shilpi Kapoor (BarrierBreak Technologies)</li>
+		<li>Masahiko Kaneko (Microsoft Corporation)</li>
+		<li>Marjolein Katsma</li>
+		<li>Susann Keohane (IBM Corporation)</li>
+		<li>George Kerscher (International Digital Publishing Forum)</li>
+		<li>Jason Kiss (Department of Internal Affairs, New Zealand Government)</li>
+		<li>Todd Kloots</li>
+		<li>Jamie Knight (British Broadcasting Corporation)</li>
+		<li>Johannes Koch</li>
+		<li>Gerard K. Cohen</li>
+		<li>Sam Kuper</li>
+		<li>Earl Johnson (Sun)</li>
+		<li>Jael Kurz</li>
+		<li>Rajesh Lal (Nokia Corporation)</li>
+		<li>Diego La Monica (International Webmasters Association / <abbr title="Hypertext Markup Language">HTML</abbr> Writers Guild (IWA-HWG))</li>
+		
+		<li>Gez Lemon (International Webmasters Association / <abbr title="Hypertext Markup Language">HTML</abbr> Writers Guild (IWA-HWG))</li>
+		<li>Alex Li (SAP)</li>
+		<li>Chris Lilley</li>
+		<li>Thomas Logan (HiSoftware Inc.)</li>
+		<li>Brian Loh</li>
+		<li>William Loughborough (Invited Expert)</li>
+		<li>Linda Mao (Microsoft)</li>
+		<li>David MacDonald (Invited Expert, CanAdapt Solutions Inc.)</li>
+		<li>Carolyn MacLeod</li>
+		<li>Anders Markussen (Opera Software)</li>
+		<li>Krzysztof Maczyński </li>
+		<li>Matthew May (Adobe Systems Inc.)</li>
+		<li>Mark McCarthy</li>
+		<li>Charles McCathie Nevile (Yandex)</li>
+		<li>Heather Migliorisi (Invited Expert)</li>
+		<li>Mary Jo Mueller (IBM Corporation)</li>
+		<li>Alexandre Morgaut (4D)</li>
+		<li>Ann Navarro (Invited Expert)</li>
+		<li>Joshue O Connor (Invited Expert, CFIT)</li>
+		<li>Artur Ortega (Microsoft Corporation)</li>
+		<li>Sailesh Panchang (Deque)</li>
+		<li>Lisa Pappas (Society for Technical Communication (STC))</li>
+		<li>Marta Pawlowlska (Samsung Electronics Co., Ltd.)</li>
+		<li>Dave Pawson (RNIB)</li>
+		<li>Steven Pemberton (CWI Amsterdam)</li>
+		<li>Simon Pieters (Opera Software)</li>
+		<li>Jean-Bernard Piot (4D)</li>
+		<li>David Poehlman, Simon Pieters (Opera Software)</li>
+		<li>Sarah Pulis (Media Access Australia)</li>
+		<li>T.V. Raman (Google, Inc.)</li>
+		<li>Jan Richards</li>
+		<li>Gregory Rosmaita (Invited Expert)</li>
+		<li>Tony Ross (Microsoft Corporation)</li>
+		<li>Alex Russell (Dojo Foundation) (</li>
+		<li>Mark Sadecki (Invited Expert)</li>
+		<li>Mario Sánchez Prada (Samsung Electronics Co., Ltd. and Gnome Foundation)</li>
+		<li>Martin Schaus (SAP AG)</li>
+		<li>Doug Schepers (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
+		<li>Cynthia Shelly (Microsoft Corporation) </li>
+		<li>Joseph Scheuhammer (Invited Expert, Inclusive Design Research Centre, OCAD University) </li>
+		<li>Matthias Schmitt </li>
+		<li>Richard Schwerdtfeger (IBM, Knowbility)</li>
+		<li>Marc Silbey (Microsoft Corporation)</li>
+		<li>Leif Halvard Sili</li>
+		<li>Henri Sivonen (Mozilla)</li>
+		<li>Michael Smith (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
+		<li>Andi Snow-Weaver (IBM Corporation)</li>
+		<li>Ville Skyttä </li>
+		<li>Henny Swan (BBC)</li>
+		<li>Neil Soiffer (Design Science)</li>
+		<li>Vitaly Sourikov</li>
+		<li>Mike Squillace (IBM)</li>
+		<li>Maciej Stachowiak (Apple Inc.)</li>
+		<li>Christophe Strobbe</li>
+		<li>Suzanne Taylor (Pearson plc)</li>
+		<li>Terrill Thompson</li>
+		<li>David Todd</li>
+		<li>Gregg Vanderheiden (Invited Expert, Trace)</li>
+		<li>Anne van Kesteren</li>
+		<li>Léonie Watson (The Paciello Group, LLC)</li>
+		<li>Wen He (Tencent)</li>
+		<li>Wu Wei (<abbr title="World Wide Web Consortium">W3C</abbr> / RITT)</li>
+		<li>Ryan Williams (Oracle)</li>
+		<li>Tom Wlodkowski</li>
+		<li>Sam White (Apple Inc.)</li>
+		<li>Marco Zehe (Mozilla Foundation)</li>
+		<li>Gottfried Zimmermann (Invited Expert, Access Technologies Group)</li>
+	</ul>
+</section>
+
+		<section class="section" id="ack_funders">
+	<h4 id="x6-2-3-enabling-funders"><bdi class="secno">6.2.3 </bdi>Enabling funders<a class="self-link" aria-label="§" href="#ack_funders"></a></h4>
+	<p>This publication has been funded in part with U.S. Federal funds from the Department of Education, National Institute on Disability, Independent Living, and Rehabilitation Research (NIDILRR), initially under contract number ED-OSE-10-C-0067 and currently under contract number HHSP23301500054C. The content of this publication does not necessarily reflect the views or policies of the U.S. Department of Education, nor does mention of trade names, commercial products, or organizations imply endorsement by the U.S. Government.</p>
+</section>
+
+	</section>
 </section>
 
 
 <section id="references" class="appendix"><h2 id="a-references"><bdi class="secno">A. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2><section id="normative-references">
-        <h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references<a class="self-link" aria-label="§" href="#normative-references"></a></h3>
-      <dl class="bibliography">
-        <dt id="bib-at-spi">[AT-SPI]</dt><dd><a href="https://developer.gnome.org/libatspi/stable/"><cite>Assistive Technology Service Provider Interface</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/libatspi/stable/">https://developer.gnome.org/libatspi/stable/</a></dd><dt id="bib-atk">[ATK]</dt><dd><a href="https://developer.gnome.org/atk/stable/"><cite>ATK - Accessibility Toolkit</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/atk/stable/">https://developer.gnome.org/atk/stable/</a></dd><dt id="bib-axapi">[AXAPI]</dt><dd><a href="https://developer.apple.com/documentation/appkit/nsaccessibility"><cite>The NSAccessibility Protocol for macOS</cite></a>.  Apple, Inc. URL: <a href="https://developer.apple.com/documentation/appkit/nsaccessibility">https://developer.apple.com/documentation/appkit/nsaccessibility</a></dd><dt id="bib-core-aam-1.1">[CORE-AAM-1.1]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.1/"><cite>Core Accessibility API Mappings 1.1</cite></a>. Joanmarie Diggs; Joseph Scheuhammer; Richard Schwerdtfeger; Michael Cooper; Andi Snow-Weaver; Aaron Leventhal.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/core-aam-1.1/">https://www.w3.org/TR/core-aam-1.1/</a></dd><dt id="bib-core-aam-1.2">[CORE-AAM-1.2]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.2/"><cite>Core Accessibility API Mappings 1.2</cite></a>. Joanmarie Diggs; Michael Cooper; Richard Schwerdtfeger; Joseph Scheuhammer; Andi Snow-Weaver; Aaron Leventhal; Melanie Richards; James Craig; Alexander Surkov.  W3C. 18 December 2019. W3C Working Draft. URL: <a href="https://www.w3.org/TR/core-aam-1.2/">https://www.w3.org/TR/core-aam-1.2/</a></dd><dt id="bib-css2">[CSS2]</dt><dd><a href="https://www.w3.org/TR/CSS2/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie et al.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS2/">https://www.w3.org/TR/CSS2/</a></dd><dt id="bib-iaccessible2">[IAccessible2]</dt><dd><a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2"><cite>IAccessible2</cite></a>.  Linux Foundation. URL: <a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2">https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2</a></dd><dt id="bib-msaa">[MSAA]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/ms697707.aspx"><cite>Microsoft Active Accessibility (MSAA) 2.0</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/ms697707.aspx">https://msdn.microsoft.com/en-us/library/ms697707.aspx</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://tools.ietf.org/html/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc8174">https://tools.ietf.org/html/rfc8174</a></dd><dt id="bib-ui-automation">[UI-AUTOMATION]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx"><cite>UI Automation</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx">https://msdn.microsoft.com/en-us/library/ee684009%28v=vs.85%29.aspx</a></dd><dt id="bib-uia-express">[UIA-EXPRESS]</dt><dd><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx"><cite>The IAccessibleEx Interface</cite></a>.  Microsoft Corporation. URL: <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx">https://msdn.microsoft.com/en-us/library/windows/desktop/dd561898%28v=vs.85%29.aspx</a></dd><dt id="bib-wai-aria">[WAI-ARIA]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd>
-      </dl></section><section id="informative-references">
-        <h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references<a class="self-link" aria-label="§" href="#informative-references"></a></h3>
-      <dl class="bibliography">
-        <dt id="bib-accname-1.1">[ACCNAME-1.1]</dt><dd><a href="https://www.w3.org/TR/accname-1.1/"><cite>Accessible Name and Description Computation 1.1</cite></a>. Joanmarie Diggs; Bryan Garaventa; Michael Cooper.  W3C. 18 December 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd>
-      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
+      <h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>
+        Normative references
+      <a class="self-link" aria-label="§" href="#normative-references"></a></h3>
+    <dl class="bibliography">
+      <dt id="bib-at-spi">[AT-SPI]</dt><dd><a href="https://developer.gnome.org/libatspi/stable/"><cite>Assistive Technology Service Provider Interface</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/libatspi/stable/">https://developer.gnome.org/libatspi/stable/</a></dd><dt id="bib-atk">[ATK]</dt><dd><a href="https://developer.gnome.org/atk/stable/"><cite>ATK - Accessibility Toolkit</cite></a>.  The GNOME Project. URL: <a href="https://developer.gnome.org/atk/stable/">https://developer.gnome.org/atk/stable/</a></dd><dt id="bib-axapi">[AXAPI]</dt><dd><a href="https://developer.apple.com/documentation/appkit/nsaccessibility"><cite>The NSAccessibility Protocol for macOS</cite></a>.  Apple, Inc. URL: <a href="https://developer.apple.com/documentation/appkit/nsaccessibility">https://developer.apple.com/documentation/appkit/nsaccessibility</a></dd><dt id="bib-core-aam-1.2">[CORE-AAM-1.2]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.2/"><cite>Core Accessibility API Mappings 1.2</cite></a>. Joanmarie Diggs; Michael Cooper; Richard Schwerdtfeger; Joseph Scheuhammer; Andi Snow-Weaver; Aaron Leventhal; Melanie Richards; James Craig; Alexander Surkov.  W3C. 18 December 2019. W3C Working Draft. URL: <a href="https://www.w3.org/TR/core-aam-1.2/">https://www.w3.org/TR/core-aam-1.2/</a></dd><dt id="bib-css2">[CSS2]</dt><dd><a href="https://www.w3.org/TR/CSS2/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie et al.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS2/">https://www.w3.org/TR/CSS2/</a></dd><dt id="bib-iaccessible2">[IAccessible2]</dt><dd><a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2"><cite>IAccessible2</cite></a>.  Linux Foundation. URL: <a href="https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2">https://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2</a></dd><dt id="bib-msaa">[MSAA]</dt><dd><a href="https://docs.microsoft.com/en-us/windows/win32/winauto/microsoft-active-accessibility"><cite>Microsoft Active Accessibility (MSAA)</cite></a>.  Microsoft Corporation. URL: <a href="https://docs.microsoft.com/en-us/windows/win32/winauto/microsoft-active-accessibility">https://docs.microsoft.com/en-us/windows/win32/winauto/microsoft-active-accessibility</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://tools.ietf.org/html/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc8174">https://tools.ietf.org/html/rfc8174</a></dd><dt id="bib-ui-automation">[UI-AUTOMATION]</dt><dd><a href="https://docs.microsoft.com/en-us/windows/win32/winauto/ui-automation-specification"><cite>UI Automation</cite></a>.  Microsoft Corporation. URL: <a href="https://docs.microsoft.com/en-us/windows/win32/winauto/ui-automation-specification">https://docs.microsoft.com/en-us/windows/win32/winauto/ui-automation-specification</a></dd><dt id="bib-uia-express">[UIA-EXPRESS]</dt><dd><a href="https://docs.microsoft.com/en-us/windows/win32/winauto/iaccessibleex"><cite>The IAccessibleEx Interface</cite></a>.  Microsoft Corporation. URL: <a href="https://docs.microsoft.com/en-us/windows/win32/winauto/iaccessibleex">https://docs.microsoft.com/en-us/windows/win32/winauto/iaccessibleex</a></dd><dt id="bib-wai-aria">[WAI-ARIA]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd>
+    </dl></section><section id="informative-references">
+      <h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>
+        Informative references
+      <a class="self-link" aria-label="§" href="#informative-references"></a></h3>
+    <dl class="bibliography">
+      <dt id="bib-accname-1.1">[ACCNAME-1.1]</dt><dd><a href="https://www.w3.org/TR/accname-1.1/"><cite>Accessible Name and Description Computation 1.1</cite></a>. Joanmarie Diggs; Bryan Garaventa; Michael Cooper.  W3C. 18 December 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd>
+    </dl></section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
