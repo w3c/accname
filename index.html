@@ -32,12 +32,6 @@
       "w3cid": 125865
     },
     {
-      "name": "Joanmarie Diggs",
-      "company": "Igalia, S.L.",
-      "companyURL": "https://www.igalia.com/",
-      "w3cid": 68182
-    },
-    {
       "name": "Michael Cooper",
       "company": "W3C",
       "companyURL": "https://www.w3.org/",
@@ -45,6 +39,13 @@
     }
   ],
   "formerEditors": [
+    {
+      "name": "Joanmarie Diggs",
+      "company": "Igalia, S.L.",
+      "companyURL": "https://www.igalia.com/",
+      "w3cid": 68182,
+      "note": "Editor until March 2021"
+    },
     {
       "name": "Richard Schwerdtfeger",
       "company": "Knowbility",
@@ -101,16 +102,16 @@
   "preProcess": [
     null
   ],
-  "publishDate": "2021-03-23",
-  "publishISODate": "2021-03-23T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 23 March 2021"
+  "publishDate": "2021-03-24",
+  "publishISODate": "2021-03-24T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 24 March 2021"
 }</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry"><div class="head">
     <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1>
     
     <h2>
       W3C Editor's Draft
-      <time class="dt-published" datetime="2021-03-23">23 March 2021</time>
+      <time class="dt-published" datetime="2021-03-24">24 March 2021</time>
     </h2>
     <dl>
       <dt>This version:</dt><dd>
@@ -129,14 +130,14 @@
             (<a class="p-org org h-org h-card" href="https://www.levelaccess.com/">Level Access</a>)
           </dd><dd class="p-author h-card vcard" data-editor-id="125865"><span class="p-name fn">Melanie Sumner</span>
             (<a class="p-org org h-org h-card" href="https://www.linkedin.com/">LinkedIn</a>)
-          </dd><dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>
-            (<a class="p-org org h-org h-card" href="https://www.igalia.com/">Igalia, S.L.</a>)
           </dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>
             (<a class="p-org org h-org h-card" href="https://www.w3.org/">W3C</a>)
           </dd>
       <dt>
               Former editors:
-            </dt><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>
+            </dt><dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>
+            (<a class="p-org org h-org h-card" href="https://www.igalia.com/">Igalia, S.L.</a>)
+           (Editor until March 2021)</dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>
             (<a class="p-org org h-org h-card" href="https://knowbility.org/">Knowbility</a>)
            (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>
             (<a class="p-org org h-org h-card" href="https://idrc.ocadu.ca/">Inclusive Design Research Centre, OCAD University</a>)
@@ -235,7 +236,7 @@
   <p><a class="termref internalDFN" href="#dfn-user-agent" data-link-type="dfn">User agents</a> acquire information from the <abbr title="Document Object Model">DOM</abbr> [<cite><a class="bibref" data-link-type="biblio" href="#bib-dom" title="DOM Standard">DOM</a></cite>] and create a parallel structure called the <a class="termref internalDFN" href="#dfn-accessibility-tree" data-link-type="dfn">accessibility tree</a>, made up of <a class="termref internalDFN" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a>. An accessible object provides information about its <a class="termref internalDFN" href="#dfn-role" data-link-type="dfn">role</a>, <a class="termref internalDFN" href="#dfn-state" data-link-type="dfn">states</a>, and <a class="termref internalDFN" href="#dfn-property" data-link-type="dfn">properties</a>. An example is an accessible object whose role is <code>menuitem</code>, is currently in an <code>enabled</code> state, with a <code>haspopup</code> property, indicating that it leads to a sub-menu. </p>
   <p>The two properties of accessible objects described in this document are its <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">accessible name</a> and <a class="termref internalDFN" href="#dfn-accessible-description" data-link-type="dfn">accessible description</a>.  The name is a short label that provides information about the purpose of the object.  An example of an accessible name for a menu item is <code>New</code>, signifying that the menu item provides for the creation of new documents, windows, and so on.  </p>
   <p>The description is a short explanation that further clarifies the nature of the accessible object.  It is not always necessary to provide a description  if the name is sufficient, but it can help a user better understand the use of the object.</p>
-  <p><a class="termref internalDFN" href="#dfn-accessibility-api" data-link-type="dfn">Accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> currently support flat, unstructured strings for accessible names and descriptions.  The result of the name/description computation is thus a flat string. </p>      
+  <p><a class="termref internalDFN" href="#dfn-accessibility-api" data-link-type="dfn">Accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> currently support flat, unstructured strings for accessible names and descriptions.  The result of the name/description computation is thus a flat string. </p>
   <p>The terms "accessible name" and "accessible description" are used to emphasize that they are properties of <a class="termref internalDFN" href="#dfn-accessible-object" data-link-type="dfn">accessible objects</a> as exposed by <a class="termref internalDFN" href="#dfn-accessibility-api" data-link-type="dfn">Accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a>.  However, they are frequently referred to hereafter as simply "name" and "description".</p>
 </section>
 <section id="conformance"><h2 id="x2-conformance"><bdi class="secno">2. </bdi>Conformance<a class="self-link" aria-label="§" href="#conformance"></a></h2><p>
@@ -507,7 +508,7 @@
         <dt>Current node</dt>
         <dd>The <abbr title="Document Object Model">DOM</abbr> <a class="termref internalDFN" href="#dfn-node" data-link-type="dfn">node</a> currently traversed to compute the <code>root node</code>'s text equivalent.  Initially, the <code>current node</code> is the <code>root node</code>, but at later stages is either some descendant of the <code>root node</code>, or another referenced node.</dd>
         <dt>Flat string</dt>
-        <dd>A string of characters where all carriage returns, newlines, tabs, and form-feeds are replaced with a single space, and multiple spaces are reduced to a single space.  The string contains only character data; it does not contain any markup.  </dd> 
+        <dd>A string of characters where all carriage returns, newlines, tabs, and form-feeds are replaced with a single space, and multiple spaces are reduced to a single space.  The string contains only character data; it does not contain any markup.  </dd>
         <dt>Total accumulated text</dt>
         <dd>The text equivalent computed up to, but not including the <code>current node</code>.</dd>
         <dt>Accumulated text</dt>
@@ -560,7 +561,7 @@
             <li id="step2B">Otherwise:
               <ul>
                 <li>if computing a <a class="termref internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn">name</a>, and the <code>current node</code> has an <code>aria-labelledby</code> <a class="termref internalDFN" href="#dfn-attribute" data-link-type="dfn">attribute</a> that contains at least one valid IDREF, and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal, process its IDREFs in the order they occur: </li>
-                <li>or, if computing a <a class="termref internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn">description</a>, and the <code>current node</code> has an <code>aria-describedby</code> <a class="termref internalDFN" href="#dfn-attribute" data-link-type="dfn">attribute</a> that contains at least one valid IDREF, and the <code>current node</code> is not already part of an <code>aria-describedby</code> traversal, process its IDREFs in the order they occur: 
+                <li>or, if computing a <a class="termref internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn">description</a>, and the <code>current node</code> has an <code>aria-describedby</code> <a class="termref internalDFN" href="#dfn-attribute" data-link-type="dfn">attribute</a> that contains at least one valid IDREF, and the <code>current node</code> is not already part of an <code>aria-describedby</code> traversal, process its IDREFs in the order they occur:
                   <ol>
                     <li id="step2B.i">Set the <code>accumulated text</code> to the empty string.</li>
                     <li id="step2B.ii">For each IDREF:
@@ -670,7 +671,7 @@
             </li>
             <li id="step2G">Otherwise, if the <code>current node</code> is a <a class="termref internalDFN" href="#dfn-text-node" data-link-type="dfn">Text node</a>, return its textual contents.</li>
             <li id="step2H">Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref internalDFN" href="#dfn-accessible-name" data-link-type="dfn">Accessible Name</a> or <a class="termref internalDFN" href="#dfn-accessible-description" data-link-type="dfn">Accessible Description</a> is being computed, and contains descendants, proceed to 2F.i.</li>
-            <li id="step2I">Otherwise, if the <code>current node</code> has a <a class="termref internalDFN" href="#dfn-tooltip-attribute" data-link-type="dfn">Tooltip attribute</a>, return its value. 
+            <li id="step2I">Otherwise, if the <code>current node</code> has a <a class="termref internalDFN" href="#dfn-tooltip-attribute" data-link-type="dfn">Tooltip attribute</a>, return its value.
               <div><details>
                 <summary>Comment:</summary>
                 <p>Tooltip attributes are used only if nothing else, including subtree content, has provided results. </p>
