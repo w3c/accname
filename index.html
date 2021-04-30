@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 26.6.2">
+<meta name="generator" content="ReSpec 26.6.4">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -223,9 +223,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "core-aam-1.2",
     "wai-aria-1.2"
   ],
-  "publishDate": "2021-04-28",
-  "publishISODate": "2021-04-28T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 28 April 2021"
+  "publishDate": "2021-04-30",
+  "publishISODate": "2021-04-30T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 30 April 2021"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry" data-cite="core-aam-1.2 wai-aria-1.2"><div class="head">
@@ -233,7 +233,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     
     <h2>
       W3C Editor's Draft
-      <time class="dt-published" datetime="2021-04-28">28 April 2021</time>
+      <time class="dt-published" datetime="2021-04-30">30 April 2021</time>
     </h2>
     <dl>
       <dt>This version:</dt><dd>
@@ -486,38 +486,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </div>
               </details></div>
             </li>
-            <li id="step2C">Otherwise, if computing a <a class="termref informative" data-lt="accessible name" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-name">name</a>, and if the <code>current node</code> has an <code>aria-label</code> <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-attribute">attribute</a> whose value is not the empty string, nor, when trimmed of white space, is not the empty string:
-              <ul>
-                <li>If traversal of the <code>current node</code> is due to recursion <strong>and</strong> the <code>current node</code> is an embedded control as defined in step 2E, ignore <code>aria-label</code> and skip to rule 2E.</li>
-                <li>Otherwise, return the value of <code>aria-label</code>.</li>
-              </ul>
-              <div><details>
-                <summary>Example:</summary>
-                  <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-node">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-name">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
-                  <div class="example" id="example-2">
-        <div class="marker">
-    <a class="self-link" href="#example-2">Example<bdi> 2</bdi></a>
-  </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row1"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/Documentation.pdf"</span>&gt;</span>Documentation.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"del_row1"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Delete"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"del_row1 file_row1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row2"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/HolidayLetter.pdf"</span>&gt;</span>HolidayLetter.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"del_row2"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Delete"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"del_row2 file_row2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
-      </div>
-              </details></div>
-            </li>
-            <li id="step2D">Otherwise, if the <code>current node</code>'s native markup provides an <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-attribute">attribute</a> (e.g. <code>title</code>) or <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a> (e.g. <abbr title="Hypertext Markup Language">HTML</abbr> <code>label</code>) that defines a text alternative, return that alternative in the form of a <code>flat string</code> as defined by the host language, unless the element is marked as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
-              <div><details>
-                <summary>Comment:</summary>
-                <p>For example, in <abbr title="Hypertext Markup Language">HTML</abbr>, the <code>img</code> element's <code>alt</code> attribute defines a text alternative string, and the <code>label</code> element provides text for the referenced form element.  In <abbr title="SVG2">SVG2</abbr>, the <code>desc</code> and <code>title</code> elements provide a description of their parent element. </p>
-              </details></div>
-            </li>
-            <li id="step2E">Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. the <code>label</code> element in <abbr title="Hypertext Markup Language">HTML</abbr> or any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-widget">widget</a>, where the user can adjust the embedded control's value, then include the embedded control as part of the text alternative in the following manner:
+            <li id="step2C">Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. the <code>label</code> element in <abbr title="Hypertext Markup Language">HTML</abbr> or any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-widget">widget</a>, where the user can adjust the embedded control's value, then include the embedded control as part of the text alternative in the following manner:
               <ul>
                 <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, return its value.</li>
                 <li>If the embedded control has role menu <a class="role-reference" href="https://w3c.github.io/aria/#button">button</a>, return the text alternative of the button.</li>
@@ -533,11 +502,42 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               <div><details>
                 <summary>Example:</summary>
                 <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
-                <div class="example" id="example-3">
+                <div class="example" id="example-2">
         <div class="marker">
-    <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
+    <a class="self-link" href="#example-2">Example<bdi> 2</bdi></a>
   </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
       </div>
+              </details></div>
+            </li>
+            <li id="step2D">Otherwise, if computing a <a class="termref informative" data-lt="accessible name" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-name">name</a>, and if the <code>current node</code> has an <code>aria-label</code> <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-attribute">attribute</a> whose value is not the empty string, nor, when trimmed of white space, is not the empty string:
+              <ul>
+                <li>If traversal of the <code>current node</code> is due to recursion <strong>and</strong> the <code>current node</code> is an embedded control as defined in step 2E, ignore <code>aria-label</code> and skip to rule 2E.</li>
+                <li>Otherwise, return the value of <code>aria-label</code>.</li>
+              </ul>
+              <div><details>
+                <summary>Example:</summary>
+                  <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-node">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-name">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
+                  <div class="example" id="example-3">
+        <div class="marker">
+    <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row1"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/Documentation.pdf"</span>&gt;</span>Documentation.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"del_row1"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Delete"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"del_row1 file_row1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row2"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/HolidayLetter.pdf"</span>&gt;</span>HolidayLetter.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"del_row2"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Delete"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"del_row2 file_row2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
+      </div>
+              </details></div>
+            </li>
+            <li id="step2E">Otherwise, if the <code>current node</code>'s native markup provides an <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-attribute">attribute</a> (e.g. <code>title</code>) or <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a> (e.g. <abbr title="Hypertext Markup Language">HTML</abbr> <code>label</code>) that defines a text alternative, return that alternative in the form of a <code>flat string</code> as defined by the host language, unless the element is marked as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
+              <div><details>
+                <summary>Comment:</summary>
+                <p>For example, in <abbr title="Hypertext Markup Language">HTML</abbr>, the <code>img</code> element's <code>alt</code> attribute defines a text alternative string, and the <code>label</code> element provides text for the referenced form element.  In <abbr title="SVG2">SVG2</abbr>, the <code>desc</code> and <code>title</code> elements provide a description of their parent element. </p>
               </details></div>
             </li>
             <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-role">role</a> allows <a class="specref" href="https://w3c.github.io/aria/#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>), or is a descendant of a native host language text alternative <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a>:
