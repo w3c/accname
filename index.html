@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 26.7.0">
+<meta name="generator" content="ReSpec 26.8.4">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -11,6 +11,18 @@ aside.example,div.example{padding:.5em;border-left-width:.5em;border-left-style:
 aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
 aside.example div.example span.example-title{color:#999}
 .example pre{background-color:rgba(0,0,0,.03)}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
 </style>
 <style>
 dfn{cursor:pointer}
@@ -223,9 +235,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "core-aam-1.2",
     "wai-aria-1.2"
   ],
-  "publishDate": "2021-05-16",
-  "publishISODate": "2021-05-16T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 16 May 2021"
+  "publishDate": "2021-05-30",
+  "publishISODate": "2021-05-30T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 30 May 2021"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry" data-cite="core-aam-1.2 wai-aria-1.2"><div class="head">
@@ -233,7 +245,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     
     <h2>
       W3C Editor's Draft
-      <time class="dt-published" datetime="2021-05-16">16 May 2021</time>
+      <time class="dt-published" datetime="2021-05-30">30 May 2021</time>
     </h2>
     <dl>
       <dt>This version:</dt><dd>
@@ -248,33 +260,33 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       
       <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/accname/">https://www.w3.org/TR/accname/</a></dd>
       <dt>Editors:</dt>
-      <dd class="p-author h-card vcard" data-editor-id="67215"><span class="p-name fn">Bryan Garaventa</span>
-            (<a class="p-org org h-org h-card" href="https://www.levelaccess.com/">Level Access</a>)
-          </dd><dd class="p-author h-card vcard" data-editor-id="125865"><span class="p-name fn">Melanie Sumner</span>
-            (<a class="p-org org h-org h-card" href="https://www.linkedin.com/">LinkedIn</a>)
-          </dd><dd class="p-author h-card vcard" data-editor-id="34017"><span class="p-name fn">Michael Cooper</span>
-            (<a class="p-org org h-org h-card" href="https://www.w3.org/">W3C</a>)
-          </dd>
+      <dd class="editor p-author h-card vcard" data-editor-id="67215">
+    <span class="p-name fn">Bryan Garaventa</span> (<a class="p-org org h-org" href="https://www.levelaccess.com/">Level Access</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="125865">
+    <span class="p-name fn">Melanie Sumner</span> (<a class="p-org org h-org" href="https://www.linkedin.com/">LinkedIn</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="34017">
+    <span class="p-name fn">Michael Cooper</span> (<a class="p-org org h-org" href="https://www.w3.org/">W3C</a>)
+  </dd>
       <dt>
               Former editors:
-            </dt><dd class="p-author h-card vcard" data-editor-id="68182"><span class="p-name fn">Joanmarie Diggs</span>
-            (<a class="p-org org h-org h-card" href="https://www.igalia.com/">Igalia, S.L.</a>)
-           (Editor until March 2021)</dd><dd class="p-author h-card vcard" data-editor-id="2460"><span class="p-name fn">Richard Schwerdtfeger</span>
-            (<a class="p-org org h-org h-card" href="https://knowbility.org/">Knowbility</a>)
-           (Editor until October 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42279"><span class="p-name fn">Joseph Scheuhammer</span>
-            (<a class="p-org org h-org h-card" href="https://idrc.ocadu.ca/">Inclusive Design Research Centre, OCAD University</a>)
-           (Editor until May 2017)</dd><dd class="p-author h-card vcard" data-editor-id="42459"><span class="p-name fn">James Craig</span>
-            (<a class="p-org org h-org h-card" href="https://www.apple.com/accessibility/">Apple Inc.</a>)
-           (Editor until May 2016)</dd><dd class="p-author h-card vcard" data-editor-id="35445"><span class="p-name fn">Andi Snow-Weaver</span>
-            (<a class="p-org org h-org h-card" href="https://www.ibm.com/">IBM</a>)
-           (Editor until December 2012)</dd><dd class="p-author h-card vcard" data-editor-id="34329"><span class="p-name fn">Aaron Leventhal</span>
-            (<a class="p-org org h-org h-card" href="https://www.ibm.com/">IBM</a>)
-           (Editor until January 2009)</dd>
+            </dt><dd class="editor p-author h-card vcard" data-editor-id="68182">
+    <span class="p-name fn">Joanmarie Diggs</span> (<a class="p-org org h-org" href="https://www.igalia.com/">Igalia, S.L.</a>) (Editor until March 2021)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="2460">
+    <span class="p-name fn">Richard Schwerdtfeger</span> (<a class="p-org org h-org" href="https://knowbility.org/">Knowbility</a>) (Editor until October 2017)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="42279">
+    <span class="p-name fn">Joseph Scheuhammer</span> (<a class="p-org org h-org" href="https://idrc.ocadu.ca/">Inclusive Design Research Centre, OCAD University</a>) (Editor until May 2017)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="42459">
+    <span class="p-name fn">James Craig</span> (<a class="p-org org h-org" href="https://www.apple.com/accessibility/">Apple Inc.</a>) (Editor until May 2016)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="35445">
+    <span class="p-name fn">Andi Snow-Weaver</span> (<a class="p-org org h-org" href="https://www.ibm.com/">IBM</a>) (Editor until December 2012)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="34329">
+    <span class="p-name fn">Aaron Leventhal</span> (<a class="p-org org h-org" href="https://www.ibm.com/">IBM</a>) (Editor until January 2009)
+  </dd>
       
       <dt>Participate:</dt><dd>
     <a href="https://github.com/w3c/accname/">GitHub w3c/accname</a>
   </dd><dd>
-    <a href="https://github.com/w3c/accname/issues/">File a bug</a>
+    <a href="https://github.com/w3c/accname/issues/">File an issue</a>
   </dd><dd>
     <a href="https://github.com/w3c/accname/commits/gh-pages">Commit history</a>
   </dd><dd>
@@ -536,7 +548,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </div>
               </details></div>
             </li>
-            <li id="step2E">Otherwise, if the <code>current node</code>'s native markup provides an <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-attribute">attribute</a> (e.g. <code>title</code>) or <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a> (e.g. <abbr title="Hypertext Markup Language">HTML</abbr> <code>label</code>) that defines a text alternative, return that alternative in the form of a <code>flat string</code> as defined by the host language, unless the element is marked as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
+            <li id="step2E">Otherwise, if the <code>current node</code>'s native markup provides an <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-attribute">attribute</a> (e.g. <code>alt</code>) or <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a> (e.g. <abbr title="Hypertext Markup Language">HTML</abbr> <code>label</code> or <abbr title="Scalable Vector Graphics">SVG</abbr> <code>title</code>) that defines a text alternative, return that alternative in the form of a <code>flat string</code> as defined by the host language, unless the element is marked as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
+              <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="5"><span>Note</span></div><div class="">See <a href="https://www.w3.org/TR/html-aam-1.0/#accessible-name-and-description-computation"><abbr title="Hypertext Markup Language">HTML</abbr>-AAM</a>, <a href="https://www.w3.org/TR/svg-aam-1.0/#mapping_additional_nd"><abbr title="Scalable Vector Graphics">SVG</abbr>-AAM</a>, or other host language documentation for more information on markup that defines a text alternative.</div></div>
               <div><details>
                 <summary>Comment:</summary>
                 <p>For example, in <abbr title="Hypertext Markup Language">HTML</abbr>, the <code>img</code> element's <code>alt</code> attribute defines a text alternative string, and the <code>label</code> element provides text for the referenced form element.  In <abbr title="SVG2">SVG2</abbr>, the <code>desc</code> and <code>title</code> elements provide a description of their parent element. </p>
