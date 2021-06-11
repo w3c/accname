@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 26.8.4">
+<meta name="generator" content="ReSpec 26.8.12">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -235,9 +235,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "core-aam-1.2",
     "wai-aria-1.2"
   ],
-  "publishDate": "2021-05-30",
-  "publishISODate": "2021-05-30T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 30 May 2021"
+  "publishDate": "2021-06-11",
+  "publishISODate": "2021-06-11T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 11 June 2021"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
 <body class="h-entry" data-cite="core-aam-1.2 wai-aria-1.2"><div class="head">
@@ -245,7 +245,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     
     <h2>
       W3C Editor's Draft
-      <time class="dt-published" datetime="2021-05-30">30 May 2021</time>
+      <time class="dt-published" datetime="2021-06-11">11 June 2021</time>
     </h2>
     <dl>
       <dt>This version:</dt><dd>
@@ -500,10 +500,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </div>
               </details></div>
             </li>
-            <li id="step2C">Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. the <code>label</code> element in <abbr title="Hypertext Markup Language">HTML</abbr> or any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-widget">widget</a>, where the user can adjust the embedded control's value, then include the embedded control as part of the text alternative in the following manner:
+            <li id="step2C">Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. the <code>label</code> element in <abbr title="Hypertext Markup Language">HTML</abbr> or any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-widget">widget</a>, where the user can adjust the embedded control's value, then return the embedded control as part of the text alternative in the following manner:
               <ul>
                 <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, return its value.</li>
-                <li>If the embedded control has role menu <a class="role-reference" href="https://w3c.github.io/aria/#button">button</a>, return the text alternative of the button.</li>
                 <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#combobox">combobox</a> or <a class="role-reference" href="https://w3c.github.io/aria/#listbox">listbox</a>, return the text alternative of the chosen <a class="role-reference" href="https://w3c.github.io/aria/#option">option</a>.</li>
                 <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#range">range</a> (e.g., a <a class="role-reference" href="https://w3c.github.io/aria/#spinbutton">spinbutton</a> or <a class="role-reference" href="https://w3c.github.io/aria/#slider">slider</a>):
                   <ul>
