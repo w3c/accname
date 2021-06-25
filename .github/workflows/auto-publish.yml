@@ -8,7 +8,7 @@ on:
 
 jobs:
   validate-and-publish:
-    name: Validate and Publish
+    name: Validate and publish to gh-pages
     runs-on: ubuntu-latest # only linux supported at present
     steps:
       - uses: actions/checkout@v2
