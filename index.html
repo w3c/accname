@@ -265,7 +265,7 @@
                     <li id="step2B.ii">For each IDREF:
                       <ol>
                         <li id="step2B.ii.a">Set the <code>current node</code> to the node referenced by the IDREF.</li>
-                        <li id="step2B.ii.b">Compute the text alternative of the <code>current node</code> beginning with step 2. Set the <code>result</code> to that text alternative.</li>
+                        <li id="step2B.ii.b">if computing a <a class="termref" data-lt="accessible name">name</a>, or if computing a <a class="termref" data-lt="accessible description">description</a> and the <code>current node</code> is not <a class="termref">hidden</a>, compute the text alternative of the <code>current node</code> beginning with step 2. If computing a <a class="termref" data-lt="accessible description">description</a> and the <code>current node</code> is <a class="termref">hidden</a>, however, compute the text alternative of the <code>current node</code> by returning its inner text content. Set the <code>result</code> to that text alternative.</li>
                         <li id="step2B.ii.c">Append the <code>result</code>, with a space, to the <code>accumulated text</code>.</li>
                       </ol>
                     </li>
