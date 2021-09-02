@@ -269,7 +269,12 @@
                             Compute the text alternative of the <code>current node</code> using the following steps: 
                             <ul>
                                 <li>If the <code>current node</code> is <strong>not</strong> <a class="termref">hidden</a>, recursively skip to step 2.</li>
-                                <li>If the <code>current node</code> is <a class="termref">hidden</a>, compute the text alternative of the <code>current node</code> by returning {{HTMLElement/innerText}} of the node.</li>
+                                <li>If the <code>current node</code> is <a class="termref">hidden</a>:
+                                  <ol>
+                                    <li>If the <code>current node</code> has an <a class="pref">aria-label</a> attribute whose value, when trimmed of white space, is not the empty string, return the value of <a class="pref">aria-label</a>.</li>
+                                    <li>Otherwise, return the {{HTMLElement/innerText}} of the node.</li>
+                                  </ol>
+                                </li>
                             </ul>
                             Set the <code>result</code> to the computed text alternative from this step.
                         </li>
