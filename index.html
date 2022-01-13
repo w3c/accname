@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 28.0.6">
+<meta name="generator" content="ReSpec 28.2.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -62,7 +62,6 @@ dfn{cursor:pointer}
 25%{transform:scale(1.25,1.25);opacity:.75}
 100%{transform:scale(1,1)}
 }
-.hljs{background:0 0!important}
 :is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
 dfn{font-weight:700}
 a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
@@ -116,243 +115,6 @@ dd{margin-left:0}
 }
 </style>
 <meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent.">
-<link rel="canonical" href="https://www.w3.org/TR/accname-1.2/">
-<script type="application/ld+json">{
-  "@context": [
-    "http://schema.org",
-    {
-      "@vocab": "http://schema.org/",
-      "@language": "en-US",
-      "w3p": "http://www.w3.org/2001/02pd/rec54#",
-      "foaf": "http://xmlns.com/foaf/0.1/",
-      "datePublished": {
-        "@type": "http://www.w3.org/2001/XMLSchema#date"
-      },
-      "inLanguage": {
-        "@language": null
-      },
-      "isBasedOn": {
-        "@type": "@id"
-      },
-      "license": {
-        "@type": "@id"
-      }
-    }
-  ],
-  "id": "https://www.w3.org/TR/accname-1.2/",
-  "type": [
-    "TechArticle"
-  ],
-  "name": "Accessible Name and Description Computation 1.2",
-  "inLanguage": "en-US",
-  "license": "https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document",
-  "datePublished": "2021-12-03",
-  "copyrightHolder": {
-    "name": "World Wide Web Consortium",
-    "url": "https://www.w3.org/"
-  },
-  "discussionUrl": "https://github.com/w3c/accname/issues/",
-  "alternativeHeadline": "",
-  "isBasedOn": "",
-  "description": "This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent.",
-  "editor": [
-    {
-      "type": "Person",
-      "name": "Bryan Garaventa",
-      "worksFor": {
-        "name": "Level Access",
-        "url": "https://www.levelaccess.com/"
-      }
-    },
-    {
-      "type": "Person",
-      "name": "Melanie Sumner",
-      "worksFor": {
-        "name": "LinkedIn",
-        "url": "https://www.linkedin.com/"
-      }
-    },
-    {
-      "type": "Person",
-      "name": "Michael Cooper",
-      "worksFor": {
-        "name": "W3C",
-        "url": "https://www.w3.org/"
-      }
-    }
-  ],
-  "citation": [
-    {
-      "id": "https://www.w3.org/TR/wai-aria-1.1/",
-      "type": "TechArticle",
-      "name": "Accessible Rich Internet Applications (WAI-ARIA) 1.1",
-      "url": "https://www.w3.org/TR/wai-aria-1.1/",
-      "creator": [
-        {
-          "name": "Joanmarie Diggs"
-        },
-        {
-          "name": "Shane McCarron"
-        },
-        {
-          "name": "Michael Cooper"
-        },
-        {
-          "name": "Richard Schwerdtfeger"
-        },
-        {
-          "name": "James Craig"
-        }
-      ],
-      "publisher": {
-        "name": "W3C"
-      }
-    },
-    {
-      "id": "https://www.w3.org/TR/CSS21/",
-      "type": "TechArticle",
-      "name": "Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification",
-      "url": "https://www.w3.org/TR/CSS21/",
-      "creator": [
-        {
-          "name": "Bert Bos"
-        },
-        {
-          "name": "Tantek Çelik"
-        },
-        {
-          "name": "Ian Hickson"
-        },
-        {
-          "name": "Håkon Wium Lie"
-        }
-      ],
-      "publisher": {
-        "name": "W3C"
-      }
-    },
-    {
-      "id": "https://www.w3.org/TR/core-aam-1.2/",
-      "type": "TechArticle",
-      "name": "Core Accessibility API Mappings 1.2",
-      "url": "https://www.w3.org/TR/core-aam-1.2/",
-      "creator": [
-        {
-          "name": "Joanmarie Diggs"
-        },
-        {
-          "name": "Michael Cooper"
-        },
-        {
-          "name": "Richard Schwerdtfeger"
-        },
-        {
-          "name": "Joseph Scheuhammer"
-        },
-        {
-          "name": "Andi Snow-Weaver"
-        },
-        {
-          "name": "Aaron Leventhal"
-        },
-        {
-          "name": "Melanie Richards"
-        },
-        {
-          "name": "James Craig"
-        },
-        {
-          "name": "Alexander Surkov"
-        }
-      ],
-      "publisher": {
-        "name": "W3C"
-      }
-    },
-    {
-      "id": "https://www.rfc-editor.org/rfc/rfc2119",
-      "type": "TechArticle",
-      "name": "Key words for use in RFCs to Indicate Requirement Levels",
-      "url": "https://www.rfc-editor.org/rfc/rfc2119",
-      "creator": [
-        {
-          "name": "S. Bradner"
-        }
-      ],
-      "publisher": {
-        "name": "IETF"
-      }
-    },
-    {
-      "id": "https://www.rfc-editor.org/rfc/rfc8174",
-      "type": "TechArticle",
-      "name": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words",
-      "url": "https://www.rfc-editor.org/rfc/rfc8174",
-      "creator": [
-        {
-          "name": "B. Leiba"
-        }
-      ],
-      "publisher": {
-        "name": "IETF"
-      }
-    },
-    {
-      "id": "https://www.w3.org/TR/accname-1.1/",
-      "type": "TechArticle",
-      "name": "Accessible Name and Description Computation 1.1",
-      "url": "https://www.w3.org/TR/accname-1.1/",
-      "creator": [
-        {
-          "name": "Joanmarie Diggs"
-        },
-        {
-          "name": "Bryan Garaventa"
-        },
-        {
-          "name": "Michael Cooper"
-        }
-      ],
-      "publisher": {
-        "name": "W3C"
-      }
-    },
-    {
-      "id": "https://dom.spec.whatwg.org/",
-      "type": "TechArticle",
-      "name": "DOM Standard",
-      "url": "https://dom.spec.whatwg.org/",
-      "creator": [
-        {
-          "name": "Anne van Kesteren"
-        }
-      ],
-      "publisher": {
-        "name": "WHATWG"
-      }
-    },
-    {
-      "id": "https://www.w3.org/TR/wai-aria-1.2/",
-      "type": "TechArticle",
-      "name": "Accessible Rich Internet Applications (WAI-ARIA) 1.2",
-      "url": "https://www.w3.org/TR/wai-aria-1.2/",
-      "creator": [
-        {
-          "name": "Joanmarie Diggs"
-        },
-        {
-          "name": "James Nurthen"
-        },
-        {
-          "name": "Michael Cooper"
-        }
-      ],
-      "publisher": {
-        "name": "W3C"
-      }
-    }
-  ]
-}</script>
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
 .hljs-comment,.hljs-quote{color:#717277;font-style:italic}
@@ -471,15 +233,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "core-aam-1.2",
     "wai-aria-1.2"
   ],
-  "publishISODate": "2021-12-03T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 03 December 2021"
+  "publishISODate": "2022-01-13T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 13 January 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
 <body class="h-entry" data-cite="core-aam-1.2 wai-aria-1.2"><div class="head">
     <a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a> <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1>
     
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2021-12-03">03 December 2021</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-01-13">13 January 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -538,7 +300,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <p class="copyright">
     <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
     ©
-    2014-2021
+    2014-2022
     
     <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
     <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>,
@@ -711,7 +473,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                         <li id="step2B.ii.c">Append the <code>result</code>, with a space, to the <code>accumulated text</code>.</li>
                       </ol>
                     </li>
-                    <li id="step2B.iii">Return the <code>accumulated text</code>.</li>
+                    <li id="step2B.iii">Return the <code>accumulated text</code> if it is not the empty string ("").</li>
                   </ol>
                 </li>
               </ul>
@@ -725,9 +487,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                 <div class="example" id="example-1">
         <div class="marker">
     <a class="self-link" href="#example-1">Example<bdi> 1</bdi></a>
-  </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">element1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el1"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el3"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">element2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el2"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"el1"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">element3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"el3"</span>&gt;</span> hello <span class="hljs-tag">&lt;/<span class="hljs-name">element3</span>&gt;</span></code></pre>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs"></code></pre>
       </div>
               </details></div>
             </li>
@@ -749,7 +509,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                 <div class="example" id="example-2">
         <div class="marker">
     <a class="self-link" href="#example-2">Example<bdi> 2</bdi></a>
-  </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs"></code></pre>
       </div>
               </details></div>
             </li>
@@ -764,17 +524,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                   <div class="example" id="example-3">
         <div class="marker">
     <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
-  </div> <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row1"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/Documentation.pdf"</span>&gt;</span>Documentation.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"del_row1"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Delete"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"del_row1 file_row1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file_row2"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./files/HolidayLetter.pdf"</span>&gt;</span>HolidayLetter.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"del_row2"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Delete"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"del_row2 file_row2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs"></code></pre>
       </div>
               </details></div>
             </li>
@@ -801,7 +551,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                     <li id="step2F.iii.c">Append the <code>result</code> to the <code>accumulated text</code>. </li>
                   </ol>
                 </li>
-                <li id="step2F.iv">Return the <code>accumulated text</code>.</li>
+                <li id="step2F.iv">Return the <code>accumulated text</code> if it is not the empty string ("").</li>
               </ol>
               <p><strong>Important</strong>:  Each <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-node">node</a> in the subtree is consulted only once. If text has been collected from a descendant, but is referenced by another IDREF in some descendant node, then that second, or subsequent, reference is not followed. This is done to avoid infinite loops.  </p>
               <div><details>
@@ -1113,7 +863,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <dl class="bibliography"><dt id="bib-core-aam-1.2">[CORE-AAM-1.2]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.2/"><cite>Core Accessibility API Mappings 1.2</cite></a>. Joanmarie Diggs; Michael Cooper; Richard Schwerdtfeger; Joseph Scheuhammer; Andi Snow-Weaver; Aaron Leventhal; Melanie Richards; James Craig; Alexander Surkov.  W3C. 18 December 2019. W3C Working Draft. URL: <a href="https://www.w3.org/TR/core-aam-1.2/">https://www.w3.org/TR/core-aam-1.2/</a></dd><dt id="bib-css2">[CSS2]</dt><dd><a href="https://www.w3.org/TR/CSS21/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS21/">https://www.w3.org/TR/CSS21/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-wai-aria">[WAI-ARIA]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a></dd></dl>
   </section><section id="informative-references">
     <h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references<a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></h3>
-    <dl class="bibliography"><dt id="bib-accname-1.1">[ACCNAME-1.1]</dt><dd><a href="https://www.w3.org/TR/accname-1.1/"><cite>Accessible Name and Description Computation 1.1</cite></a>. Joanmarie Diggs; Bryan Garaventa; Michael Cooper.  W3C. 18 December 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-wai-aria-1.2">[wai-aria-1.2]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.2/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.2</cite></a>. Joanmarie Diggs; James Nurthen; Michael Cooper.  W3C. 2 March 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.2/">https://www.w3.org/TR/wai-aria-1.2/</a></dd></dl>
+    <dl class="bibliography"><dt id="bib-accname-1.1">[ACCNAME-1.1]</dt><dd><a href="https://www.w3.org/TR/accname-1.1/"><cite>Accessible Name and Description Computation 1.1</cite></a>. Joanmarie Diggs; Bryan Garaventa; Michael Cooper.  W3C. 18 December 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-wai-aria-1.2">[wai-aria-1.2]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.2/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.2</cite></a>. Joanmarie Diggs; James Nurthen; Michael Cooper.  W3C. 8 December 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.2/">https://www.w3.org/TR/wai-aria-1.2/</a></dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
   </p><script id="respec-dfn-panel">(() => {
