@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 28.2.2">
+<meta name="generator" content="ReSpec 31.0.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -101,14 +101,16 @@ details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin 
 details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
 details.respec-tests-details>ul{width:100%;margin-top:-.3em}
 details.respec-tests-details>li{padding-left:1em}
-a[href].self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
-h2,h3,h4,h5,h6{position:relative}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
 aside.example .marker>a.self-link{color:inherit}
-:is(h2,h3,h4,h5,h6)>a.self-link{border:none;color:inherit;font-size:83%;height:2em;left:-1.6em;opacity:.5;position:absolute;text-align:center;text-decoration:none;top:0;transition:opacity .2s;width:2em}
-:is(h2,h3,h4,h5,h6)>a.self-link::before{content:"§";display:block}
+.header-wrapper{display:flex;align-items:center}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;top:.8rem;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+:is(h4,h5,h6)+a.self-link{top:.6rem}
 @media (max-width:767px){
 dd{margin-left:0}
-:is(h2,h3,h4,h5,h6)>a.self-link{left:auto;top:auto}
 }
 @media print{
 .removeOnSave{display:none}
@@ -233,36 +235,36 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "core-aam-1.2",
     "wai-aria-1.2"
   ],
-  "publishISODate": "2022-01-20T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 20 January 2022"
+  "publishISODate": "2022-02-15T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 15 February 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
 <body class="h-entry" data-cite="core-aam-1.2 wai-aria-1.2"><div class="head">
-    <a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
-  </a> <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1>
-    
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-01-20">20 January 2022</time></p>
+    <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
+  </a></p>
+    <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1> 
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-02-15">15 February 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
                 <a class="u-url" href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a>
-              </dd><dt>Latest published version:</dt><dd>
+              </dd>
+        <dt>Latest published version:</dt><dd>
                 <a href="https://www.w3.org/TR/accname-1.2/">https://www.w3.org/TR/accname-1.2/</a>
               </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/accname/">https://w3c.github.io/accname/</a></dd>
         <dt>History:</dt><dd>
-      <a href="https://www.w3.org/standards/history/accname-1.2">https://www.w3.org/standards/history/accname-1.2</a>
-    </dd><dd>
-        <a href="https://github.com/w3c/accname/commits/">Commit history</a>
-      </dd>
+                    <a href="https://www.w3.org/standards/history/accname-1.2">https://www.w3.org/standards/history/accname-1.2</a>
+                  </dd><dd>
+                    <a href="https://github.com/w3c/accname/commits/">Commit history</a>
+                  </dd>
         
         
         
         
         <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/accname/">https://www.w3.org/TR/accname/</a></dd>
-        <dt>Editors:</dt>
-        <dd class="editor p-author h-card vcard" data-editor-id="67215">
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="67215">
     <span class="p-name fn">Bryan Garaventa</span> (<a class="p-org org h-org" href="https://www.levelaccess.com/">Level Access</a>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="125865">
     <span class="p-name fn">Melanie Sumner</span> (<a class="p-org org h-org" href="https://www.linkedin.com/">LinkedIn</a>)
@@ -311,12 +313,12 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </p>
     <hr title="Separator for header">
   </div>
-<section id="abstract" class="introductory"><h2 id="abstract-0">Abstract<a class="self-link" href="#abstract" aria-label="Permalink for Section"></a></h2>
+<section id="abstract" class="introductory"><h2>Abstract</h2>
   <p>This document describes how <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-user-agent">user agents</a> determine the <a class="termref informative" data-lt="accessible name" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-name">names</a> and <a class="termref informative" data-lt="accessible description" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-description">descriptions</a> of <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-object">accessible objects</a> from web content languages. This information is in turn exposed through <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-api">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> so that <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-assistive-technology">assistive technologies</a> can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility <abbr title="Application Programming Interfaces">APIs</abbr> and helps to ensure that this information appears in a manner consistent with author intent.</p>
   <p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="https://www.w3.org/TR/wai-aria-1.2/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-wai-aria" title="Accessible Rich Internet Applications (WAI-ARIA) 1.1">WAI-ARIA</a></cite>] <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-role">roles</a>, <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-state">states</a>, and <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-property">properties</a> as well as features specific to individual content languages.</p>
   <p>This document updates and will eventually supersede the accessible name and description guidance in the <a href="https://www.w3.org/TR/accname-1.1/">Accessible Name and Description Computation 1.1</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-accname-1.1" title="Accessible Name and Description Computation 1.1">ACCNAME-1.1</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="https://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
 </section>
-<section id="sotd" class="introductory"><h2 id="status-of-this-document">Status of This Document<a class="self-link" href="#sotd" aria-label="Permalink for Section"></a></h2><p><em>This section describes the status of this
+<section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
       document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
       publications and the latest revision of this technical report can be found
       in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
@@ -334,7 +336,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     
         This document was produced by a group
         operating under the
-        <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/">1 August 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent
           Policy</a>.
       
     
@@ -344,41 +346,41 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           the group; that page also includes
           instructions for disclosing a patent. An individual who has actual
           knowledge of a patent which the individual believes contains
-          <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/#def-essential">Essential Claim(s)</a>
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
           must disclose the information in accordance with
-          <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
         
   </p><p>
                   This document is governed by the
                   <a id="w3c_process_revision" href="https://www.w3.org/2021/Process-20211102/">2 November 2021 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
                 </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">2. </bdi>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rfc-2119-keywords"><bdi class="secno">2.1 </bdi>RFC-2119 Keywords</a></li><li class="tocline"><a class="tocxref" href="#normative-and-informative-sections"><bdi class="secno">2.2 </bdi>Normative and Informative Sections</a></li></ol></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd"><bdi class="secno">3. </bdi>Name and Description</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_name"><bdi class="secno">3.1 </bdi>Name Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_description"><bdi class="secno">3.2 </bdi>Description Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_te"><bdi class="secno">3.3 </bdi>Accessible Name and Description Computation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">3.3.1 </bdi>Terminology</a></li><li class="tocline"><a class="tocxref" href="#computation-steps"><bdi class="secno">3.3.2 </bdi>Computation steps</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessible-name-and-description-mapping"><bdi class="secno">4. </bdi>Accessible Name and Description Mapping</a></li><li class="tocline"><a class="tocxref" href="#appendices"><bdi class="secno">5. </bdi>Appendices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changelog"><bdi class="secno">5.1 </bdi>Change Log</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-last-public-working-draft"><bdi class="secno">5.1.1 </bdi>Substantive changes since the last public working draft</a></li><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><bdi class="secno">5.1.2 </bdi>Substantive changes since the <span class="formerLink">Accessible Name and Description Computation 1.1 Recommendation</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">5.2 </bdi>Acknowledgments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ack_group"><bdi class="secno">5.2.1 </bdi>Participants active in the ARIA WG at the time of publication</a></li><li class="tocline"><a class="tocxref" href="#ack_others"><bdi class="secno">5.2.2 </bdi>Other ARIA contributors, commenters, and previously active participants</a></li><li class="tocline"><a class="tocxref" href="#ack_funders"><bdi class="secno">5.2.3 </bdi>Enabling funders</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
-<section id="intro" class="informative">
-  <h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction<a class="self-link" href="#intro" aria-label="Permalink for Section 1."></a></h2><p><em>This section is non-normative.</em></p>
+<section id="intro" class="informative"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#intro" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
+  
   <p><a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-user-agent">User agents</a> acquire information from the <abbr title="Document Object Model">DOM</abbr> [<cite><a class="bibref" data-link-type="biblio" href="#bib-dom" title="DOM Standard">DOM</a></cite>] and create a parallel structure called the <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/core-aam-1.2/#dfn-accessibility-tree">accessibility tree</a>, made up of <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-object">accessible objects</a>. An accessible object provides information about its <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-role">role</a>, <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-state">states</a>, and <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-property">properties</a>. An example is an accessible object whose role is <code>menuitem</code>, is currently in an <code>enabled</code> state, with a <code>haspopup</code> property, indicating that it leads to a sub-menu. </p>
   <p>The two properties of accessible objects described in this document are its <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-name">accessible name</a> and <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-description">accessible description</a>.  The name is a short label that provides information about the purpose of the object.  An example of an accessible name for a menu item is <code>New</code>, signifying that the menu item provides for the creation of new documents, windows, and so on.  </p>
   <p>The description is a short explanation that further clarifies the nature of the accessible object.  It is not always necessary to provide a description  if the name is sufficient, but it can help a user better understand the use of the object.</p>
   <p><a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-api">Accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> currently support flat, unstructured strings for accessible names and descriptions.  The result of the name/description computation is thus a flat string. </p>
   <p>The terms "accessible name" and "accessible description" are used to emphasize that they are properties of <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-object">accessible objects</a> as exposed by <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-api">Accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a>.  However, they are frequently referred to hereafter as simply "name" and "description".</p>
 </section>
-<section id="conformance"><h2 id="x2-conformance"><bdi class="secno">2. </bdi>Conformance<a class="self-link" href="#conformance" aria-label="Permalink for Section 2."></a></h2><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+<section id="conformance"><div class="header-wrapper"><h2 id="x2-conformance"><bdi class="secno">2. </bdi>Conformance</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 2."></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
         The key words <em class="rfc2119">MUST</em> and <em class="rfc2119">MUST NOT</em> in this document
         are to be interpreted as described in
         <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
         [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
         when, and only when, they appear in all capitals, as shown here.
       </p>
-  <section id="rfc-2119-keywords">
-    <h3 id="x2-1-rfc-2119-keywords"><bdi class="secno">2.1 </bdi>RFC-2119 Keywords<a class="self-link" href="#rfc-2119-keywords" aria-label="Permalink for Section 2.1"></a></h3>
+  <section id="rfc-2119-keywords"><div class="header-wrapper"><h3 id="x2-1-rfc-2119-keywords"><bdi class="secno">2.1 </bdi>RFC-2119 Keywords</h3><a class="self-link" href="#rfc-2119-keywords" aria-label="Permalink for Section 2.1"></a></div>
+    
     <p>RFC-2119 keywords are formatted in uppercase and contained in a <code>strong</code> element with <code>class="rfc2119"</code>. When the keywords shown above are used, but do not share this format, they do not convey formal information in the RFC 2119 sense, and are merely explanatory, i.e., informative. As much as possible, such usages are avoided in this specification.</p>
   </section>
-  <section id="normative-and-informative-sections">
-    <h3 id="x2-2-normative-and-informative-sections"><bdi class="secno">2.2 </bdi>Normative and Informative Sections<a class="self-link" href="#normative-and-informative-sections" aria-label="Permalink for Section 2.2"></a></h3>
+  <section id="normative-and-informative-sections"><div class="header-wrapper"><h3 id="x2-2-normative-and-informative-sections"><bdi class="secno">2.2 </bdi>Normative and Informative Sections</h3><a class="self-link" href="#normative-and-informative-sections" aria-label="Permalink for Section 2.2"></a></div>
+    
     <p>The indication whether a section is <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-normative">normative</a> or <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-informative">non-normative</a> (informative) applies to the entire section including sub-sections.</p>
     <p>Informative sections provide information useful to understanding the specification. Such sections may contain examples of recommended practice, but it is not required to follow such recommendations in order to conform to this specification.</p>
   </section>
 </section>
-<section id="mapping_additional_nd" class="normative">
-  <h2 id="x3-name-and-description"><bdi class="secno">3. </bdi>Name and Description<a class="self-link" href="#mapping_additional_nd" aria-label="Permalink for Section 3."></a></h2>
+<section id="mapping_additional_nd" class="normative"><div class="header-wrapper"><h2 id="x3-name-and-description"><bdi class="secno">3. </bdi>Name and Description</h2><a class="self-link" href="#mapping_additional_nd" aria-label="Permalink for Section 3."></a></div>
+  
   <p>The starting point of the name and description computation is a <abbr title="Document Object Model">DOM</abbr> <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a>.  The output is a flat, unstructured string that can be as simple as a single word, or a string of space-separated tokens.  Examples include <code>Save</code> and <code>Reload from disk</code>.</p>
   <p>An important factor is the <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a>'s <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-role">role</a>, that determines which content contributes to the name string.  Roles have a <code>nameFrom</code> <abbr title="Resource Description Framework">RDF</abbr> property, with three possible values:  </p>
   <dl class="runin">
@@ -390,20 +392,20 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <dd>the element has no name. Authors <em class="rfc2119" title="MUST NOT"><em class="rfc2119">MUST NOT</em></em> use the <a href="https://w3c.github.io/aria/#aria-label" class="property-reference"><code>aria-label</code></a> or <a href="https://w3c.github.io/aria/#aria-labelledby" class="property-reference"><code>aria-labelledby</code></a> attributes to name the element.</dd>
   </dl>
   <p>The <cite><a class="specref" href="https://w3c.github.io/aria/#">Accessible Rich Internet Applications (<abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr>) 1.2</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-wai-aria" title="Accessible Rich Internet Applications (WAI-ARIA) 1.1">WAI-ARIA</a></cite>] specification provides lists of <a class="specref" href="https://w3c.github.io/aria/#namefromauthor">roles that support name from author</a>, <a class="specref" href="https://w3c.github.io/aria/#namefromcontent">roles that support name from content</a> and <a class="specref" href="https://w3c.github.io/aria/#namefromprohibited">roles that cannot be named</a>.</p>
-  <section id="mapping_additional_nd_name">
-    <h3 id="x3-1-name-computation"><bdi class="secno">3.1 </bdi>Name Computation<a class="self-link" href="#mapping_additional_nd_name" aria-label="Permalink for Section 3.1"></a></h3>
+  <section id="mapping_additional_nd_name"><div class="header-wrapper"><h3 id="x3-1-name-computation"><bdi class="secno">3.1 </bdi>Name Computation</h3><a class="self-link" href="#mapping_additional_nd_name" aria-label="Permalink for Section 3.1"></a></div>
+    
     <p><a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-user-agent">User agents</a> <em class="rfc2119">MUST</em> compute an <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-name">accessible name</a> using the rules outlined below in the section titled <a href="#mapping_additional_nd_te">Accessible Name and Description Computation</a>.</p>
   </section>
-  <section id="mapping_additional_nd_description">
-    <h3 id="x3-2-description-computation"><bdi class="secno">3.2 </bdi>Description Computation<a class="self-link" href="#mapping_additional_nd_description" aria-label="Permalink for Section 3.2"></a></h3>
+  <section id="mapping_additional_nd_description"><div class="header-wrapper"><h3 id="x3-2-description-computation"><bdi class="secno">3.2 </bdi>Description Computation</h3><a class="self-link" href="#mapping_additional_nd_description" aria-label="Permalink for Section 3.2"></a></div>
+    
     <p>If <a class="property-reference" href="https://w3c.github.io/aria/#aria-describedby"><code>aria-describedby</code></a> is present, <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-user-agent">user agents</a> <em class="rfc2119">MUST</em> compute the accessible description by concatenating the text alternatives for elements referenced by an <code>aria-describedby</code> attribute on the current element. The text alternatives for the referenced elements are computed using a number of methods, outlined below in the section titled <a href="#mapping_additional_nd_te">Accessible Name and Description Computation</a>. </p>
   </section>
-  <section id="mapping_additional_nd_te">
-    <h3 id="x3-3-accessible-name-and-description-computation"><bdi class="secno">3.3 </bdi>Accessible Name and Description Computation<a class="self-link" href="#mapping_additional_nd_te" aria-label="Permalink for Section 3.3"></a></h3>
+  <section id="mapping_additional_nd_te"><div class="header-wrapper"><h3 id="x3-3-accessible-name-and-description-computation"><bdi class="secno">3.3 </bdi>Accessible Name and Description Computation</h3><a class="self-link" href="#mapping_additional_nd_te" aria-label="Permalink for Section 3.3"></a></div>
+    
     <p>The accessible name and description computation is used to generate both the <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-name">accessible name</a> and <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-description">accessible description</a>. There are different rules provided for several different types of <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">elements</a>, <a class="termref informative" data-lt="node" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-node">nodes</a>, and combinations of markup. Text alternatives are built up, when appropriate, from all the relevant content contained within an <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a>. This is accomplished via steps 2B and 2F, which are recursive, using the full set of rules to retrieve text from its own children or nodes it references. </p>
     <p>The purpose of the computation is to create a <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-perceivable">perceivable</a> label or description for alternative presentations, in the form of a flat string of space separated textual tokens. </p>
-    <section id="terminology">
-      <h4 id="x3-3-1-terminology"><bdi class="secno">3.3.1 </bdi>Terminology<a class="self-link" href="#terminology" aria-label="Permalink for Section 3.3.1"></a></h4>
+    <section id="terminology"><div class="header-wrapper"><h4 id="x3-3-1-terminology"><bdi class="secno">3.3.1 </bdi>Terminology</h4><a class="self-link" href="#terminology" aria-label="Permalink for Section 3.3.1"></a></div>
+      
       <dl>
         <dt>Root node</dt>
         <dd>The <abbr title="Document Object Model">DOM</abbr> <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-node">node</a> or <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-element">element</a> for which the text alternative is sought.</dd>
@@ -447,8 +449,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </dd>
       </dl>
     </section>
-    <section id="computation-steps">
-      <h4 id="x3-3-2-computation-steps"><bdi class="secno">3.3.2 </bdi>Computation steps<a class="self-link" href="#computation-steps" aria-label="Permalink for Section 3.3.2"></a></h4>
+    <section id="computation-steps"><div class="header-wrapper"><h4 id="x3-3-2-computation-steps"><bdi class="secno">3.3.2 </bdi>Computation steps</h4><a class="self-link" href="#computation-steps" aria-label="Permalink for Section 3.3.2"></a></div>
+      
       <p>The text alternative for a given element is computed as follows:</p>
       <ol>
         <li id="step1">Set the <code>root node</code> to the given element, the <code>current node</code> to the <code>root node</code>, and the <code>total accumulated text</code> to the empty string (""). If the <code>root node</code>'s role prohibits naming, return the empty string ("").</li>
@@ -575,33 +577,33 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </section>
   </section>
 </section>
-<section id="accessible-name-and-description-mapping">
-  <h2 id="x4-accessible-name-and-description-mapping"><bdi class="secno">4. </bdi>Accessible Name and Description Mapping<a class="self-link" href="#accessible-name-and-description-mapping" aria-label="Permalink for Section 4."></a></h2>
+<section id="accessible-name-and-description-mapping"><div class="header-wrapper"><h2 id="x4-accessible-name-and-description-mapping"><bdi class="secno">4. </bdi>Accessible Name and Description Mapping</h2><a class="self-link" href="#accessible-name-and-description-mapping" aria-label="Permalink for Section 4."></a></div>
+  
   <p>Information concerning name and description accessibility <abbr title="Application Programming Interface">API</abbr> mappings, including relationships, such as labelled-by/label-for and described-by/description-for, is documented in the <a href="https://w3c.github.io/core-aam/" class="core-mapping">Core Accessibility <abbr title="Application Programming Interface">API</abbr> Mappings</a> specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-core-aam-1.2" title="Core Accessibility API Mappings 1.2">CORE-AAM-1.2</a></cite>]. See the mapping table entries for <a class="core-mapping" href="https://w3c.github.io/core-aam/#ariaLabel"><code>aria-label</code></a>, <a class="core-mapping" href="https://w3c.github.io/core-aam/#ariaLabelledBy"><code>aria-labelledby</code></a>, and <a class="core-mapping" href="https://w3c.github.io/core-aam/#ariaDescribedBy"><code>aria-describedby</code></a>.</p>
 </section>
-<section id="appendices">
-  <h2 id="x5-appendices"><bdi class="secno">5. </bdi>Appendices<a class="self-link" href="#appendices" aria-label="Permalink for Section 5."></a></h2>
-  <section class="appendix" id="changelog">
-    <h3 id="x5-1-change-log"><bdi class="secno">5.1 </bdi>Change Log<a class="self-link" href="#changelog" aria-label="Permalink for Appendix 5.1"></a></h3>
-    <section id="substantive-changes-since-the-last-public-working-draft">
-      <h4 id="x5-1-1-substantive-changes-since-the-last-public-working-draft"><bdi class="secno">5.1.1 </bdi>Substantive changes since the last public working draft<a class="self-link" href="#substantive-changes-since-the-last-public-working-draft" aria-label="Permalink for Appendix 5.1.1"></a></h4>
+<section id="appendices"><div class="header-wrapper"><h2 id="x5-appendices"><bdi class="secno">5. </bdi>Appendices</h2><a class="self-link" href="#appendices" aria-label="Permalink for Section 5."></a></div>
+  
+  <section class="appendix" id="changelog"><div class="header-wrapper"><h3 id="x5-1-change-log"><bdi class="secno">5.1 </bdi>Change Log</h3><a class="self-link" href="#changelog" aria-label="Permalink for Appendix 5.1"></a></div>
+    
+    <section id="substantive-changes-since-the-last-public-working-draft"><div class="header-wrapper"><h4 id="x5-1-1-substantive-changes-since-the-last-public-working-draft"><bdi class="secno">5.1.1 </bdi>Substantive changes since the last public working draft</h4><a class="self-link" href="#substantive-changes-since-the-last-public-working-draft" aria-label="Permalink for Appendix 5.1.1"></a></div>
+      
       <ul>
         
       </ul>
     </section>
-    <section id="substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation">
-      <h4 id="x5-1-2-substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><bdi class="secno">5.1.2 </bdi>Substantive changes since the <a href="https://www.w3.org/TR/accname-1.1/">Accessible Name and Description Computation 1.1 Recommendation</a><a class="self-link" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation" aria-label="Permalink for Appendix 5.1.2"></a></h4>
+    <section id="substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><div class="header-wrapper"><h4 id="x5-1-2-substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><bdi class="secno">5.1.2 </bdi>Substantive changes since the <a href="https://www.w3.org/TR/accname-1.1/">Accessible Name and Description Computation 1.1 Recommendation</a></h4><a class="self-link" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation" aria-label="Permalink for Appendix 5.1.2"></a></div>
+      
       <ul>
         
         <li>27-June-2019: Add statement allowing for the possibility of naming being prohibited on the root node. Note: This change in and of itself has no implementation impact, but it allows other specifications to optionally prohibit naming for a top-level element. Furthermore, even if this prohibition is made within a specification, that prohibition will not have any impact on calculating name from contents.</li>
       </ul>
     </section>
   </section>
-  <section class="appendix informative section" id="acknowledgements">
-    <h3 id="x5-2-acknowledgments"><bdi class="secno">5.2 </bdi>Acknowledgments<a class="self-link" href="#acknowledgements" aria-label="Permalink for Appendix 5.2"></a></h3><p><em>This section is non-normative.</em></p>
+  <section class="appendix informative section" id="acknowledgements"><div class="header-wrapper"><h3 id="x5-2-acknowledgments"><bdi class="secno">5.2 </bdi>Acknowledgments</h3><a class="self-link" href="#acknowledgements" aria-label="Permalink for Appendix 5.2"></a></div><p><em>This section is non-normative.</em></p>
+    
     <p>The following people contributed to the development of this document.</p>
-    <section class="section" id="ack_group">
-	<h4 id="x5-2-1-participants-active-in-the-aria-wg-at-the-time-of-publication"><bdi class="secno">5.2.1 </bdi>Participants active in the ARIA WG at the time of publication<a class="self-link" href="#ack_group" aria-label="Permalink for Appendix 5.2.1"></a></h4>
+    <section class="section" id="ack_group"><div class="header-wrapper"><h4 id="x5-2-1-participants-active-in-the-aria-wg-at-the-time-of-publication"><bdi class="secno">5.2.1 </bdi>Participants active in the ARIA WG at the time of publication</h4><a class="self-link" href="#ack_group" aria-label="Permalink for Appendix 5.2.1"></a></div>
+	
 	<ul>
 		<li>Irfan Ali (Educational Testing Service)</li>
 		<li>CB Averitt (Deque Systems, Inc)</li>
@@ -700,8 +702,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 	</ul>
 </section>
 
-    <section class="section" id="ack_others">
-	<h4 id="x5-2-2-other-aria-contributors-commenters-and-previously-active-participants"><bdi class="secno">5.2.2 </bdi>Other ARIA contributors, commenters, and previously active participants<a class="self-link" href="#ack_others" aria-label="Permalink for Appendix 5.2.2"></a></h4>
+    <section class="section" id="ack_others"><div class="header-wrapper"><h4 id="x5-2-2-other-aria-contributors-commenters-and-previously-active-participants"><bdi class="secno">5.2.2 </bdi>Other ARIA contributors, commenters, and previously active participants</h4><a class="self-link" href="#ack_others" aria-label="Permalink for Appendix 5.2.2"></a></div>
+	
 	<ul>
 		<li>Ann Abbott (Invited Expert)</li>
 		<li>Shadi Abou-Zahra (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
@@ -849,8 +851,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 	</ul>
 </section>
 
-    <section class="section" id="ack_funders">
-	<h4 id="x5-2-3-enabling-funders"><bdi class="secno">5.2.3 </bdi>Enabling funders<a class="self-link" href="#ack_funders" aria-label="Permalink for Appendix 5.2.3"></a></h4>
+    <section class="section" id="ack_funders"><div class="header-wrapper"><h4 id="x5-2-3-enabling-funders"><bdi class="secno">5.2.3 </bdi>Enabling funders</h4><a class="self-link" href="#ack_funders" aria-label="Permalink for Appendix 5.2.3"></a></div>
+	
 	<p>This publication has been funded in part with U.S. Federal funds from the Department of Education, National Institute on Disability, Independent Living, and Rehabilitation Research (NIDILRR), initially under contract number ED-OSE-10-C-0067 and currently under contract number HHSP23301500054C. The content of this publication does not necessarily reflect the views or policies of the U.S. Department of Education, nor does mention of trade names, commercial products, or organizations imply endorsement by the U.S. Government.</p>
 </section>
 
@@ -858,12 +860,28 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 </section>
 
 
-<section id="references" class="appendix"><h2 id="a-references"><bdi class="secno">A. </bdi>References<a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></h2><section id="normative-references">
-    <h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references<a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></h3>
-    <dl class="bibliography"><dt id="bib-core-aam-1.2">[CORE-AAM-1.2]</dt><dd><a href="https://www.w3.org/TR/core-aam-1.2/"><cite>Core Accessibility API Mappings 1.2</cite></a>. Joanmarie Diggs; Michael Cooper; Richard Schwerdtfeger; Joseph Scheuhammer; Andi Snow-Weaver; Aaron Leventhal; Melanie Richards; James Craig; Alexander Surkov.  W3C. 18 December 2019. W3C Working Draft. URL: <a href="https://www.w3.org/TR/core-aam-1.2/">https://www.w3.org/TR/core-aam-1.2/</a></dd><dt id="bib-css2">[CSS2]</dt><dd><a href="https://www.w3.org/TR/CSS21/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS21/">https://www.w3.org/TR/CSS21/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-wai-aria">[WAI-ARIA]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a></dd></dl>
-  </section><section id="informative-references">
-    <h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references<a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></h3>
-    <dl class="bibliography"><dt id="bib-accname-1.1">[ACCNAME-1.1]</dt><dd><a href="https://www.w3.org/TR/accname-1.1/"><cite>Accessible Name and Description Computation 1.1</cite></a>. Joanmarie Diggs; Bryan Garaventa; Michael Cooper.  W3C. 18 December 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-wai-aria-1.2">[wai-aria-1.2]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.2/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.2</cite></a>. Joanmarie Diggs; James Nurthen; Michael Cooper.  W3C. 8 December 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.2/">https://www.w3.org/TR/wai-aria-1.2/</a></dd></dl>
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-core-aam-1.2">[CORE-AAM-1.2]</dt><dd>
+      <a href="https://www.w3.org/TR/core-aam-1.2/"><cite>Core Accessibility API Mappings 1.2</cite></a>. Joanmarie Diggs; Alexander Surkov; Michael Cooper.  W3C. 20 January 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/core-aam-1.2/">https://www.w3.org/TR/core-aam-1.2/</a>
+    </dd><dt id="bib-css2">[CSS2]</dt><dd>
+      <a href="https://www.w3.org/TR/CSS21/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS21/">https://www.w3.org/TR/CSS21/</a>
+    </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+    </dd><dt id="bib-wai-aria">[WAI-ARIA]</dt><dd>
+      <a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a>
+    </dd></dl>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-accname-1.1">[ACCNAME-1.1]</dt><dd>
+      <a href="https://www.w3.org/TR/accname-1.1/"><cite>Accessible Name and Description Computation 1.1</cite></a>. Joanmarie Diggs; Bryan Garaventa; Michael Cooper.  W3C. 18 December 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/accname-1.1/">https://www.w3.org/TR/accname-1.1/</a>
+    </dd><dt id="bib-dom">[DOM]</dt><dd>
+      <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
+    </dd><dt id="bib-wai-aria-1.2">[wai-aria-1.2]</dt><dd>
+      <a href="https://www.w3.org/TR/wai-aria-1.2/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.2</cite></a>. Joanmarie Diggs; James Nurthen; Michael Cooper.  W3C. 8 December 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.2/">https://www.w3.org/TR/wai-aria-1.2/</a>
+    </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
   </p><script id="respec-dfn-panel">(() => {
