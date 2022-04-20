@@ -477,15 +477,46 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <li id="step1">Set the <code>root node</code> to the given element, the <code>current node</code> to the <code>root node</code>, and the <code>total accumulated text</code> to the empty string (""). If the <code>root node</code>'s role prohibits naming, return the empty string ("").</li>
         <li id="step2">Compute the text alternative for the <code>current node</code>:
           <ol>
-            <li id="step2A">If the <code>current node</code> is <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-hidden">hidden</a> <strong>and is not</strong> directly referenced by <code>aria-labelledby</code> or <code>aria-describedby</code>, nor directly referenced by a native host language text alternative <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>) or <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a>, return the empty string.
+            <li id="step2A">If the <code>current node</code> is <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-hidden">hidden</a> <strong>and is</strong>:
+            <ul>
+              <li><strong>Not</strong> part of an <code>aria-labelledby</code> or <code>aria-describedby</code> traversal, where the node directy referenced by that relation was hidden.</li>
+              <li><strong>Nor</strong> part of a native host language text alternative <a class="termref informative" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>) or <a class="termref informative" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> traversal, where the root of that traversal was hidden.</li>
+            </ul>
+            Return the empty string.
+              <div><details>
+                <summary>Comment:</summary>
+                <p>It's important to clarify the broad definition of hidden for the purposes of accessible name calculation:
+                </p><ul>
+                  <li>Nodes with <abbr title="Cascading Style Sheets">CSS</abbr> properties <code>display:none</code>, <code>visibility:hidden</code>, <code>visibility:collapse</code> or <code>content-visibility:hidden</code>: They are considered hidden, as they match the guidelines "not perceivable" and "explicitly hidden".</li>
+                  <li>Nodes with <abbr title="Cascading Style Sheets">CSS</abbr> properties <code>opacity:0</code> or <code>filter:opacity(0%)</code>, or similar <abbr title="Scalable Vector Graphics">SVG</abbr> mechanisms: They are not considered hidden. Text hidden with these methods can still be selected or copied, and user agents still expose it in their accessibility trees.</li>
+                  <li>Nodes with the <code>aria-hidden="true"</code> property: it is considered hidden, matching the "explicitly hidden" guideline.</li>
+                  <li>Nodes hidden off screen or behind another object: they are not considered hidden. They are exposed in the accessibility tree and they can even name on-screen objects.</li>
+                </ul><p></p>
+              </details></div>
               <div><details>
                 <summary>Comment:</summary>
                 <p>By default, <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-assistive-technology">assistive technologies</a> do not relay hidden information, but an author can explicitly override that and include hidden text as part of the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-6">accessible name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-5">accessible description</a> by using <code>aria-labelledby</code> or <code>aria-describedby</code>. </p>
               </details></div>
+              <div><details>
+                <summary>Example:</summary>
+                <p>The following examples show the meaning of the clause "Not part of an <code>aria-labelledby</code> or <code>aria-describedby</code> traversal, where the node directy referenced by that relation was hidden.".</p>
+                <p>First, <code>element1</code>'s <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-7">accessible name</a> is "hello" because, although <code>element3</code> is hidden, it is part of an <code>aria-labelledby</code> traversal started in <code>element2</code>, which is hidden too.</p>
+                <div class="example" id="example-1">
+        <div class="marker">
+    <a class="self-link" href="#example-1">Example<bdi> 1</bdi></a>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs"></code></pre>
+      </div>
+                <p>Conversely, <code>element1</code> has no <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-8">accessible name</a> if <code>element3</code> is hidden and it is part of an <code>aria-labelledby</code> traversal started in <code>element2</code>, but <code>element2</code> is not hidden.</p>
+                <div class="example" id="example-2">
+        <div class="marker">
+    <a class="self-link" href="#example-2">Example<bdi> 2</bdi></a>
+  </div> <pre class="highlight"><code aria-busy="false" class="hljs"></code></pre>
+      </div>
+              </details></div>
             </li>
             <li id="step2B">Otherwise:
               <ul>
-                <li>if computing a <a class="termref informative internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-7">name</a>, and the <code>current node</code> has an <code>aria-labelledby</code> <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> that contains at least one valid IDREF, and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal, process its IDREFs in the order they occur: </li>
+                <li>if computing a <a class="termref informative internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-9">name</a>, and the <code>current node</code> has an <code>aria-labelledby</code> <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> that contains at least one valid IDREF, and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal, process its IDREFs in the order they occur: </li>
                 <li>or, if computing a <a class="termref informative internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-6">description</a>, and the <code>current node</code> has an <code>aria-describedby</code> <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> that contains at least one valid IDREF, and the <code>current node</code> is not already part of an <code>aria-describedby</code> traversal, process its IDREFs in the order they occur:
                   <ol>
                     <li id="step2B.i">Set the <code>accumulated text</code> to the empty string.</li>
@@ -501,19 +532,22 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                 </li>
               </ul>
               <div><details>
+                <summary>Comment:</summary>
+                <p>The result of <a href="#step2B.ii.b">step 2B.ii.b</a> in combination with <a href="#step2A">step 2A</a> means that <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-user-agent">user agents</a> <em class="rfc2119">MUST</em> include all nodes in the subtree as part of the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-10">accessible name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-7">accessible description</a>, when the node referenced by <code>aria-labelledby</code> or <code>aria-describedby</code> is hidden.</p>
+              <div><details>
                 <summary>Example:</summary>
                 <p>The following example shows the meaning of the clause "… and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal …" .</p>
                 <ul>
-                  <li><code>element1</code>'s <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-8">accessible name</a> is "hello" because this is a first traversal of its <code>aria-labelledby</code>, leading to <code>element3</code>.</li>
-                  <li><code>element2</code> has no <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-9">accessible name</a>.  The computation involves a first traversal of its <code>aria-labelledby</code> leading to <code>element1</code>, but <code>element1</code>'s  <code>aria-labelledby</code> is not subsequently followed. </li>
+                  <li><code>element1</code>'s <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-11">accessible name</a> is "hello" because this is a first traversal of its <code>aria-labelledby</code>, leading to <code>element3</code>.</li>
+                  <li><code>element2</code> has no <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-12">accessible name</a>.  The computation involves a first traversal of its <code>aria-labelledby</code> leading to <code>element1</code>, but <code>element1</code>'s  <code>aria-labelledby</code> is not subsequently followed. </li>
                 </ul>
-                <div class="example" id="example-1">
+                <div class="example" id="example-3">
         <div class="marker">
-    <a class="self-link" href="#example-1">Example<bdi> 1</bdi></a>
+    <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
   </div> <pre class="highlight"><code aria-busy="false" class="hljs"></code></pre>
       </div>
               </details></div>
-            </li>
+            </details></div></li>
             <li id="step2C">Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. the <code>label</code> element in <abbr title="Hypertext Markup Language">HTML</abbr> or any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-widget">widget</a>, where the user can adjust the embedded control's value, then return the embedded control as part of the text alternative in the following manner:
               <ul>
                 <li>If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, return its value.</li>
@@ -529,24 +563,24 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               <div><details>
                 <summary>Example:</summary>
                 <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
-                <div class="example" id="example-2">
+                <div class="example" id="example-4">
         <div class="marker">
-    <a class="self-link" href="#example-2">Example<bdi> 2</bdi></a>
+    <a class="self-link" href="#example-4">Example<bdi> 4</bdi></a>
   </div> <pre class="highlight"><code aria-busy="false" class="hljs"></code></pre>
       </div>
               </details></div>
             </li>
-            <li id="step2D">Otherwise, if computing a <a class="termref informative internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-10">name</a>, and if the <code>current node</code> has an <code>aria-label</code> <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> whose value is not the empty string, nor, when trimmed of white space, is not the empty string:
+            <li id="step2D">Otherwise, if computing a <a class="termref informative internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-13">name</a>, and if the <code>current node</code> has an <code>aria-label</code> <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> whose value is not the empty string, nor, when trimmed of white space, is not the empty string:
               <ul>
                 <li>If traversal of the <code>current node</code> is due to recursion <strong>and</strong> the <code>current node</code> is an embedded control as defined in step 2E, ignore <code>aria-label</code> and skip to rule 2E.</li>
                 <li>Otherwise, return the value of <code>aria-label</code>.</li>
               </ul>
               <div><details>
                 <summary>Example:</summary>
-                  <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a data-link-type="dfn" data-lt="nodes" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-node">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-11">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
-                  <div class="example" id="example-3">
+                  <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a data-link-type="dfn" data-lt="nodes" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-node">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-14">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
+                  <div class="example" id="example-5">
         <div class="marker">
-    <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
+    <a class="self-link" href="#example-5">Example<bdi> 5</bdi></a>
   </div> <pre class="highlight"><code aria-busy="false" class="hljs"></code></pre>
       </div>
               </details></div>
@@ -583,7 +617,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </details></div>
             </li>
             <li id="step2G">Otherwise, if the <code>current node</code> is a <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-text-node">Text node</a>, return its textual contents.</li>
-            <li id="step2H">Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-12">Accessible Name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-7">Accessible Description</a> is being computed, and contains descendants, proceed to 2F.i.</li>
+            <li id="step2H">Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-15">Accessible Name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-8">Accessible Description</a> is being computed, and contains descendants, proceed to 2F.i.</li>
             <li id="step2I">Otherwise, if the <code>current node</code> has a <a class="termref informative internalDFN" href="#dfn-tooltip-attribute" data-link-type="dfn" id="ref-for-dfn-tooltip-attribute-1">Tooltip attribute</a>, return its value.
               <div><details>
                 <summary>Comment:</summary>
@@ -594,7 +628,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <p>Append the <code>result</code> of each step above, with a space, to the <code>total accumulated text</code>.</p>
         </li>
       </ol>
-      <p>After all steps are completed, the <code>total accumulated text</code> is used as the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-13">accessible name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-8">accessible description</a> of the <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">element</a> that initiated the computation.</p>
+      <p>After all steps are completed, the <code>total accumulated text</code> is used as the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-16">accessible name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-9">accessible description</a> of the <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">element</a> that initiated the computation.</p>
     </section>
   </section>
 </section>
@@ -922,7 +956,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </li><li>
     <a href="#ref-for-dfn-accessible-description-4" title="§ 4.3 Accessible Name and Description Computation">§ 4.3 Accessible Name and Description Computation</a> 
   </li><li>
-    <a href="#ref-for-dfn-accessible-description-5" title="§ 4.3.2 Computation steps">§ 4.3.2 Computation steps</a> <a href="#ref-for-dfn-accessible-description-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-accessible-description-7" title="Reference 3">(3)</a> <a href="#ref-for-dfn-accessible-description-8" title="Reference 4">(4)</a> 
+    <a href="#ref-for-dfn-accessible-description-5" title="§ 4.3.2 Computation steps">§ 4.3.2 Computation steps</a> <a href="#ref-for-dfn-accessible-description-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-accessible-description-7" title="Reference 3">(3)</a> <a href="#ref-for-dfn-accessible-description-8" title="Reference 4">(4)</a> <a href="#ref-for-dfn-accessible-description-9" title="Reference 5">(5)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-accessible-name" aria-label="Links in this document to definition: Accessible Name">
@@ -944,7 +978,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </li><li>
     <a href="#ref-for-dfn-accessible-name-5" title="§ 4.3 Accessible Name and Description Computation">§ 4.3 Accessible Name and Description Computation</a> 
   </li><li>
-    <a href="#ref-for-dfn-accessible-name-6" title="§ 4.3.2 Computation steps">§ 4.3.2 Computation steps</a> <a href="#ref-for-dfn-accessible-name-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-accessible-name-8" title="Reference 3">(3)</a> <a href="#ref-for-dfn-accessible-name-9" title="Reference 4">(4)</a> <a href="#ref-for-dfn-accessible-name-10" title="Reference 5">(5)</a> <a href="#ref-for-dfn-accessible-name-11" title="Reference 6">(6)</a> <a href="#ref-for-dfn-accessible-name-12" title="Reference 7">(7)</a> <a href="#ref-for-dfn-accessible-name-13" title="Reference 8">(8)</a> 
+    <a href="#ref-for-dfn-accessible-name-6" title="§ 4.3.2 Computation steps">§ 4.3.2 Computation steps</a> <a href="#ref-for-dfn-accessible-name-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-accessible-name-8" title="Reference 3">(3)</a> <a href="#ref-for-dfn-accessible-name-9" title="Reference 4">(4)</a> <a href="#ref-for-dfn-accessible-name-10" title="Reference 5">(5)</a> <a href="#ref-for-dfn-accessible-name-11" title="Reference 6">(6)</a> <a href="#ref-for-dfn-accessible-name-12" title="Reference 7">(7)</a> <a href="#ref-for-dfn-accessible-name-13" title="Reference 8">(8)</a> <a href="#ref-for-dfn-accessible-name-14" title="Reference 9">(9)</a> <a href="#ref-for-dfn-accessible-name-15" title="Reference 10">(10)</a> <a href="#ref-for-dfn-accessible-name-16" title="Reference 11">(11)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-tooltip-attribute" aria-label="Links in this document to definition: Tooltip attribute">
