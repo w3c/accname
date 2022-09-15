@@ -224,6 +224,8 @@
         <dd>The <abbr title="Document Object Model">DOM</abbr> [=nodes|node=] or [=element=] for which the text alternative is sought.</dd>
         <dt>Current node</dt>
         <dd>The <abbr title="Document Object Model">DOM</abbr> [=nodes|node=] currently traversed to compute the <code>root node</code>'s text equivalent.  Initially, the <code>current node</code> is the <code>root node</code>, but at later stages is either some descendant of the <code>root node</code>, or another referenced node.</dd>
+        <dt>Displayed child nodes</dt>
+        <dd>The <abbr title="Document Object Model">DOM</abbr> [=nodes=] that are rendered as child nodes of a given node when taking [=shadow root|shadow roots=] and [=slot|slots=] into consideration.</dd>
         <dt>Flat string</dt>
         <dd>A string of characters where all carriage returns, newlines, tabs, and form-feeds are replaced with a single space, and multiple spaces are reduced to a single space.  The string contains only character data; it does not contain any markup.  </dd>
         <dt>Total accumulated text</dt>
@@ -394,11 +396,23 @@
                     <li>For <code>:after</code> pseudo elements, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr>  textual content, without a space, to the textual content of the <code>current node</code>. </li>
                   </ul>
                 </li>
-                <li id="step2F.iii">For each child node of the <code>current node</code>:
+                <li id="step2F.iii">
+                  Determine the <code>displayed child nodes</code> of the <code>current node</code>:
                   <ol>
-                    <li id="step2F.iii.a">Set the <code>current node</code> to the child node.</li>
-                    <li id="step2F.iii.b">Compute the text alternative of the  <code>current node</code> beginning with step 2.  Set the <code>result</code> to that text alternative.</li>
-                    <li id="step2F.iii.c">Append the <code>result</code> to the <code>accumulated text</code>. </li>
+                    <li id="step2F.iii.a">If the <code>current node</code> has an attached [=shadow root=], set the <code>displayed child nodes</code> to be the child nodes of the [=shadow root=].</li>
+                    <li id="step2F.iii.b">Otherwise, if the <code>current node</code> is a [=slot=] with [=slot/assigned nodes=], set the <code>displayed child nodes</code> to be the [=slot/assigned nodes=] of the <code>current node</code>.</li>
+                    <div><details>
+                      <summary>Comment:</summary>
+                      <p>A [=slot=] with [=slot/assigned nodes=] displays those nodes; otherwise it displays its default content, i.e. its child nodes.</p>
+                    </details></div>
+                    <li id="step2F.iii.c">Otherwise, set the <code>displayed child nodes</code> to be the child nodes of the <code>current node</code>.</li>
+                  </ol>
+                </li>
+                <li id="step2F.iiii">For each <code>displayed child node</code> of the <code>displayed child nodes</code> of the <code>current node</code>:
+                  <ol>
+                    <li id="step2F.iiii.a">Set the <code>current node</code> to the <code>displayed child node</code>.</li>
+                    <li id="step2F.iiii.b">Compute the text alternative of the  <code>current node</code> beginning with step 2.  Set the <code>result</code> to that text alternative.</li>
+                    <li id="step2F.iiii.c">Append the <code>result</code> to the <code>accumulated text</code>. </li>
                   </ol>
                 </li>
                 <li id="step2F.iv">Return the <code>accumulated text</code> if it is not the empty string ("").</li>
