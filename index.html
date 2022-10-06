@@ -308,13 +308,13 @@
             </li>
             <li id="step2B">Otherwise:
               <ul>
-                <li>if computing a <a class="termref" data-lt="accessible name">name</a>, and the <code>current node</code> has an <code>aria-labelledby</code> [=attribute=] that contains at least one valid IDREF or an <code>ariaLabelledByElements</code> array that contains at least one valid element, and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal, process its IDREFs or elements in the order they occur: </li>
-                <li>or, if computing a <a class="termref" data-lt="accessible description">description</a>, and the <code>current node</code> has an <code>aria-describedby</code> [=attribute=] that contains at least one valid IDREF or an <code>ariaDescribedByElements</code> array that contains at least one valid element, and the <code>current node</code> is not already part of an <code>aria-describedby</code> traversal, process its IDREFs or elements in the order they occur:
+                <li>if computing a <a class="termref" data-lt="accessible name">name</a>, and the <code>current node</code> has an <code>ariaLabelledByElements</code> array property that contains at least one valid element, and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal, process its <code>ariaLabelledByElements</code> in the order they occur: </li>
+                <li>or, if computing a <a class="termref" data-lt="accessible description">description</a>, and the <code>current node</code> has an <code>ariaDescribedByElements</code> array property that contains at least one valid element, and the <code>current node</code> is not already part of an <code>aria-describedby</code> traversal, process its <code>ariaDescribedByElements</code> elements in the order they occur:
                   <ol>
                     <li id="step2B.i">Set the <code>accumulated text</code> to the empty string.</li>
-                    <li id="step2B.ii">For each IDREF or element in the array:
+                    <li id="step2B.ii">For each element in the array property:
                       <ol>
-                        <li id="step2B.ii.a">Set the <code>current node</code> to the element referenced by the IDREF or element in the array.</li>
+                        <li id="step2B.ii.a">Set the <code>current node</code> to the element.</li>
                         <li id="step2B.ii.b">Compute the text alternative of the <code>current node</code> beginning with step 2. Set the <code>result</code> to that text alternative.</li>
                         <li id="step2B.ii.c">Append the <code>result</code>, with a space, to the <code>accumulated text</code>.</li>
                       </ol>
@@ -323,6 +323,10 @@
                   </ol>
                 </li>
               </ul>
+              <div><details>
+                <summary>Comment:</summary>
+                <p>The <code>aria-labelledby</code> attribute corresponds to the <code>ariaLabelledByElements</code> array property, and the <code>aria-describedby</code> attribute corresponds to the <code>ariaDescribedByElements</code> array property.</code> The attribute values are not guaranteed to reflect the true state of the accessibility tree (e.g. in cases where the referenced elements do not have an [=Element/id|ID=] or are contained in a different [=shadow root=]). In cases of conflict, the array property should be considered the source of truth.</p>
+              </details></div>
               <div><details>
                 <summary>Comment:</summary>
                 <p>The result of <a href="#step2B.ii.b">step 2B.ii.b</a> in combination with <a href="#step2A">step 2A</a> means that <a class="termref">user agents</a> MUST include all nodes in the subtree as part of the <a class="termref">accessible name</a> or <a class="termref">accessible description</a>, when the node referenced by <code>aria-labelledby</code> or <code>aria-describedby</code> is hidden.</p>
@@ -339,7 +343,7 @@
                 </pre>
               </details></div>
             </li>
-            <li id="step2C">Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref">widget</a>, where the user can adjust the embedded control's value, then return the embedded control as part of the text alternative in the following manner:
+            <li id="step2C">Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. any element directly referenced by <code>ariaLabelledByElements</code>) for another <a class="termref">widget</a>, where the user can adjust the embedded control's value, then return the embedded control as part of the text alternative in the following manner:
               <ul>
                 <li>If the embedded control has role <a class="role-reference" href="#textbox">textbox</a>, return its value.</li>
                 <li>If the embedded control has role <a class="role-reference" href="#combobox">combobox</a> or <a class="role-reference" href="#listbox">listbox</a>, return the text alternative of the chosen <a class="role-reference" href="#option">option</a>.</li>
@@ -386,7 +390,7 @@
                 <p>For example, in <abbr title="Hypertext Markup Language">HTML</abbr>, the <code>img</code> element's <code>alt</code> attribute defines a text alternative string, and the <code>label</code> element provides text for the referenced form element.  In <abbr title="SVG2">SVG2</abbr>, the <code>desc</code> and <code>title</code> elements provide a description of their parent element. </p>
               </details></div>
             </li>
-            <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref">role</a> allows <a class="specref" href="#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, <code>ariaLabelledByElements</code>, or <code>ariaDescribedByElements</code>, or is a native host language text alternative [=element=] (e.g. <code>label</code> in HTML), or is a descendant of a native host language text alternative [=element=]:
+            <li id="step2F">Otherwise, if the <code>current node's</code> <a class="termref">role</a> allows <a class="specref" href="#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>ariaLabelledByElements</code> or <code>ariaDescribedByElements</code>, or is a native host language text alternative [=element=] (e.g. <code>label</code> in HTML), or is a descendant of a native host language text alternative [=element=]:
               <ol>
                 <li id="step2F.i">Set the <code>accumulated text</code> to the empty string.</li>
                 <li id="step2F.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements [[!CSS2]] can provide textual content for [=element|elements=] that have a content model.
