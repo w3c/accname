@@ -235,42 +235,21 @@
           <td>Use on any element</td>
           <td>As a flat string</td>
         </tr>
-        <tr>
-          <th>3</th>
-          <td>HTML <code>value</code> attribute or equivalent host language feature</td>
-          <td>
-            <ul>
-              <li>Only use on HTML <code>&lt;input type="button"|"submit"|"reset"&gt;</code> or equivalent host language features</li>
-              <li>Only use if not already used for the accessible name of this node</li>
-            </ul>
-          </td>
-          <td>As a flat string</td>
-        </tr>
+				<tr>
+					<th>3</th>
+					<td>host language features which participate in the description calculation</td>
+					<td>
+						Unique host language features MAY participate in the description computation for an element, only if they were not already used
+						for the accessible name of the applicable element. See <a data-cite="html-aam/#accdesc-computation">HTML AAM: Accessible Description Computation</a> 
+						for the HTML elements which meet this condition.
+					</td>
+					<td>
+						Either a <a href="#mapping_additional_nd_te">text equivalent computation</a> of the element, or as a flat string of the attribute's value.
+					</td>
+				</tr>
         <tr>
           <th>4</th>
-          <td>HTML <code>&lt;caption&gt;</code> child of a <code>&lt;table&gt;</code> or equivalent host lang feature</td>
-          <td>
-            <ul>
-              <li>Only use for a corresponding HTML <code>&lt;table&gt;</code> parent, if the first child of the <code>&lt;table&gt;</code></li>
-              <li>Only use if not already used for the accessible name of the corresponding <code>&lt;table&gt;</code></li>
-            </ul>
-          </td>
-          <td><a href="#mapping_additional_nd_te">Text equivalent computation</a> on the caption element</td>
-        </tr>
-        <tr>
-          <th>5</th>
-          <td>HTML <code>&lt;summary&gt;</code> child of <code>&lt;details&gt;</code></td>
-          <td>
-            <ul>
-              <li>Only use for a corresponding HTML <code>&lt;details&gt;</code> parent, if the first child of the <code>&lt;details&gt;</code></li>
-              <li>Only use if not already used for the accessible name of the corresponding <code>&lt;details&gt;</code></li>
-            </ul>
-          </td>
-          <td><a href="#mapping_additional_nd_te">Text equivalent computation</a> on the summary element</td>
-        </tr>
-        <tr>
-          <th>6</th>
-          <td>host language tooltip attribute or equivalent feature (e.g. HTML <code>title</code> attribute)</td>
+          <td>host language tooltip attribute or equivalent feature (e.g., HTML <code>title</code> attribute)</td>
           <td>
             <ul>
               <li>Any element</li>
