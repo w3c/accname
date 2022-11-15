@@ -396,7 +396,6 @@
                     <li>Otherwise, if the <code>aria-valuenow</code> property is present, return its value,</li>
                     <li>Otherwise, use the value as specified by a host language attribute. </li>
                   </ul>
-                  <p>Append the <code>result</code> of each step above, with a space preceding and following, to the <code>accumulated text</code>.</p>
                 </li>
               </ul>
               <div><details>
@@ -405,7 +404,7 @@
                 <pre class="example highlight"><code>&lt;div role="checkbox" aria-checked="false"&gt;Flash the screen &lt;span role="textbox" aria-multiline="false"&gt; 5 &lt;/span&gt; times&lt;/div&gt;</code></pre>
               </details></div>
             </li>
-            <li id="step2D">Otherwise, if the <code>current node</code> has an <code>aria-label</code> [=attribute=] whose value is not the empty string, nor, when trimmed of white space, is not the empty string:
+            <li id="step2D">Otherwise, if the <code>current node</code> has an <code>aria-label</code> [=attribute=] whose value is not undefined, not the empty string, nor, when trimmed of [=ascii whitespace|whitespace=], is not the empty string:
               <ul>
                 <li>If traversal of the <code>current node</code> is due to recursion <strong>and</strong> the <code>current node</code> is an embedded control as defined in step 2C, ignore <code>aria-label</code> and skip to rule 2C.</li>
                 <li>Otherwise, return the value of <code>aria-label</code>.</li>
@@ -438,18 +437,8 @@
                 <li id="step2F.i">Set the <code>accumulated text</code> to the empty string.</li>
                 <li id="step2F.ii">Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>:before</code> and <code>:after</code></a> pseudo elements [[!CSS2]] can provide textual content for [=element|elements=] that have a content model.
                   <ul>
-                    <li>For <code>:before</code> pseudo elements, <a class="termref">User agents</a> MUST prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content to the textual content of the <code>current node</code> as follows:
-                    <ul>
-                      <li>If the pseudo element includes spacing between it and the textual content of the <code>current node</code>, <a class="termref">User agents</a> MUST prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, with a space following, to the textual content of the <code>current node</code>. </li>
-                      <li>Otherwise, <a class="termref">User agents</a> MUST prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space following, to the textual content of the <code>current node</code>. </li>
-                    </ul>
-                    </li>
-                    <li>For <code>:after</code> pseudo elements, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr> textual content to the textual content of the <code>current node</code> as follows:
-                    <ul>
-                      <li>If the pseudo element includes spacing between the textual content of the <code>current node</code> and itself, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr> textual content, with a space preceding, to the textual content of the <code>current node</code>. </li>
-                      <li>Otherwise, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space preceding, to the textual content of the <code>current node</code>. </li>
-                    </ul>
-                    </li>
+                    <li>For <code>:before</code> pseudo elements, <a class="termref">User agents</a> MUST prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
+                    <li>For <code>:after</code> pseudo elements, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr>  textual content, without a space, to the textual content of the <code>current node</code>. </li>
                   </ul>
                 </li>
                 <li id="step2F.iii">For each child node of the <code>current node</code>:
