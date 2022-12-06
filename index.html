@@ -227,7 +227,7 @@
           <th>1</th>
           <td><a class="property-reference" href="#aria-describedby"><code>aria-describedby</code></a> attribute</td>
           <td>Use on any element</td>
-          <td><a href="#mapping_additional_nd_te">Text content computation</a> on all nodes referenced by aria-describedby on the element, concatenated, and separated by a space character</td>
+          <td><a href="#mapping_additional_nd_te">Text content computation</a> on all nodes referenced by aria-describedby on the element except itself, concatenated, and separated by a space character</td>
         </tr>
         <tr>
           <th>2</th>
@@ -260,6 +260,7 @@
         </tr>
       </tbody>
     </table>
+    <div class="note">A node cannot refer to itself with <a class="property-reference" href="#aria-describedby"><code>aria-describedby</code></a> for the purpose of <a href="#mapping_additional_nd_te">text content computation</a>. This differs from <a class="property-reference" href="#aria-labelledby"><code>aria-labelledby</code></a>, with which a node <em>can</em> refer to itself (see the example in <a href="#step2D">step 2D</a>).</div>
   </section>
   <section id="mapping_additional_nd_te" data-cite="dom">
     <h3>Text Equivalent Computation</h3>
