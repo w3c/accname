@@ -362,7 +362,7 @@
                     <li id="comp_labelledby_foreach" name="step2B.ii">For each IDREF:
                       <ol>
                         <li id="comp_labelledby_set_current" name="step2B.ii.a">Set the <code>current node</code> to the node referenced by the IDREF.</li>
-                        <li id="comp_labelledby_recurse" name="step2B.ii.b">LabelledBy Recursion: Compute the text alternative of the <code>current node</code> beginning with the overall <a href="#comp_computation">Computation</a> step. Set the <code>result</code> to that text alternative.</li>
+                        <li id="comp_labelledby_recursion" name="step2B.ii.b">LabelledBy Recursion: Compute the text alternative of the <code>current node</code> beginning with the overall <a href="#comp_computation">Computation</a> step. Set the <code>result</code> to that text alternative.</li>
                         <li id="comp_labelledby_append" name="step2B.ii.c">Append the <code>result</code>, with a space, to the <code>accumulated text</code>.</li>
                       </ol>
                     </li>
@@ -372,7 +372,7 @@
               </ul>
               <div><details>
                 <summary>Comment:</summary>
-                <p>The result of <a href="#comp_labelledby_recurse">LabelledBy Recursion</a> in combination with <a href="#comp_hidden_not_referenced">Hidden Not Referenced</a> means that <a class="termref">user agents</a> MUST include all nodes in the subtree as part of the <a class="termref">accessible name</a> or <a class="termref">accessible description</a>, when the node referenced by <code>aria-labelledby</code> or <code>aria-describedby</code> is hidden.</p>
+                <p>The result of <a href="#comp_labelledby_recursion">LabelledBy Recursion</a> in combination with <a href="#comp_hidden_not_referenced">Hidden Not Referenced</a> means that <a class="termref">user agents</a> MUST include all nodes in the subtree as part of the <a class="termref">accessible name</a> or <a class="termref">accessible description</a>, when the node referenced by <code>aria-labelledby</code> or <code>aria-describedby</code> is hidden.</p>
               <div><details>
                 <summary>Example:</summary>
                 <p>The following example shows the meaning of the clause "&#8230; and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal &#8230;" .</p>
@@ -404,7 +404,7 @@
                 <pre class="example highlight"><code>&lt;div role="checkbox" aria-checked="false"&gt;Flash the screen &lt;span role="textbox" aria-multiline="false"&gt; 5 &lt;/span&gt; times&lt;/div&gt;</code></pre>
               </details></div>
             </li>
-            <li id="comp_label" name="step2D">Non-recursive aria-label: Otherwise, if the <code>current node</code> has an <code>aria-label</code> [=attribute=] whose value is not undefined, not the empty string, nor, when trimmed of [=ascii whitespace|whitespace=], is not the empty string:
+            <li id="comp_label" name="step2D">AriaLabel: Otherwise, if the <code>current node</code> has an <code>aria-label</code> [=attribute=] whose value is not undefined, not the empty string, nor, when trimmed of [=ascii whitespace|whitespace=], is not the empty string:
               <ul>
                 <li>If traversal of the <code>current node</code> is due to recursion <strong>and</strong> the <code>current node</code> is an embedded control, ignore <code>aria-label</code> and skip to rule <a href="#comp_embedded_control">Embedded Control</a>.</li>
                 <li>Otherwise, return the value of <code>aria-label</code>.</li>
@@ -435,20 +435,20 @@
             <li id="comp_name_from_content" name="step2F">Name From Content: Otherwise, if the <code>current node's</code> <a class="termref">role</a> allows <a class="specref" href="#namefromcontent">name from content</a>, or if the <code>current node</code> is referenced by <code>aria-labelledby</code>, <code>aria-describedby</code>, or is a native host language text alternative [=element=] (e.g. <code>label</code> in HTML), or is a descendant of a native host language text alternative [=element=]:
               <ol>
                 <li id="comp_name_from_content_reset" name="step2F.i">Name From Content Reset: Set the <code>accumulated text</code> to the empty string.</li>
-                <li id="comp_generated_content" name="step2F.ii">Name From Generated Content: Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>::before</code> and <code>::after</code></a> pseudo elements [[!CSS2]] can provide textual content for [=element|elements=] that have a content model.
+                <li id="comp_name_from_content_pseudo_element" name="step2F.ii">Name From Generated Content: Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>::before</code> and <code>::after</code></a> pseudo elements [[!CSS2]] can provide textual content for [=element|elements=] that have a content model.
                   <ul>
-                    <li id="comp_generated_content_before">For <code>::before</code> pseudo elements, <a class="termref">User agents</a> MUST prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
-                    <li id="comp_generated_content_after">For <code>::after</code> pseudo elements, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
+                    <li id="comp_name_from_content_pseudo_element_before">For <code>::before</code> pseudo elements, <a class="termref">User agents</a> MUST prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
+                    <li id="comp_name_from_content_pseudo_element_after">For <code>::after</code> pseudo elements, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
                   </ul>
                 </li>
-                <li id="comp_for_each_child" name="step2F.iii">For Each Child: For each child node of the <code>current node</code>:
+                <li id="comp_name_from_content_for_each_child" name="step2F.iii">For Each Child: For each child node of the <code>current node</code>:
                   <ol>
-                    <li id="comp_for_each_child_set_current" name="step2F.iii.a">Set the <code>current node</code> to the child node.</li>
-                    <li id="comp_for_each_child_recurse" name="step2F.iii.b">Compute the text alternative of the  <code>current node</code> beginning with the overall <a href="#comp_computation">Computation</a> step. Set the <code>result</code> to that text alternative.</li>
+                    <li id="comp_name_from_content_for_each_child_set_current" name="step2F.iii.a">Set the <code>current node</code> to the child node.</li>
+                    <li id="comp_name_from_content_for_each_child_recursion" name="step2F.iii.b">Compute the text alternative of the  <code>current node</code> beginning with the overall <a href="#comp_computation">Computation</a> step. Set the <code>result</code> to that text alternative.</li>
                     <li id="comp_for_each_child_append" name="step2F.iii.c">Append the <code>result</code> to the <code>accumulated text</code>. </li>
                   </ol>
                 </li>
-                <li id="comp_for_each_child_return" name="step2F.iv">Return the <code>accumulated text</code> if it is not the empty string ("").</li>
+                <li id="comp_name_from_content_return" name="step2F.iv">Return the <code>accumulated text</code> if it is not the empty string ("").</li>
               </ol>
               <p><strong>Important</strong>:  Each [=nodes|node=] in the subtree is consulted only once. If text has been collected from a descendant, but is referenced by another IDREF in some descendant node, then that second, or subsequent, reference is not followed. This is done to avoid infinite loops.  </p>
               <div><details>
