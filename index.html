@@ -524,20 +524,20 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <li id="comp_computation" name="step2"><em>Computation:</em> Compute the text alternative for the <code>current node</code>:
           <ol>
             <li id="comp_hidden_not_referenced" name="step2A"><em>Hidden Not Referenced:</em> If the <code>current node</code> is <span class="informative"><a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-hidden">hidden</a></span> <strong>and is</strong>:
-            <ul>
+            <ol>
               <li><strong>Not</strong> part of an <code>aria-labelledby</code> or <code>aria-describedby</code> traversal, where the node directly referenced by that relation was hidden.</li>
               <li><strong>Nor</strong> part of a native host language text alternative <a class="termref informative" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">element</a> (e.g. <code>label</code> in <abbr title="Hypertext Markup Language">HTML</abbr>) or <a class="termref informative" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> traversal, where the root of that traversal was hidden.</li>
-            </ul>
+            </ol>
             Return the empty string.
               <div><details>
                 <summary>Comment:</summary>
-                <p>It's important to clarify the broad definition of hidden for the purposes of accessible name calculation:
-                </p><ul>
+                <p>It's important to clarify the broad definition of hidden for the purposes of accessible name calculation:</p>
+                <ol>
                   <li>Nodes with <abbr title="Cascading Style Sheets">CSS</abbr> properties <code>display:none</code>, <code>visibility:hidden</code>, <code>visibility:collapse</code> or <code>content-visibility:hidden</code>: They are considered hidden, as they match the guidelines "not perceivable" and "explicitly hidden".</li>
                   <li>Nodes with <abbr title="Cascading Style Sheets">CSS</abbr> properties <code>opacity:0</code> or <code>filter:opacity(0%)</code>, or similar <abbr title="Scalable Vector Graphics">SVG</abbr> mechanisms: They are not considered hidden. Text hidden with these methods can still be selected or copied, and user agents still expose it in their accessibility trees.</li>
                   <li>Nodes with the <code>aria-hidden="true"</code> property: it is considered hidden, matching the "explicitly hidden" guideline.</li>
                   <li>Nodes hidden off screen or behind another object: they are not considered hidden. They are exposed in the accessibility tree and they can even name on-screen objects.</li>
-                </ul><p></p>
+                </ol>
               </details></div>
               <div><details>
                 <summary>Comment:</summary>
@@ -561,7 +561,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </details></div>
             </li>
             <li id="comp_labelledby_overall" name="step2B">Otherwise:
-              <ul>
+              <ol>
                 <li id="comp_labelledby"><em>LabelledBy:</em> If the <code>current node</code> has an <code>aria-labelledby</code> <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> that contains at least one valid IDREF, and the <code>current node</code> is not already part of an ongoing <code>aria-labelledby</code> or <code>aria-describedby</code> traversal, process its IDREFs in the order they occur: </li>
                   <ol>
                     <li id="comp_labelledby_reset" name="step2B.i">Set the <code>accumulated text</code> to the empty string.</li>
@@ -575,17 +575,17 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                     <li id="comp_labelledby_return" name="step2B.iii">Return the <code>accumulated text</code> if it is not the empty string ("").</li>
                   </ol>
                 
-              </ul>
+              </ol>
               <div><details>
                 <summary>Comment:</summary>
                 <p>The result of <a href="#comp_labelledby_recursion">LabelledBy Recursion</a> in combination with <a href="#comp_hidden_not_referenced">Hidden Not Referenced</a> means that <a class="termref informative" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agents</a> <em class="rfc2119">MUST</em> include all nodes in the subtree as part of the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-9">accessible name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-7">accessible description</a>, when the node referenced by <code>aria-labelledby</code> or <code>aria-describedby</code> is hidden.</p>
               <div><details>
                 <summary>Example:</summary>
                 <p>The following example shows the meaning of the clause "… and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal …" .</p>
-                <ul>
+                <ol>
                   <li><code>element1</code>'s <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-10">accessible name</a> is "hello" because this is a first traversal of its <code>aria-labelledby</code>, leading to <code>element3</code>.</li>
                   <li><code>element2</code> has no <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-11">accessible name</a>.  The computation involves a first traversal of its <code>aria-labelledby</code> leading to <code>element1</code>, but <code>element1</code>'s  <code>aria-labelledby</code> is not subsequently followed. </li>
-                </ul>
+                </ol>
                 <div class="example" id="example-3">
         <div class="marker">
     <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
@@ -594,17 +594,17 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </details></div>
             </details></div></li>
             <li id="comp_embedded_control" name="step2C"><em>Embedded Control:</em> Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-widget">widget</a>, where the user can adjust the embedded control's value, then return the embedded control as part of the text alternative in the following manner:
-              <ul>
+              <ol>
                 <li id="comp_embedded_control_textbox"><em>Textbox:</em> If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, return its value.</li>
                 <li id="comp_embedded_control_combobox_or_listbox"><em>Combobox/Listbox:</em> If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#combobox">combobox</a> or <a class="role-reference" href="https://w3c.github.io/aria/#listbox">listbox</a>, return the text alternative of the chosen <a class="role-reference" href="https://w3c.github.io/aria/#option">option</a>.</li>
                 <li id="comp_embedded_control_range"><em>Range:</em> If the embedded control has role <a class="role-reference" href="https://w3c.github.io/aria/#range">range</a> (e.g., a <a class="role-reference" href="https://w3c.github.io/aria/#spinbutton">spinbutton</a> or <a class="role-reference" href="https://w3c.github.io/aria/#slider">slider</a>):
-                  <ul>
+                  <ol>
                     <li id="comp_embedded_control_range_valuetext">If the <code>aria-valuetext</code> property is present, return its value, </li>
                     <li id="comp_embedded_control_range_valuenow">Otherwise, if the <code>aria-valuenow</code> property is present, return its value,</li>
                     <li id="comp_embedded_control_range_host_language_value">Otherwise, use the value as specified by a host language attribute. </li>
-                  </ul>
+                  </ol>
                 </li>
-              </ul>
+              </ol>
               <div><details>
                 <summary>Example:</summary>
                 <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
@@ -616,10 +616,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </details></div>
             </li>
             <li id="comp_label" name="step2D"><em>AriaLabel:</em> Otherwise, if the <code>current node</code> has an <code>aria-label</code> <a data-link-type="dfn" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> whose value is not undefined, not the empty string, nor, when trimmed of <a data-link-type="dfn" data-lt="ascii whitespace" data-type="dfn" href="https://infra.spec.whatwg.org/#ascii-whitespace">whitespace</a>, is not the empty string:
-              <ul>
+              <ol>
                 <li>If traversal of the <code>current node</code> is due to recursion <strong>and</strong> the <code>current node</code> is an embedded control, ignore <code>aria-label</code> and skip to rule <a href="#comp_embedded_control">Embedded Control</a>.</li>
                 <li>Otherwise, return the value of <code>aria-label</code>.</li>
-              </ul>
+              </ol>
               <div><details>
                 <summary>Example:</summary>
                   <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a <a data-link-type="dfn" data-lt="nodes" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-node">node</a> has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-12">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
@@ -641,10 +641,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               <ol>
                 <li id="comp_name_from_content_reset" name="step2F.i"><em>Name From Content Reset:</em> Set the <code>accumulated text</code> to the empty string.</li>
                 <li id="comp_name_from_content_pseudo_element" name="step2F.ii"><em>Name From Generated Content:</em> Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>::before</code> and <code>::after</code></a> pseudo elements [<cite><a class="bibref" data-link-type="biblio" href="#bib-css2" title="Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification">CSS2</a></cite>] can provide textual content for <a data-link-type="dfn" data-lt="element" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">elements</a> that have a content model.
-                  <ul>
+                  <ol>
                     <li id="comp_name_from_content_pseudo_element_before">For <code>::before</code> pseudo elements, <a class="termref informative" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">User agents</a> <em class="rfc2119">MUST</em> prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
                     <li id="comp_name_from_content_pseudo_element_after">For <code>::after</code> pseudo elements, <a class="termref informative" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">User agents</a> <em class="rfc2119">MUST</em> append <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
-                  </ul>
+                  </ol>
                 </li>
                 <li id="comp_name_from_content_for_each_child" name="step2F.iii"><em>Name From Each Child:</em> For each child node of the <code>current node</code>:
                   <ol>
