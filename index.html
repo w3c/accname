@@ -49,8 +49,8 @@
           w3cid: 67215
         },
         { name: "Melanie Sumner",
-          company: "LinkedIn",
-          companyURL: "https://www.linkedin.com/",
+          company: "Invited Expert",
+          companyURL: "https://github.com/melsumner",
           w3cid: 125865
         },
         { name: "Michael Cooper",
@@ -136,7 +136,50 @@
        "FPWD": "https://www.w3.org/TR/core-aam-1.2/",
        "REC": "https://www.w3.org/TR/core-aam-1.2/"
     },
-
+    accNameURLs: {
+          "ED": "https://w3c.github.io/accname/",
+          "WD" : "https://www.w3.org/TR/accname-1.2/",
+          "FPWD": "https://www.w3.org/TR/accname-1.2/",
+          "REC": "https://www.w3.org/TR/accname-1.2/"
+        },
+    
+			    coreMappingURLs: {
+			       "ED": "https://w3c.github.io/core-aam/",
+			       "WD" : "https://www.w3.org/TR/core-aam-1.2/",
+			       "FPWD": "https://www.w3.org/TR/core-aam-1.2/",
+			       "REC": "https://www.w3.org/TR/core-aam-1.2/"
+			    },
+			   dpubModURLs: {
+			      "ED": "https://w3c.github.io/dpub-aria/",
+			      "FPWD" : "https://www.w3.org/TR/dpub-aria-1.1/",
+			      "WD" : "https://www.w3.org/TR/dpub-aria-1.1/",
+			      "REC": "https://www.w3.org/TR/dpub-aria-1.1/"
+			    },
+				htmlMappingURLs: {
+					"ED": "https://w3c.github.io/html-aam/",
+					"FPWD": "https://www.w3.org/TR/html-aam-1.0/",
+					"WD": "https://www.w3.org/TR/html-aam/",
+					"REC": "https://www.w3.org/TR/html-aam/"
+				},
+				graphicsMappingModURLs: {
+					"ED": "https://w3c.github.io/graphics-aam/",
+					"FPWD": "https://www.w3.org/TR/graphics-aam/",
+					"WD": "https://www.w3.org/TR/graphics-aam/",
+					"REC": "https://www.w3.org/TR/graphics-aam/",
+				},
+				graphicsModURLs: {
+					"ED": "https://w3c.github.io/graphics-aria/",
+					"FPWD": "https://www.w3.org/TR/graphics-aria/",
+					"WD": "https://www.w3.org/TR/graphics-aria/",
+					"REC": "https://www.w3.org/TR/graphics-aria/",
+				},
+				practicesURLs: {
+					"ED": "https://www.w3.org/WAI/ARIA/apg/",
+					"FPWD": "https://www.w3.org/WAI/ARIA/apg/",
+					"WD": "https://www.w3.org/WAI/ARIA/apg/",
+					"REC": "https://www.w3.org/WAI/ARIA/apg/"
+				},
+			   
     preProcess: [ linkCrossReferences ],
 	  postProcess: [ addPlatformMaintainers ],
     //Pointing to the 1.2 versions but should remove the version in the publishing branch
@@ -318,20 +361,20 @@
         <li id="comp_computation" name="step2"><em>Computation:</em> Compute the text alternative for the <code>current node</code>:
           <ol>
             <li id="comp_hidden_not_referenced" name="step2A"><em>Hidden Not Referenced:</em> If the <code>current node</code> is <span class="informative">[=element/hidden=]</span> <strong>and is</strong>:
-            <ul>
+            <ol>
               <li><strong>Not</strong> part of an <code>aria-labelledby</code> or <code>aria-describedby</code> traversal, where the node directly referenced by that relation was hidden.</li>
               <li><strong>Nor</strong> part of a native host language text alternative <a class="termref">element</a> (e.g. <code>label</code> in HTML) or <a class="termref">attribute</a> traversal, where the root of that traversal was hidden.</li>
-            </ul>
+            </ol>
             Return the empty string.
               <div><details>
                 <summary>Comment:</summary>
-                <p>It's important to clarify the broad definition of hidden for the purposes of accessible name calculation:
-                <ul>
+                <p>It's important to clarify the broad definition of hidden for the purposes of accessible name calculation:</p>
+                <ol>
                   <li>Nodes with CSS properties <code>display:none</code>, <code>visibility:hidden</code>, <code>visibility:collapse</code> or <code>content-visibility:hidden</code>: They are considered hidden, as they match the guidelines "not perceivable" and "explicitly hidden".</li>
                   <li>Nodes with CSS properties <code>opacity:0</code> or <code>filter:opacity(0%)</code>, or similar SVG mechanisms: They are not considered hidden. Text hidden with these methods can still be selected or copied, and user agents still expose it in their accessibility trees.</li>
                   <li>Nodes with the <code>aria-hidden="true"</code> property: it is considered hidden, matching the "explicitly hidden" guideline.</li>
                   <li>Nodes hidden off screen or behind another object: they are not considered hidden. They are exposed in the accessibility tree and they can even name on-screen objects.</li>
-                </ul></p>
+                </ol>
               </details></div>
               <div><details>
                 <summary>Comment:</summary>
@@ -354,32 +397,28 @@
                 </pre>
               </details></div>
             </li>
-            <li id="comp_labelledby_overall" name="step2B">Otherwise:
-              <ul>
-                <li id="comp_labelledby"><em>LabelledBy:</em> If the <code>current node</code> has an <code>aria-labelledby</code> [=attribute=] that contains at least one valid IDREF, and the <code>current node</code> is not already part of an ongoing <code>aria-labelledby</code> or <code>aria-describedby</code> traversal, process its IDREFs in the order they occur: </li>
+            <li id="comp_labelledby" name="step2B"><em>LabelledBy:</em> Otherwise, if the <code>current node</code> has an <code>aria-labelledby</code> [=attribute=] that contains at least one valid IDREF, and the <code>current node</code> is not already part of an ongoing <code>aria-labelledby</code> or <code>aria-describedby</code> traversal, process its IDREFs in the order they occur:
+              <ol>
+                <li id="comp_labelledby_reset" name="step2B.i">Set the <code>accumulated text</code> to the empty string.</li>
+                <li id="comp_labelledby_foreach" name="step2B.ii">For each IDREF:
                   <ol>
-                    <li id="comp_labelledby_reset" name="step2B.i">Set the <code>accumulated text</code> to the empty string.</li>
-                    <li id="comp_labelledby_foreach" name="step2B.ii">For each IDREF:
-                      <ol>
-                        <li id="comp_labelledby_set_current" name="step2B.ii.a">Set the <code>current node</code> to the node referenced by the IDREF.</li>
-                        <li id="comp_labelledby_recursion" name="step2B.ii.b"><em>LabelledBy Recursion:</em> Compute the text alternative of the <code>current node</code> beginning with the overall <a href="#comp_computation">Computation</a> step. Set the <code>result</code> to that text alternative.</li>
-                        <li id="comp_labelledby_append" name="step2B.ii.c">Append the <code>result</code>, with a space, to the <code>accumulated text</code>.</li>
-                      </ol>
-                    </li>
-                    <li id="comp_labelledby_return" name="step2B.iii">Return the <code>accumulated text</code> if it is not the empty string ("").</li>
+                    <li id="comp_labelledby_set_current" name="step2B.ii.a">Set the <code>current node</code> to the node referenced by the IDREF.</li>
+                    <li id="comp_labelledby_recursion" name="step2B.ii.b"><em>LabelledBy Recursion:</em> Compute the text alternative of the <code>current node</code> beginning with the overall <a href="#comp_computation">Computation</a> step. Set the <code>result</code> to that text alternative.</li>
+                    <li id="comp_labelledby_append" name="step2B.ii.c">Append a space character and the <code>result</code> to the <code>accumulated text</code>.</li>
                   </ol>
                 </li>
-              </ul>
+                <li id="comp_labelledby_return" name="step2B.iii">Return the <code>accumulated text</code> if it is not the empty string ("").</li>
+              </ol>
               <div><details>
                 <summary>Comment:</summary>
                 <p>The result of <a href="#comp_labelledby_recursion">LabelledBy Recursion</a> in combination with <a href="#comp_hidden_not_referenced">Hidden Not Referenced</a> means that <a class="termref">user agents</a> MUST include all nodes in the subtree as part of the <a class="termref">accessible name</a> or <a class="termref">accessible description</a>, when the node referenced by <code>aria-labelledby</code> or <code>aria-describedby</code> is hidden.</p>
               <div><details>
                 <summary>Example:</summary>
                 <p>The following example shows the meaning of the clause "&#8230; and the <code>current node</code> is not already part of an <code>aria-labelledby</code> traversal &#8230;" .</p>
-                <ul>
+                <ol>
                   <li><code>element1</code>'s <a class="termref">accessible name</a> is "hello" because this is a first traversal of its <code>aria-labelledby</code>, leading to <code>element3</code>.</li>
                   <li><code>element2</code> has no <a class="termref">accessible name</a>.  The computation involves a first traversal of its <code>aria-labelledby</code> leading to <code>element1</code>, but <code>element1</code>'s  <code>aria-labelledby</code> is not subsequently followed. </li>
-                </ul>
+                </ol>
                 <pre class="example highlight"><code>&lt;element1 id="el1" aria-labelledby="el3" /&gt;
 &lt;element2 id="el2" aria-labelledby="el1" /&gt;
 &lt;element3 id="el3"&gt; hello &lt;/element3&gt;</code>
@@ -387,17 +426,17 @@
               </details></div>
             </li>
             <li id="comp_embedded_control" name="step2C"><em>Embedded Control:</em> Otherwise, if the <code>current node</code> is a control embedded within the label (e.g. any element directly referenced by <code>aria-labelledby</code>) for another <a class="termref">widget</a>, where the user can adjust the embedded control's value, then return the embedded control as part of the text alternative in the following manner:
-              <ul>
+              <ol>
                 <li id="comp_embedded_control_textbox"><em>Textbox:</em> If the embedded control has role <a class="role-reference" href="#textbox">textbox</a>, return its value.</li>
                 <li id="comp_embedded_control_combobox_or_listbox"><em>Combobox/Listbox:</em> If the embedded control has role <a class="role-reference" href="#combobox">combobox</a> or <a class="role-reference" href="#listbox">listbox</a>, return the text alternative of the chosen <a class="role-reference" href="#option">option</a>.</li>
                 <li id="comp_embedded_control_range"><em>Range:</em> If the embedded control has role <a class="role-reference" href="#range">range</a> (e.g., a <a class="role-reference" href="#spinbutton">spinbutton</a> or <a class="role-reference" href="#slider">slider</a>):
-                  <ul>
+                  <ol>
                     <li id="comp_embedded_control_range_valuetext">If the <code>aria-valuetext</code> property is present, return its value, </li>
                     <li id="comp_embedded_control_range_valuenow">Otherwise, if the <code>aria-valuenow</code> property is present, return its value,</li>
                     <li id="comp_embedded_control_range_host_language_value">Otherwise, use the value as specified by a host language attribute. </li>
-                  </ul>
+                  </ol>
                 </li>
-              </ul>
+              </ol>
               <div><details>
                 <summary>Example:</summary>
                 <p>Consider a <a class="role-reference" href="#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
@@ -405,10 +444,10 @@
               </details></div>
             </li>
             <li id="comp_label" name="step2D"><em>AriaLabel:</em> Otherwise, if the <code>current node</code> has an <code>aria-label</code> [=attribute=] whose value is not undefined, not the empty string, nor, when trimmed of [=ascii whitespace|whitespace=], is not the empty string:
-              <ul>
+              <ol>
                 <li>If traversal of the <code>current node</code> is due to recursion <strong>and</strong> the <code>current node</code> is an embedded control, ignore <code>aria-label</code> and skip to rule <a href="#comp_embedded_control">Embedded Control</a>.</li>
                 <li>Otherwise, return the value of <code>aria-label</code>.</li>
-              </ul>
+              </ol>
               <div><details>
                 <summary>Example:</summary>
                   <p>The following example shows the interaction of <code>aria-labelledby</code> and <code>aria-label</code> when a [=nodes|node=] has an  <code>aria-labelledby</code> that refers to itself.  The <code>&lt;span role="button"&gt;</code> elements have the <a class="termref">accessible names</a> "Delete Documentation.pdf" and "Delete HolidayLetter.pdf", respectively.</p>
@@ -436,10 +475,10 @@
               <ol>
                 <li id="comp_name_from_content_reset" name="step2F.i"><em>Name From Content Reset:</em> Set the <code>accumulated text</code> to the empty string.</li>
                 <li id="comp_name_from_content_pseudo_element" name="step2F.ii"><em>Name From Generated Content:</em> Check for <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content"><code>::before</code> and <code>::after</code></a> pseudo elements [[!CSS2]] can provide textual content for [=element|elements=] that have a content model.
-                  <ul>
+                  <ol>
                     <li id="comp_name_from_content_pseudo_element_before">For <code>::before</code> pseudo elements, <a class="termref">User agents</a> MUST prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
                     <li id="comp_name_from_content_pseudo_element_after">For <code>::after</code> pseudo elements, <a class="termref">User agents</a> MUST append <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
-                  </ul>
+                  </ol>
                 </li>
                 <li id="comp_name_from_content_for_each_child" name="step2F.iii"><em>Name From Each Child:</em> For each child node of the <code>current node</code>:
                   <ol>
@@ -464,11 +503,11 @@
                 <p>Tooltip attributes are used only if nothing else, including subtree content, has provided results. </p>
               </details></div>
             </li>
+            <li id="comp_append">Append a space character and the <code>result</code> of each step above to the <code>total accumulated text</code>.</li>
           </ol>
-          <p>Append the <code>result</code> of each step above, with a space, to the <code>total accumulated text</code>.</p>
         </li>
+        <li id="comp_complete">After all steps are completed, the <code>total accumulated text</code> is used as the <a class="termref">accessible name</a> or <a class="termref">accessible description</a> of the [=element=] that initiated the computation.</li>
       </ol>
-      <p>After all steps are completed, the <code>total accumulated text</code> is used as the <a class="termref">accessible name</a> or <a class="termref">accessible description</a> of the [=element=] that initiated the computation.</p>
     </section>
   </section>
 </section>
