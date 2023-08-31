@@ -386,8 +386,9 @@
                 <p>First, <code>element1</code>'s <a class="termref">accessible name</a> is "hello" because, although <code>element3</code> is hidden, it is part of an <code>aria-labelledby</code> traversal started in <code>element2</code>, which is hidden too.</p>
                 <pre class="example highlight">
                   <code>&lt;element1 id="el1" role="button" aria-labelledby="el2" /&gt;
-&lt;element2 id="el2" class="hidden"&gt;
-  &lt;element3 id="el3" </code>
+                    &lt;element2 id="el2" class="hidden"&gt;
+                      &lt;element3 id="el3" class="hidden"&gt;hello&lt;/element3&gt;
+                    &lt;/element2&gt;</code>
                 </pre>
                 <p>Conversely, <code>element1</code> has no <a class="termref">accessible name</a> if <code>element3</code> is hidden and it is part of an <code>aria-labelledby</code> traversal started in <code>element2</code>, but <code>element2</code> is not hidden.</p>
                 <pre class="example highlight"><code>&lt;element1 id="el1" role="button" aria-labelledby="el2" /&gt;
@@ -440,7 +441,9 @@
               <div>
                 <summary>Example:</summary>
                 <p>Consider a <a class="role-reference" href="#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
-                <pre class="example highlight"><code>&lt;div role="checkbox" aria-checked="false"&gt;Flash the screen &lt;span role="textbox" aria-multiline="false"&gt; 5 &lt;/span&gt; times&lt;/div&gt;</code></pre>
+                <pre class="example highlight">
+                  <code>&lt;div role="checkbox" aria-checked="false"&gt;Flash the screen &lt;span role="textbox" aria-multiline="false"&gt; 5 &lt;/span&gt; times&lt;/div&gt;</code>
+                </pre>
               </div>
             </li>
             <li id="comp_label" name="step2D"><em>AriaLabel:</em> Otherwise, if the <code>current node</code> has an <code>aria-label</code> [=attribute=] whose value is not undefined, not the empty string, nor, when trimmed of [=ascii whitespace|whitespace=], is not the empty string:
