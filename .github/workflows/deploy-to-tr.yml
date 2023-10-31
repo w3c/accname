@@ -1,7 +1,9 @@
-name: Node CI
+name: Deploy to TR
 
 on:
   workflow_dispatch:
+    branches:
+      - stable
   push:
     branches:
       - stable
