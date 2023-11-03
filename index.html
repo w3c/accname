@@ -113,7 +113,7 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-<meta name="revision" content="114fe154a4a65fc5c88cc327aef6c3f7401f9fd6">
+<meta name="revision" content="681094c3f42da6b8aa8b6b497c70e3c439be920b">
 <meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent.">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -271,7 +271,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "wai-aria-1.2",
     "infra"
   ],
-  "gitRevision": "114fe154a4a65fc5c88cc327aef6c3f7401f9fd6",
+  "gitRevision": "681094c3f42da6b8aa8b6b497c70e3c439be920b",
   "publishISODate": "2023-11-03T00:00:00.000Z",
   "generatedSubtitle": "W3C Editor's Draft 03 November 2023"
 }</script>
@@ -643,8 +643,11 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               <aside class="example" id="example-4"><div class="marker">
     <a class="self-link" href="#example-4">Example<bdi> 4</bdi></a>
   </div>
-                <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the user has entered "5" for the embedded <a class="role-reference" href="https://w3c.github.io/aria/#textbox">textbox</a>, the complete label is "Flash the screen 5 times", e.g.: </p>
-                <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span>&gt;</span>Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-multiline</span>=<span class="hljs-string">"false"</span>&gt;</span> 5 <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+                <p>Consider a <a class="role-reference" href="https://w3c.github.io/aria/#checkbox">check box</a> label that contains a text input field: "Flash the screen [input] times". If the input field has the value "5", the complete label is "Flash the screen 5 times", e.g.:</p>
+                <pre class="highlight"><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"flash"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"flash"</span>&gt;</span>
+  Flash the screen <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"textbox"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"number of times"</span> <span class="hljs-attr">contenteditable</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> times.
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></code></pre>
               </aside>
             </li>
             <li id="comp_label" name="step2D"><em>AriaLabel:</em> Otherwise, if the <code>current node</code> has an <code>aria-label</code> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> whose value is not undefined, not the empty string, nor, when trimmed of <a data-link-type="dfn|abstract-op" data-lt="ascii whitespace" data-type="dfn" href="https://infra.spec.whatwg.org/#ascii-whitespace">whitespace</a>, is not the empty string:
