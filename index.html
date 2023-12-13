@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 34.2.0">
+<meta name="generator" content="ReSpec 34.2.2">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -113,7 +113,7 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-<meta name="revision" content="cf77505204bca796ecda6f698b8053f363a3415f">
+<meta name="revision" content="51104b23770c4a8c11c0045d69ee564c67d71bcd">
 <meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent.">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -271,16 +271,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "wai-aria-1.2",
     "infra"
   ],
-  "gitRevision": "cf77505204bca796ecda6f698b8053f363a3415f",
-  "publishISODate": "2023-11-04T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 04 November 2023"
+  "gitRevision": "51104b23770c4a8c11c0045d69ee564c67d71bcd",
+  "publishISODate": "2023-12-13T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 13 December 2023"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
 <body class="h-entry" data-cite="dom core-aam-1.2 wai-aria-1.2 infra"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-11-04">04 November 2023</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-12-13">13 December 2023</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -337,15 +337,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     
     
     <p class="copyright">
-    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+    <a href="https://www.w3.org/policies/#copyright">Copyright</a>
     ©
     2014-2023
     
     <a href="https://www.w3.org/">World Wide Web Consortium</a>.
     <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
-    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
-    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
-    <a rel="license" href="https://www.w3.org/Consortium/Legal/2023/software-license" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+    <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/copyright/software-license-2023/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
   </p>
     <hr title="Separator for header">
   </div>
@@ -387,9 +387,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
         
   </p><p>
-                  This document is governed by the
-                  <a id="w3c_process_revision" href="https://www.w3.org/2023/Process-20230612/">12 June 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#terms"><bdi class="secno">2. </bdi>Important Terms</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">3. </bdi>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rfc-2119-keywords"><bdi class="secno">3.1 </bdi>RFC-2119 Keywords</a></li><li class="tocline"><a class="tocxref" href="#normative-and-informative-sections"><bdi class="secno">3.2 </bdi>Normative and Informative Sections</a></li></ol></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd"><bdi class="secno">4. </bdi>Name and Description</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_name"><bdi class="secno">4.1 </bdi>Name Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_description"><bdi class="secno">4.2 </bdi>Description Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_te"><bdi class="secno">4.3 </bdi>Text Equivalent Computation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">4.3.1 </bdi>Terminology</a></li><li class="tocline"><a class="tocxref" href="#computation-steps"><bdi class="secno">4.3.2 </bdi>Computation steps</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessible-name-and-description-mapping"><bdi class="secno">5. </bdi>Accessible Name and Description Mapping</a></li><li class="tocline"><a class="tocxref" href="#appendices"><bdi class="secno">6. </bdi>Appendices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changelog"><bdi class="secno">6.1 </bdi>Change Log</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-last-public-working-draft"><bdi class="secno">6.1.1 </bdi>Substantive changes since the last public working draft</a></li><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><bdi class="secno">6.1.2 </bdi>Substantive changes since the <span class="formerLink">Accessible Name and Description Computation 1.1 Recommendation</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">6.2 </bdi>Acknowledgments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ack_group"><bdi class="secno">6.2.1 </bdi>Participants active in the ARIA WG at the time of publication</a></li><li class="tocline"><a class="tocxref" href="#ack_others"><bdi class="secno">6.2.2 </bdi>Other ARIA contributors, commenters, and previously active participants</a></li><li class="tocline"><a class="tocxref" href="#ack_funders"><bdi class="secno">6.2.3 </bdi>Enabling funders</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+                      This document is governed by the
+                      <a id="w3c_process_revision" href="https://www.w3.org/2023/Process-20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#terms"><bdi class="secno">2. </bdi>Important Terms</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">3. </bdi>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rfc-2119-keywords"><bdi class="secno">3.1 </bdi>RFC-2119 Keywords</a></li><li class="tocline"><a class="tocxref" href="#normative-and-informative-sections"><bdi class="secno">3.2 </bdi>Normative and Informative Sections</a></li></ol></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd"><bdi class="secno">4. </bdi>Name and Description</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_name"><bdi class="secno">4.1 </bdi>Name Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_description"><bdi class="secno">4.2 </bdi>Description Computation</a></li><li class="tocline"><a class="tocxref" href="#mapping_additional_nd_te"><bdi class="secno">4.3 </bdi>Text Equivalent Computation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">4.3.1 </bdi>Terminology</a></li><li class="tocline"><a class="tocxref" href="#computation-steps"><bdi class="secno">4.3.2 </bdi>Computation steps</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessible-name-and-description-mapping"><bdi class="secno">5. </bdi>Accessible Name and Description Mapping</a></li><li class="tocline"><a class="tocxref" href="#appendices"><bdi class="secno">6. </bdi>Appendices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changelog"><bdi class="secno">6.1 </bdi>Change Log</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-last-public-working-draft"><bdi class="secno">6.1.1 </bdi>Substantive changes since the last public working draft</a></li><li class="tocline"><a class="tocxref" href="#substantive-changes-since-the-accessible-name-and-description-computation-1-1-recommendation"><bdi class="secno">6.1.2 </bdi>Substantive changes since the <span class="formerLink">Accessible Name and Description Computation 1.1 Recommendation</span></a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">6.2 </bdi>Acknowledgments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ack_group"><bdi class="secno">6.2.1 </bdi>Participants active in the ARIA WG at the time of publication</a></li><li class="tocline"><a class="tocxref" href="#ack_funders"><bdi class="secno">6.2.2 </bdi>Enabling funders</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
 <section id="intro" class="informative"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#intro" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
   
   <p><a class="termref informative" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">User agents</a> acquire information from the <abbr title="Document Object Model">DOM</abbr> [<cite><a class="bibref" data-link-type="biblio" href="#bib-dom" title="DOM Standard">DOM</a></cite>] and create a parallel structure called the <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-tree">accessibility tree</a>, made up of <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-object">accessible objects</a>. An accessible object provides information about its <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-role">role</a>, <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-state">states</a>, and <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-property">properties</a>. An example is an accessible object whose role is <code>menuitem</code>, is currently in an <code>enabled</code> state, with a <code>haspopup</code> property, indicating that it leads to a sub-menu. </p>
@@ -846,156 +846,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 	</ul>
 </section>
 
-    <section class="section" id="ack_others"><div class="header-wrapper"><h4 id="x6-2-2-other-aria-contributors-commenters-and-previously-active-participants"><bdi class="secno">6.2.2 </bdi>Other ARIA contributors, commenters, and previously active participants</h4><a class="self-link" href="#ack_others" aria-label="Permalink for Appendix 6.2.2"></a></div>
-	
-	<ul>
-		<li>Ann Abbott (Invited Expert)</li>
-		<li>Shadi Abou-Zahra (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
-		<li>Jim Allan (TSB)</li>
-		<li>Jonny Axelsson (Opera Software)</li>
-		<li>David Baron (Mozilla Foundation)</li>
-		<li>Art Barstow (Nokia Corporation)</li>
-		<li>Simon Bates</li>
-		<li>Christy Blew (University of Illinois at Urbana-Champaign)</li>
-		<li>Chris Blouch (AOL)</li>
-		<li>David Bolter (Mozilla Foundation)</li>
-		<li>Judy Brewer (<abbr title="World Wide Web Consortium">W3C</abbr>/MIT)</li>
-		<li>Mark Birbeck (Sidewinder Labs)</li>
-		<li>Bogdan Brinza (Microsoft Corporation)</li>
-		<li>Sally Cain (Royal National Institute of Blind People (RNIB))</li>
-		<li>Thaddeus Cambron (Invited Expert)</li>
-		<li>Gerardo Capiel (Benetech)</li>
-		<li>Ben Caldwell (Trace)</li>
-		<li>Sofia Celic-Li</li>
-		<li>Jaesik Chang (Samsung Electronics Co., Ltd.)</li>
-		<li>Alex Qiang Chen (University of Manchester)</li>
-		<li>Charles Chen (Google, Inc.)</li>
-		<li>Gerard K. Cohen</li>
-		<li>Christian Cohrs</li>
-		<li>Deborah Dahl</li>
-		<li>Erik Dahlström (Opera Software)</li>
-		<li>Dimitar Denev (Frauenhofer Gesellschaft)</li>
-		<li>Micah Dubinko (Invited Expert)</li>
-		<li>Mandana Eibegger</li>
-		<li>Beth Epperson (Websense)</li>
-		<li>Fred Esch (IBM Corporation)</li>
-		<li>Donald Evans (AOL)</li>
-		<li>Chris Fleizach (Apple Inc.)</li>
-		<li>John Foliot (Deque Systems, Inc.)</li>
-		<li>Kelly Ford (Microsoft Corporation)</li>
-		<li>Geoff Freed (Invited Expert, NCAM)</li>
-		<li>Kentarou Fukuda (IBM Corporation)</li>
-		<li>Christopher Gallelo (Microsoft Corporation)</li>
-		<li>Billy Gregory (The Paciello Group, LLC)</li>
-		<li>Karl Groves (The Paciello Group, LLC)</li>
-		<li>Birkir Gunnarsson (Deque Systems, Inc.)</li>
-		<li>Guido Geloso</li>
-		<li>Ali Ghassemi</li>
-		<li>Becky Gibson (Invited Expert)</li>
-		<li>Alfred S. Gilman</li>
-		<li>Andres Gonzalez (Adobe Systems Inc.)</li>
-		<li>Scott González (JQuery Foundation)</li>
-		<li>James Graham</li>
-		<li>Georgios Grigoriadis (SAP AG)</li>
-		<li>Jeff Grimes (Oracle)</li>
-		<li>Loretta Guarino Reid (Google, Inc.)</li>
-		<li>Markus Gylling (DAISY Consortium)</li>
-		<li>Katie Haritos-Shea (Knowbility)</li>
-		<li>Barbara Hartel</li>
-		<li>James Hawkins (Google, Inc.)</li>
-		<li>Benjamin Hawkes-Lewis</li>
-		<li>Sean Hayes (Microsoft Corporation)</li>
-		<li>Mona Heath (University of Illinois at Urbana-Champaign)</li>
-		<li>Jan Heck</li>
-		<li>Shawn Henry</li>
-		<li>Tina Homboe</li>
-		<li>John Hrvatin (Microsoft Corporation)</li>
-		<li>Takahiro Inada</li>
-		<li>Masayasu Ishikawa (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
-		<li>Jim Jewitt</li>
-		<li>Kenny Johar (Microsoft Corporation)</li>
-		<li>Earl Johnson (Sun)</li>
-		<li>Masahiko Kaneko (Microsoft Corporation)</li>
-		<li>Marjolein Katsma</li>
-		<li>Susann Keohane (IBM Corporation)</li>
-		<li>George Kerscher (International Digital Publishing Forum)</li>
-		<li>Jason Kiss (Department of Internal Affairs, New Zealand Government)</li>
-		<li>Todd Kloots</li>
-		<li>Jamie Knight (British Broadcasting Corporation)</li>
-		<li>Johannes Koch</li>
-		<li>Sam Kuper</li>
-		<li>Jael Kurz</li>
-		<li>Rajesh Lal (Nokia Corporation)</li>
-		<li>Diego La Monica (International Webmasters Association / <abbr title="Hypertext Markup Language">HTML</abbr> Writers Guild (IWA-HWG))</li>
-		
-		<li>Alex Li (SAP)</li>
-		<li>Chris Lilley</li>
-		<li>Thomas Logan (HiSoftware Inc.)</li>
-		<li>Brian Loh</li>
-		<li>William Loughborough (Invited Expert)</li>
-		<li>Linda Mao (Microsoft)</li>
-		<li>Anders Markussen (Opera Software)</li>
-		<li>Krzysztof Maczyński </li>
-		<li>Matthew May (Adobe Systems Inc.)</li>
-		<li>Shane McCarron (Invited Expert, Aptest)</li>
-		<li>Charles McCathie Nevile (Yandex)</li>
-		<li>Juliette McShane (Access2online Inc.)</li>
-		<li>Heather Migliorisi (Invited Expert)</li>
-		<li>Mary Jo Mueller (IBM Corporation)</li>
-		<li>Alexandre Morgaut (4D)</li>
-		<li>Ann Navarro (Invited Expert)</li>
-		<li>Joshue O Connor (Invited Expert, CFIT)</li>
-		<li>Artur Ortega (Microsoft Corporation)</li>
-		<li>Sailesh Panchang (Deque)</li>
-		<li>Lisa Pappas (Society for Technical Communication (STC))</li>
-		<li>Marta Pawlowlska (Samsung Electronics Co., Ltd.)</li>
-		<li>Dave Pawson (RNIB)</li>
-		<li>Steven Pemberton (CWI Amsterdam)</li>
-		<li>Simon Pieters (Opera Software)</li>
-		<li>Jean-Bernard Piot (4D)</li>
-		<li>David Poehlman (Opera Software)</li>
-		<li>Sarah Pulis (Media Access Australia)</li>
-		<li>T.V. Raman (Google, Inc.)</li>
-		<li>Melanie Richards (Microsoft Corporation)</li>
-		<li>Jan Richards</li>
-		<li>Gregory Rosmaita (Invited Expert)</li>
-		<li>Tony Ross (Microsoft Corporation)</li>
-		<li>Alex Russell (Dojo Foundation) (</li>
-		<li>Mark Sadecki (Invited Expert)</li>
-		<li>Mario Sánchez Prada (Samsung Electronics Co., Ltd. and Gnome Foundation)</li>
-		<li>Martin Schaus (SAP AG)</li>
-		<li>Doug Schepers (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
-		<li>Cynthia Shelly (Microsoft Corporation) </li>
-		<li>Joseph Scheuhammer (Invited Expert, Inclusive Design Research Centre, OCAD University) </li>
-		<li>Matthias Schmitt </li>
-		<li>Richard Schwerdtfeger (IBM, Knowbility)</li>
-		<li>Marc Silbey (Microsoft Corporation)</li>
-		<li>Leif Halvard Sili</li>
-		<li>Henri Sivonen (Mozilla)</li>
-		<li>Michael Smith (<abbr title="World Wide Web Consortium">W3C</abbr>)</li>
-		<li>Andi Snow-Weaver (IBM Corporation)</li>
-		<li>Ville Skyttä </li>
-		<li>Henny Swan (BBC)</li>
-		<li>Vitaly Sourikov</li>
-		<li>Mike Squillace (IBM)</li>
-		<li>Maciej Stachowiak (Apple Inc.)</li>
-		<li>Christophe Strobbe</li>
-		<li>Suzanne Taylor (Pearson plc)</li>
-		<li>Terrill Thompson</li>
-		<li>David Todd</li>
-		<li>Gregg Vanderheiden (Invited Expert, Trace)</li>
-		<li>Job van Achterberg (Invited Expert)</li>
-		<li>Anne van Kesteren</li>
-		<li>Wen He (Tencent)</li>
-		<li>Wu Wei (<abbr title="World Wide Web Consortium">W3C</abbr> / RITT)</li>
-		<li>Ryan Williams (Oracle)</li>
-		<li>Tom Wlodkowski</li>
-		<li>Sam White (Apple Inc.)</li>
-		<li>Gottfried Zimmermann (Invited Expert, Access Technologies Group)</li>
-	</ul>
-</section>
-
-    <section class="section" id="ack_funders"><div class="header-wrapper"><h4 id="x6-2-3-enabling-funders"><bdi class="secno">6.2.3 </bdi>Enabling funders</h4><a class="self-link" href="#ack_funders" aria-label="Permalink for Appendix 6.2.3"></a></div>
+    <section class="section" id="ack_funders"><div class="header-wrapper"><h4 id="x6-2-2-enabling-funders"><bdi class="secno">6.2.2 </bdi>Enabling funders</h4><a class="self-link" href="#ack_funders" aria-label="Permalink for Appendix 6.2.2"></a></div>
 	
 	<p>This publication has been funded in part with U.S. Federal funds from the Department of Education, National Institute on Disability, Independent Living, and Rehabilitation Research (NIDILRR), initially under contract number ED-OSE-10-C-0067, then under contract number HHSP23301500054C, and now under HHS75P00120P00168. The content of this publication does not necessarily reflect the views or policies of the U.S. Department of Education, nor does mention of trade names, commercial products, or organizations imply endorsement by the U.S. Government.</p>
 </section>
@@ -1013,7 +864,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </dd><dt id="bib-dom">[DOM]</dt><dd>
       <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
     </dd><dt id="bib-html-aam-1.0">[html-aam-1.0]</dt><dd>
-      <a href="https://www.w3.org/TR/html-aam-1.0/"><cite>HTML Accessibility API Mappings 1.0</cite></a>. Scott O'Hara.  W3C. 2 November 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-aam-1.0/">https://www.w3.org/TR/html-aam-1.0/</a>
+      <a href="https://www.w3.org/TR/html-aam-1.0/"><cite>HTML Accessibility API Mappings 1.0</cite></a>. Scott O'Hara.  W3C. 4 December 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-aam-1.0/">https://www.w3.org/TR/html-aam-1.0/</a>
     </dd><dt id="bib-infra">[infra]</dt><dd>
       <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
     </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
