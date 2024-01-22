@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 34.2.2">
+<meta name="generator" content="ReSpec 34.3.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -113,7 +113,7 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-<meta name="revision" content="a00a582f91a0892117e4ffe65d37652c9fae1c01">
+<meta name="revision" content="b05bdac70f7fa2bf66df5e8fe0aea7d08c170f12">
 <meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent.">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -271,16 +271,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "wai-aria-1.2",
     "infra"
   ],
-  "gitRevision": "a00a582f91a0892117e4ffe65d37652c9fae1c01",
-  "publishISODate": "2023-12-13T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 13 December 2023"
+  "gitRevision": "b05bdac70f7fa2bf66df5e8fe0aea7d08c170f12",
+  "publishISODate": "2024-01-22T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 22 January 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
 <body class="h-entry" data-cite="dom core-aam-1.2 wai-aria-1.2 infra"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-12-13">13 December 2023</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-01-22">22 January 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -339,7 +339,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <p class="copyright">
     <a href="https://www.w3.org/policies/#copyright">Copyright</a>
     ©
-    2014-2023
+    2014-2024
     
     <a href="https://www.w3.org/">World Wide Web Consortium</a>.
     <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
@@ -705,11 +705,14 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               <div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="5"><span>Note</span></div><div class="">
                 <p>This step can apply to the child nodes themselves, which means the computation is recursive and results in text collected from all the elements in the <code>current node</code>'s subtree, no matter how deep it is. However, any given descendant <a data-link-type="dfn|abstract-op" data-lt="nodes" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-node">node's</a> text alternative can result from higher precedent markup described in steps B through D above, where "Namefrom: author" attributes provide the text alternative for the entire subtree. </p>
               </div></div>
+              <div class="note" role="note" id="note-concatenate-inline-contents-with-space"><div role="heading" class="note-title marker" id="h-note-4" aria-level="5"><span>Note</span></div><div class="">
+                <p>18 January 2024: The ARIA Working Group is considering the feasibility of joining text strings with and without spaces, depending on the <abbr title="Cascading Style Sheets">CSS</abbr> <code>display</code> value of the <code>current node</code>, and its adjacent nodes and pseudo-elements. The ongoing discussion is in <a href="https://github.com/w3c/accname/issues/225">AccName #225</a>.</p>
+              </div></div>
             </li>
             <li id="comp_text_node"><span id="step2G"></span><em>Text Node:</em> Otherwise, if the <code>current node</code> is a Text <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-node">Node</a>, return its textual contents.</li>
             <li id="comp_recursive_name_from_content"><span id="step2H"></span><em>Recursive Name From Content:</em> Otherwise, if the <code>current node</code> is a descendant of an element whose <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-13">Accessible Name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-8">Accessible Description</a> is being computed, and contains descendants, proceed to <a href="#comp_name_from_content_reset">Name From Content Reset</a>.</li>
             <li id="comp_tooltip"><span id="step2I"></span><em>Tooltip:</em> Otherwise, if the <code>current node</code> has a <a class="termref informative internalDFN" href="#dfn-tooltip-attribute" data-link-type="dfn" id="ref-for-dfn-tooltip-attribute-1">Tooltip attribute</a>, return its value.
-              <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="5"><span>Note</span></div><div class="">
+              <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-5" aria-level="5"><span>Note</span></div><div class="">
                 <p>Tooltip attributes are used only if nothing else, including subtree content, has provided results. </p>
               </div></div>
             </li>
