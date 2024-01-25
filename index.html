@@ -113,7 +113,7 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-<meta name="revision" content="72e4f2c78b25c995db8ade548fde25c7be726821">
+<meta name="revision" content="1e6661b690b4138a9badf6810ae13efc03ac68e1">
 <meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent.">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -271,16 +271,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "wai-aria-1.2",
     "infra"
   ],
-  "gitRevision": "72e4f2c78b25c995db8ade548fde25c7be726821",
-  "publishISODate": "2024-01-23T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 23 January 2024"
+  "gitRevision": "1e6661b690b4138a9badf6810ae13efc03ac68e1",
+  "publishISODate": "2024-01-25T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 25 January 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
 <body class="h-entry" data-cite="dom core-aam-1.2 wai-aria-1.2 infra"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-01-23">23 January 2024</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-01-25">25 January 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -350,7 +350,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <hr title="Separator for header">
   </div>
 <section id="abstract" class="introductory"><h2>Abstract</h2>
-  <p>This document describes how <a class="termref informative" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agents</a> determine the <a class="termref informative internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-1">names</a> and <a class="termref informative internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-1">descriptions</a> of <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-object">accessible objects</a> from web content languages. This information is in turn exposed through <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-api">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> so that <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-assistive-technologies">assistive technologies</a> can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility <abbr title="Application Programming Interfaces">APIs</abbr> and helps to ensure that this information appears in a manner consistent with author intent.</p>
+  <p>This document describes how <a class="termref informative" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agents</a> determine the <a class="termref informative internalDFN" data-lt="accessible name" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-1">names</a> and <a class="termref informative internalDFN" data-lt="accessible description" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-1">descriptions</a> of <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessible-object">accessible objects</a> from web content languages. This information is in turn exposed through <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-api">accessibility <abbr title="Application Programming Interfaces">APIs</abbr></a> so that <a class="termref informative internalDFN" href="#dfn-assistive-technologies" data-link-type="dfn" id="ref-for-dfn-assistive-technologies-1">assistive technologies</a> can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility <abbr title="Application Programming Interfaces">APIs</abbr> and helps to ensure that this information appears in a manner consistent with author intent.</p>
   <p>The accessible name and description computation specification defines support that applies across multiple content technologies. This includes accessible name and description provided by general-purpose <cite><a href="https://www.w3.org/TR/wai-aria-1.2/"><abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr></a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-wai-aria" title="Accessible Rich Internet Applications (WAI-ARIA) 1.1">WAI-ARIA</a></cite>] <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-role">roles</a>, <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-state">states</a>, and <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-property">properties</a> as well as features specific to individual content languages.</p>
   <p>This document updates and will eventually supersede the accessible name and description guidance in the <a href="https://www.w3.org/TR/accname-1.1/">Accessible Name and Description Computation 1.1</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-accname-1.1" title="Accessible Name and Description Computation 1.1">ACCNAME-1.1</a></cite>] <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is part of the <abbr title="Accessible Rich Internet Applications">WAI-ARIA</abbr> suite described in the <a href="https://www.w3.org/WAI/intro/aria.php"><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr> Overview</a>.</p>
 </section>
@@ -403,6 +403,25 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 	<div>
 		<p>While some terms are defined in place, the following definitions are used throughout this document. </p>
 		<dl class="termlist">
+      <dt><dfn data-lt="assistive technologies|assistive technology|Assistive Technologies" id="dfn-assistive-technologies" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Assistive Technologies</dfn></dt>
+      <dd><p>Hardware and/or software that:</p>
+        <ul>
+          <li>relies on services provided by a <a data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> to retrieve and render Web content </li>
+          <li>works with a user agent or web content itself through the use of <abbr title="Application Programming Interfaces">APIs</abbr>, and</li>
+          <li>provides services beyond those offered by the user agent to facilitate user interaction with web content by people with disabilities</li>
+        </ul>
+        <p>This definition may differ from that used in other documents.</p>
+      <p>Examples of assistive technologies that are important in the context
+        of this document include the following:</p>
+      <ul>
+        <li>screen magnifiers, which are used to enlarge and improve the visual readability of rendered text and images;</li>
+        <li>screen readers, which are most-often used to convey information through synthesized speech or a refreshable Braille display;</li>
+        <li>text-to-speech software, which is used to convert text into synthetic speech;</li>
+        <li>speech recognition software, which is used to allow spoken control and dictation;</li>
+        <li>alternate input technologies (including head pointers, on-screen keyboards, single switches, and sip/puff devices), which are used to simulate the keyboard;</li>
+        <li>alternate pointing devices, which are used to simulate mouse pointing and clicking.</li>
+      </ul>
+      </dd>
       <dt><dfn data-export="" id="dfn-accessible-description" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Accessible Description</dfn></dt>
 			<dd>
 			  <p>An accessible description provides additional information, related to an interface element, that complements the <a href="#dfn-accessible-name" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-accessible-name-3">accessible name</a>. The accessible description might or might not be visually perceivable. </p>
@@ -410,7 +429,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 			<dt><dfn data-export="" data-plurals="accessible names" id="dfn-accessible-name" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Accessible Name</dfn></dt>
 			<dd>
 			  <p>The accessible name is the name of a user interface element. Each platform <a data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-api">accessibility <abbr title="application programming interface">API</abbr></a> provides the accessible name property. The value of the accessible name may be derived from a visible (e.g., the visible text on a button) or invisible (e.g., the text alternative that describes an icon) property of the user interface element.  See related <a href="#dfn-accessible-description" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-accessible-description-3">accessible description</a>.</p>
-			  <p>A simple use for the accessible name property may be illustrated by an "OK" button. The text "OK" is the accessible name. When the button receives focus, assistive technologies may concatenate the platform's role description with the accessible name. For example, a screen reader may speak "push-button OK" or "OK button". The order of concatenation and specifics of the role description (e.g., "button", "push-button", "clickable button") are determined by platform <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-api">accessibility <abbr title="Application Programming Interface">API</abbr></a>s or <a data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-assistive-technologies">assistive technologies</a>.</p>
+			  <p>A simple use for the accessible name property may be illustrated by an "OK" button. The text "OK" is the accessible name. When the button receives focus, assistive technologies may concatenate the platform's role description with the accessible name. For example, a screen reader may speak "push-button OK" or "OK button". The order of concatenation and specifics of the role description (e.g., "button", "push-button", "clickable button") are determined by platform <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-accessibility-api">accessibility <abbr title="Application Programming Interface">API</abbr></a>s or <a href="#dfn-assistive-technologies" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-assistive-technologies-2">assistive technologies</a>.</p>
 			</dd>      
       <dt><dfn id="dfn-tooltip-attribute" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Tooltip attribute</dfn></dt>
 			<dd>
@@ -577,7 +596,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                 </ol>
               </div></div>
               <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Note</span></div><div class="">
-                <p>By default, <a class="termref informative" data-type="dfn" href="https://www.w3.org/TR/wai-aria-1.2/#dfn-assistive-technologies">assistive technologies</a> do not relay hidden information, but an author can explicitly override that and include hidden text as part of the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-6">accessible name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-6">accessible description</a> by using <code>aria-labelledby</code> or <code>aria-describedby</code>. </p>
+                <p>By default, <a class="termref informative internalDFN" href="#dfn-assistive-technologies" data-link-type="dfn" id="ref-for-dfn-assistive-technologies-3">assistive technologies</a> do not relay hidden information, but an author can explicitly override that and include hidden text as part of the <a class="termref informative internalDFN" href="#dfn-accessible-name" data-link-type="dfn" id="ref-for-dfn-accessible-name-6">accessible name</a> or <a class="termref informative internalDFN" href="#dfn-accessible-description" data-link-type="dfn" id="ref-for-dfn-accessible-description-6">accessible description</a> by using <code>aria-labelledby</code> or <code>aria-describedby</code>. </p>
               </div></div>
               <aside class="example" id="example-1"><div class="marker">
     <a class="self-link" href="#example-1">Example<bdi> 1</bdi></a>
@@ -886,7 +905,23 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
-  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-accessible-description" aria-label="Links in this document to definition: Accessible Description">
+  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-assistive-technologies" aria-label="Links in this document to definition: Assistive Technologies">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-assistive-technologies" aria-label="Permalink for definition: Assistive Technologies. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-assistive-technologies-1" title="§ Abstract">§ Abstract</a> 
+    </li><li>
+      <a href="#ref-for-dfn-assistive-technologies-2" title="§ 2. Important Terms">§ 2. Important Terms</a> 
+    </li><li>
+      <a href="#ref-for-dfn-assistive-technologies-3" title="§ 4.3.2 Computation steps">§ 4.3.2 Computation steps</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-accessible-description" aria-label="Links in this document to definition: Accessible Description">
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-accessible-description" aria-label="Permalink for definition: Accessible Description. Activate to close this dialog.">Permalink</a>
