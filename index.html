@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 34.3.0">
+<meta name="generator" content="ReSpec 34.4.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -113,7 +113,7 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-<meta name="revision" content="1e6661b690b4138a9badf6810ae13efc03ac68e1">
+<meta name="revision" content="67ca225c73dd797d09eaef2a67d31f055eed234e">
 <meta name="description" content="This document describes how user agents determine the names and descriptions of accessible objects from web content languages. This information is in turn exposed through accessibility APIs so that assistive technologies can identify these objects and present their names or descriptions to users. Documenting the algorithm through which names and descriptions are to be determined promotes interoperable exposure of these properties among different accessibility APIs and helps to ensure that this information appears in a manner consistent with author intent.">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -157,15 +157,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "company": "Invited Expert",
       "companyURL": "https://github.com/melsumner",
       "w3cid": 125865
-    },
+    }
+  ],
+  "formerEditors": [
     {
       "name": "Michael Cooper",
       "company": "W3C",
       "companyURL": "https://www.w3.org/",
       "w3cid": 34017
-    }
-  ],
-  "formerEditors": [
+    },
     {
       "name": "Joanmarie Diggs",
       "company": "Igalia, S.L.",
@@ -271,16 +271,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "wai-aria-1.2",
     "infra"
   ],
-  "gitRevision": "1e6661b690b4138a9badf6810ae13efc03ac68e1",
-  "publishISODate": "2024-01-25T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 25 January 2024"
+  "gitRevision": "67ca225c73dd797d09eaef2a67d31f055eed234e",
+  "publishISODate": "2024-02-27T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 27 February 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
 <body class="h-entry" data-cite="dom core-aam-1.2 wai-aria-1.2 infra"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-01-25">25 January 2024</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-02-27">27 February 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -305,12 +305,12 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <span class="p-name fn">Bryan Garaventa</span> (<a class="p-org org h-org" href="https://www.levelaccess.com/">Level Access</a>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="125865">
     <span class="p-name fn">Melanie Sumner</span> (<a class="p-org org h-org" href="https://github.com/melsumner">Invited Expert</a>)
-  </dd><dd class="editor p-author h-card vcard" data-editor-id="34017">
-    <span class="p-name fn">Michael Cooper</span> (<a class="p-org org h-org" href="https://www.w3.org/">W3C</a>)
   </dd>
         <dt>
                 Former editors:
-              </dt><dd class="editor p-author h-card vcard" data-editor-id="68182">
+              </dt><dd class="editor p-author h-card vcard" data-editor-id="34017">
+    <span class="p-name fn">Michael Cooper</span> (<a class="p-org org h-org" href="https://www.w3.org/">W3C</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="68182">
     <span class="p-name fn">Joanmarie Diggs</span> (<a class="p-org org h-org" href="https://www.igalia.com/">Igalia, S.L.</a>) (Editor until March 2021)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="2460">
     <span class="p-name fn">Richard Schwerdtfeger</span> (<a class="p-org org h-org" href="https://knowbility.org/">Knowbility</a>) (Editor until October 2017)
@@ -535,6 +535,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <dd>The <abbr title="Document Object Model">DOM</abbr> <a data-link-type="dfn|abstract-op" data-lt="nodes" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-node">node</a> or <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">element</a> for which the text alternative is sought.</dd>
         <dt>Current node</dt>
         <dd>The <abbr title="Document Object Model">DOM</abbr> <a data-link-type="dfn|abstract-op" data-lt="nodes" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-node">node</a> currently traversed to compute the <code>root node</code>'s text equivalent.  Initially, the <code>current node</code> is the <code>root node</code>, but at later stages is either some descendant of the <code>root node</code>, or another referenced node.</dd>
+        <dt>Rendered child nodes</dt>
+        <dd>The <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-node">nodes</a> that are rendered as child nodes of a given node when taking <a data-link-type="dfn|abstract-op" data-lt="shadow root" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-shadow-root">shadow roots</a> and <a data-link-type="dfn|abstract-op" data-lt="slot" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-slot">slots</a> into consideration.</dd>
         <dt>Flat string</dt>
         <dd>A string of characters where all carriage returns, newlines, tabs, and form-feeds are replaced with a single space, and multiple spaces are reduced to a single space.  The string contains only character data; it does not contain any markup.  </dd>
         <dt>Total accumulated text</dt>
@@ -711,9 +713,17 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                     <li id="comp_name_from_content_pseudo_element_after">For <code>::after</code> pseudo elements, <a class="termref informative" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">User agents</a> <em class="rfc2119">MUST</em> append <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to the textual content of the <code>current node</code>. </li>
                   </ol>
                 </li>
-                <li id="comp_name_from_content_for_each_child"><span id="step2F.iii"></span><em>Name From Each Child:</em> For each child node of the <code>current node</code>:
+                
+                <li id="comp_name_from_content_find_child"><em>Determine Child Nodes:</em> Determine the <code>rendered child nodes</code> of the <code>current node</code>:
                   <ol>
-                    <li id="comp_name_from_content_for_each_child_set_current"><span id="step2F.iii.a"></span>Set the <code>current node</code> to the child node.</li>
+                    <li id="comp_name_from_content_find_child_has_shadow_root">If the <code>current node</code> has an attached <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-shadow-root">shadow root</a>, set the <code>rendered child nodes</code> to be the child nodes of the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-shadow-root">shadow root</a>.</li>
+                    <li id="comp_name_from_content_find_child_is_slot">Otherwise, if the <code>current node</code> is a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-slot">slot</a> with <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#slot-assigned-nodes">assigned nodes</a>, set the <code>rendered child nodes</code> to be the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#slot-assigned-nodes">assigned nodes</a> of the <code>current node</code>.</li>
+                    <li id="comp_name_from_content_find_child_otherwise">Otherwise, set the <code>rendered child nodes</code> to be the child nodes of the <code>current node</code>.</li>
+                  </ol>
+                </li>
+                <li id="comp_name_from_content_for_each_child"><span id="step2F.iii"></span><em>Name From Each Child:</em> For each <code>rendered child node</code> of the <code>current node</code>:
+                  <ol>
+                    <li id="comp_name_from_content_for_each_child_set_current"><span id="step2F.iii.a"></span>Set the <code>current node</code> to the <code>rendered child node</code>.</li>
                     <li id="comp_name_from_content_for_each_child_recursion"><span id="step2F.iii.b"></span>Compute the text alternative of the  <code>current node</code> beginning with the overall <a href="#comp_computation">Computation</a> step. Set the <code>result</code> to that text alternative.</li>
                     <li id="comp_for_each_child_append"><span id="step2F.iii.c"></span>Append the <code>result</code> to the <code>accumulated text</code>. </li>
                   </ol>
@@ -886,7 +896,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </dd><dt id="bib-dom">[DOM]</dt><dd>
       <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
     </dd><dt id="bib-html-aam-1.0">[html-aam-1.0]</dt><dd>
-      <a href="https://www.w3.org/TR/html-aam-1.0/"><cite>HTML Accessibility API Mappings 1.0</cite></a>. Scott O'Hara.  W3C. 4 December 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-aam-1.0/">https://www.w3.org/TR/html-aam-1.0/</a>
+      <a href="https://www.w3.org/TR/html-aam-1.0/"><cite>HTML Accessibility API Mappings 1.0</cite></a>. Scott O'Hara.  W3C. 6 February 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-aam-1.0/">https://www.w3.org/TR/html-aam-1.0/</a>
     </dd><dt id="bib-infra">[infra]</dt><dd>
       <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
     </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
