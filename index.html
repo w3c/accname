@@ -114,7 +114,7 @@ dd{margin-left:0}
 }
 </style>
 <meta name="color-scheme" content="light">
-<meta name="revision" content="ff9dd6b78101667a99a75962b1fa680b90de1980">
+<meta name="revision" content="5b667ad102b75cef83f6951b27d9def70f151851">
 <meta name="description" content="This document describes how user agents determine the names and
         descriptions of accessible objects from web content languages. This information is in turn exposed through
         accessibility APIs so that assistive technologies can identify these objects and present
@@ -287,16 +287,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "wai-aria-1.2",
     "infra"
   ],
-  "gitRevision": "ff9dd6b78101667a99a75962b1fa680b90de1980",
-  "publishISODate": "2025-03-07T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 07 March 2025"
+  "gitRevision": "5b667ad102b75cef83f6951b27d9def70f151851",
+  "publishISODate": "2025-03-11T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 11 March 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="dom core-aam-1.2 wai-aria-1.2 infra"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-03-07">07 March 2025</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-03-11">11 March 2025</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -886,7 +886,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                 <li id="comp_host_language_label">
                   <span id="step2E"></span><em>Host Language Label:</em> Otherwise, if the <code>current node</code>'s native markup provides an
                   <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> (e.g. <code>alt</code>) or <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">element</a> (e.g. <abbr title="Hypertext Markup Language">HTML</abbr> <code>label</code> or <abbr title="Scalable Vector Graphics">SVG</abbr> <code>title</code>) that defines a text alternative, return that alternative in the form of
-                  a <code>flat string</code> as defined by the host language, unless the element is marked as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
+                  a <code>flat string</code> as defined by the host language, unless the <code>current node</code> is exposed as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
                   <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><div class="">
                     See <a href="https://www.w3.org/TR/html-aam-1.0/#accessible-name-and-description-computation"><abbr title="Hypertext Markup Language">HTML</abbr>-AAM</a>,
                     <a href="https://www.w3.org/TR/svg-aam-1.0/#mapping_additional_nd"><abbr title="Scalable Vector Graphics">SVG</abbr>-AAM</a>, or other host language documentation for more information on markup that defines a text alternative.
