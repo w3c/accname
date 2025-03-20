@@ -1,6 +1,6 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="generator" content="ReSpec 35.2.2">
+<meta name="generator" content="ReSpec 35.2.3">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -114,7 +114,7 @@ dd{margin-left:0}
 }
 </style>
 <meta name="color-scheme" content="light">
-<meta name="revision" content="bf8e1581bff340e73a9e4aa28081ad45d19d8658">
+<meta name="revision" content="6c7c76e3702620113cb44b8149614fdebb5b1679">
 <meta name="description" content="This document describes how user agents determine the names and
         descriptions of accessible objects from web content languages. This information is in turn exposed through
         accessibility APIs so that assistive technologies can identify these objects and present
@@ -287,16 +287,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "wai-aria-1.2",
     "infra"
   ],
-  "gitRevision": "bf8e1581bff340e73a9e4aa28081ad45d19d8658",
-  "publishISODate": "2025-03-12T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 12 March 2025"
+  "gitRevision": "6c7c76e3702620113cb44b8149614fdebb5b1679",
+  "publishISODate": "2025-03-20T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 20 March 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="dom core-aam-1.2 wai-aria-1.2 infra"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Accessible Name and Description Computation 1.2</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-03-12">12 March 2025</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-03-20">20 March 2025</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -389,7 +389,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
       document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
       publications and the latest revision of this technical report can be found
-      in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      in the
+      <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> standards and drafts index</a> at
       https://www.w3.org/TR/.</em></p><p>
     This document was published by the <a href="https://www.w3.org/groups/wg/aria">Accessible Rich Internet Applications Working Group</a> as
     an Editor's Draft. 
@@ -502,7 +503,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <section id="conformance"><div class="header-wrapper"><h2 id="x3-conformance"><bdi class="secno">3. </bdi>Conformance</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 3."></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
         The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">MUST NOT</em> in this document
         are to be interpreted as described in
-        <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
+        <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a>
         [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
         when, and only when, they appear in all capitals, as shown here.
       </p>
@@ -886,7 +887,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                 <li id="comp_host_language_label">
                   <span id="step2E"></span><em>Host Language Label:</em> Otherwise, if the <code>current node</code>'s native markup provides an
                   <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-attribute">attribute</a> (e.g. <code>alt</code>) or <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-element">element</a> (e.g. <abbr title="Hypertext Markup Language">HTML</abbr> <code>label</code> or <abbr title="Scalable Vector Graphics">SVG</abbr> <code>title</code>) that defines a text alternative, return that alternative in the form of
-                  a <code>flat string</code> as defined by the host language, unless the <code>current node</code> is exposed as presentational (<code>role="presentation"</code> or <code>role="none"</code>).
+                  a <code>flat string</code> as defined by the host language, unless the <code>current node</code> is exposed as presentational (<code>role="presentation"</code> or
+                  <code>role="none"</code>).
                   <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><div class="">
                     See <a href="https://www.w3.org/TR/html-aam-1.0/#accessible-name-and-description-computation"><abbr title="Hypertext Markup Language">HTML</abbr>-AAM</a>,
                     <a href="https://www.w3.org/TR/svg-aam-1.0/#mapping_additional_nd"><abbr title="Scalable Vector Graphics">SVG</abbr>-AAM</a>, or other host language documentation for more information on markup that defines a text alternative.
@@ -1061,7 +1063,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           
           <ul>
             
-          <li>Rahim Abdi (Apple Inc.)</li><li>NAVYA AGARWAL (Adobe)</li><li>Mario Batušić (Fabasoft)</li><li>Benjamin Beaudry (Microsoft Corporation)</li><li>Curt Bellew (Oracle Corporation)</li><li>Zoë Bijl (W3C Invited Experts)</li><li>Aleksandar Cindrikj (Netcetera)</li><li>Keith Cirkel (Microsoft Corporation)</li><li>Daniel Clark (Microsoft Corporation)</li><li>James Craig (Apple Inc.)</li><li>Chris Cuellar (Bocoup)</li><li>Hidde de Vries (Logius)</li><li>Joanmarie Diggs (Igalia)</li><li>Howard Edwards (Bocoup)</li><li>James Edwards (TPGi)</li><li>Mayuri Faldu (Navy Federal Credit Union)</li><li>Betsy Fanning (PDF Association)</li><li>Steve Faulkner (TetraLogical Services Ltd)</li><li>Jane Fulton (Cisco)</li><li>Bryan Garaventa (W3C Invited Experts)</li><li>Rashmi Garimella (Google LLC)</li><li>Matt Garrish (DAISY Consortium)</li><li>Doug Geoffray (Microsoft Corporation)</li><li>Jaunita George (Navy Federal Credit Union)</li><li>Ariella Gilmore (IBM Corporation)</li><li>Glen Gordon (TPGi)</li><li>Shirisha Gubba (Google LLC)</li><li>Jon Gunderson (University of Illinois)</li><li>Oliver Habersetzer (SAP SE)</li><li>Theo Hale (Microsoft Corporation)</li><li>Sunny Hardasani (Adobe)</li><li>Matthew Hardy (Adobe)</li><li>Peter Heumader (Fabasoft)</li><li>Sarah Higley (Microsoft Corporation)</li><li>Hans Hillen (TPGi)</li><li>Isabel Holdsworth (TPGi)</li><li>Stanley Hon (Microsoft Corporation)</li><li>Michael Jackson (Microsoft Corporation)</li><li>Duff Johnson (PDF Association)</li><li>Summer Jones (Thomson Reuters Corp.)</li><li>Sanket Joshi (Microsoft Corporation)</li><li>William Kilian (TargetStream Technologies)</li><li>Matthew King (Meta)</li><li>Zachary Kinsey (TargetStream Technologies)</li><li>Greta Krafsig (The Washington Post)</li><li>Peter Krautzberger (krautzource UG)</li><li>Nina Krauß (SAP SE)</li><li>JaEun Jemma Ku (University of Illinois)</li><li>Joe Lamyman (TetraLogical Services Ltd)</li><li>Charles LaPierre (Benetech)</li><li>Philip Lazarevic (Level Access)</li><li>Aaron Leventhal (Google LLC)</li><li>Brett Lewis (TPGi)</li><li>Andy Luhrs (Microsoft Corporation)</li><li>Sazzad Mahamud (Google LLC)</li><li>Alison Maher (Microsoft Corporation)</li><li>Mark McCarthy (University of Illinois)</li><li>Clay Miller (Microsoft Corporation)</li><li>Daniel Montalvo (W3C)</li><li>James Nurthen (Adobe)</li><li>Scott O'Hara (Microsoft Corporation)</li><li>Lola Odelola (W3C Invited Experts)</li><li>Adam Page (Hilton)</li><li>Michael Pennisi (Bocoup)</li><li>Roberto Perez (Microsoft Corporation)</li><li>Giacomo Petri (UsableNet)</li><li>Noah Praskins (TPGi)</li><li>Daniel Pöll (Fabasoft)</li><li>Paul Rayius (Allyant)</li><li>Adrian Roselli (W3C Invited Experts)</li><li>Marco Sabidussi (UsableNet)</li><li>Trisha Salas (Level Access)</li><li>Stefan Schnabel (SAP SE)</li><li>Harris Schneiderman (Deque Systems, Inc.)</li><li>Raymond Schwartz (Navy Federal Credit Union)</li><li>Cynthia Shelly (Google LLC)</li><li>Tzviya Siegman (W3C)</li><li>Arturo Silva (The Washington Post)</li><li>Avneesh Singh (DAISY Consortium)</li><li>Michael[tm] Smith (sideshowbarker) (W3C)</li><li>Francis Storr (Intel Corporation)</li><li>Melanie Sumner (W3C Invited Experts)</li><li>Alexander Surkov (Igalia)</li><li>James Teh (Mozilla Foundation)</li><li>Jocelyn Tran (Google LLC)</li><li>Léonie Watson (TetraLogical Services Ltd)</li><li>Jan Williams (TPGi)</li><li>Valerie Young (Igalia)</li><li>Kate Zhao (Thomson Reuters Corp.)</li><li>Xiao (Helen) Zhou (University of Illinois)</li><li>Filippo Zorzi (UsableNet)</li></ul>
+          <li>Rahim Abdi (Apple Inc.)</li><li>NAVYA AGARWAL (Adobe)</li><li>Mario Batušić (Fabasoft)</li><li>Benjamin Beaudry (Microsoft Corporation)</li><li>Curt Bellew (Oracle Corporation)</li><li>Zoë Bijl (W3C Invited Experts)</li><li>Aleksandar Cindrikj (Netcetera)</li><li>Keith Cirkel (Microsoft Corporation)</li><li>Daniel Clark (Microsoft Corporation)</li><li>James Craig (Apple Inc.)</li><li>Chris Cuellar (Bocoup)</li><li>Hidde de Vries (Logius)</li><li>Joanmarie Diggs (Igalia)</li><li>Howard Edwards (Bocoup)</li><li>James Edwards (TPGi)</li><li>Mayuri Faldu (Navy Federal Credit Union)</li><li>Betsy Fanning (PDF Association)</li><li>Steve Faulkner (TetraLogical Services Ltd)</li><li>Jane Fulton (Cisco)</li><li>Bryan Garaventa (W3C Invited Experts)</li><li>Rashmi Garimella (Google LLC)</li><li>Matt Garrish (DAISY Consortium)</li><li>Doug Geoffray (Microsoft Corporation)</li><li>Jaunita George (Navy Federal Credit Union)</li><li>Ariella Gilmore (IBM Corporation)</li><li>Glen Gordon (TPGi)</li><li>Shirisha Gubba (Google LLC)</li><li>Eloisa Guerrero (Rakuten Group, Inc.)</li><li>Jon Gunderson (University of Illinois)</li><li>Oliver Habersetzer (SAP SE)</li><li>Theo Hale (Microsoft Corporation)</li><li>Sunny Hardasani (Adobe)</li><li>Matthew Hardy (Adobe)</li><li>Peter Heumader (Fabasoft)</li><li>Sarah Higley (Microsoft Corporation)</li><li>Hans Hillen (TPGi)</li><li>Isabel Holdsworth (TPGi)</li><li>Stanley Hon (Microsoft Corporation)</li><li>Michael Jackson (Microsoft Corporation)</li><li>Duff Johnson (PDF Association)</li><li>Summer Jones (Thomson Reuters Corp.)</li><li>William Kilian (TargetStream Technologies)</li><li>Matthew King (Meta)</li><li>Zachary Kinsey (TargetStream Technologies)</li><li>Greta Krafsig (The Washington Post)</li><li>Peter Krautzberger (krautzource UG)</li><li>Nina Krauß (SAP SE)</li><li>JaEun Jemma Ku (University of Illinois)</li><li>Joe Lamyman (TetraLogical Services Ltd)</li><li>Charles LaPierre (Benetech)</li><li>Philip Lazarevic (Level Access)</li><li>Aaron Leventhal (Google LLC)</li><li>Brett Lewis (TPGi)</li><li>Andy Luhrs (Microsoft Corporation)</li><li>Sazzad Mahamud (Google LLC)</li><li>Alison Maher (Microsoft Corporation)</li><li>Mark McCarthy (University of Illinois)</li><li>Clay Miller (Microsoft Corporation)</li><li>Daniel Montalvo (W3C)</li><li>James Nurthen (Adobe)</li><li>Scott O'Hara (Microsoft Corporation)</li><li>Lola Odelola (W3C Invited Experts)</li><li>Adam Page (Hilton)</li><li>Michael Pennisi (Bocoup)</li><li>Roberto Perez (Microsoft Corporation)</li><li>Giacomo Petri (UsableNet)</li><li>Noah Praskins (TPGi)</li><li>Daniel Pöll (Fabasoft)</li><li>Paul Rayius (Allyant)</li><li>Adrian Roselli (W3C Invited Experts)</li><li>Marco Sabidussi (UsableNet)</li><li>Trisha Salas (Level Access)</li><li>Stefan Schnabel (SAP SE)</li><li>Harris Schneiderman (Deque Systems, Inc.)</li><li>Raymond Schwartz (Navy Federal Credit Union)</li><li>Cynthia Shelly (Google LLC)</li><li>Tzviya Siegman (W3C)</li><li>Arturo Silva (The Washington Post)</li><li>Avneesh Singh (DAISY Consortium)</li><li>Michael[tm] Smith (sideshowbarker) (W3C)</li><li>Francis Storr (Intel Corporation)</li><li>Jennifer Strickland (MITRE Corporation)</li><li>Melanie Sumner (W3C Invited Experts)</li><li>Alexander Surkov (Igalia)</li><li>James Teh (Mozilla Foundation)</li><li>Jocelyn Tran (Google LLC)</li><li>Léonie Watson (TetraLogical Services Ltd)</li><li>Jan Williams (TPGi)</li><li>Valerie Young (Igalia)</li><li>Kate Zhao (Thomson Reuters Corp.)</li><li>Xiao (Helen) Zhou (University of Illinois)</li><li>Filippo Zorzi (UsableNet)</li></ul>
         </section>
         <section class="section" id="ack_funders"><div class="header-wrapper"><h4 id="x6-2-2-enabling-funders"><bdi class="secno">6.2.2 </bdi>Enabling funders</h4><a class="self-link" href="#ack_funders" aria-label="Permalink for Appendix 6.2.2"></a></div>
 	
@@ -1075,9 +1077,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
     
     <dl class="bibliography"><dt id="bib-core-aam-1.2">[CORE-AAM-1.2]</dt><dd>
-      <a href="https://www.w3.org/TR/core-aam-1.2/"><cite>Core Accessibility API Mappings 1.2</cite></a>. Valerie Young; Alexander Surkov.  W3C. 7 March 2025. CRD. URL: <a href="https://www.w3.org/TR/core-aam-1.2/">https://www.w3.org/TR/core-aam-1.2/</a>
+      <a href="https://www.w3.org/TR/core-aam-1.2/"><cite>Core Accessibility API Mappings 1.2</cite></a>. Valerie Young; Alexander Surkov.  W3C. 12 March 2025. CRD. URL: <a href="https://www.w3.org/TR/core-aam-1.2/">https://www.w3.org/TR/core-aam-1.2/</a>
     </dd><dt id="bib-css2">[CSS2]</dt><dd>
-      <a href="https://www.w3.org/TR/CSS21/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS21/">https://www.w3.org/TR/CSS21/</a>
+      <a href="https://www.w3.org/TR/CSS2/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS2/">https://www.w3.org/TR/CSS2/</a>
     </dd><dt id="bib-dom">[DOM]</dt><dd>
       <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
     </dd><dt id="bib-html-aam-1.0">[html-aam-1.0]</dt><dd>
