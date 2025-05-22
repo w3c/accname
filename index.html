@@ -121,7 +121,7 @@ dd{margin-left:0}
 }
 </style>
 <meta name="color-scheme" content="light">
-<meta name="revision" content="c8c68d51454e64d1caee3df40a82e171ce769bce">
+<meta name="revision" content="0e6249beaeedc04149ad634ef5ecdd19ee9a70d4">
 <meta name="description" content="This document describes how user agents determine the names and
         descriptions of accessible objects
         from web content languages. This information is in turn exposed through
@@ -312,7 +312,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "wai-aria-1.2",
     "infra"
   ],
-  "gitRevision": "c8c68d51454e64d1caee3df40a82e171ce769bce",
+  "gitRevision": "0e6249beaeedc04149ad634ef5ecdd19ee9a70d4",
   "publishISODate": "2025-05-22T00:00:00.000Z",
   "generatedSubtitle": "W3C Editor's Draft 22 May 2025"
 }</script>
@@ -943,8 +943,13 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                       <span id="step2F.ii"></span><em>Name From Generated Content:</em> Check for
                       <abbr title="Cascading Style Sheets">CSS</abbr> generated textual content associated with the <code>current node</code> and include it in the <code>accumulated text</code>. The
                       <abbr title="Cascading Style Sheets">CSS</abbr> <a href="https://www.w3.org/TR/selectors-3/#gen-content"><code>::before</code> and <code>::after</code></a> pseudo elements
-                      [<cite><a class="bibref" data-link-type="biblio" href="#bib-css2" title="Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification">CSS2</a></cite>] can provide textual content for <a data-link-type="dfn" data-lt="element" href="https://dom.spec.whatwg.org/#concept-element">elements</a> that have a content model.
+                      [<cite><a class="bibref" data-link-type="biblio" href="#bib-css2" title="Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification">CSS2</a></cite>] can provide textual content for <a data-link-type="dfn" data-lt="element" href="https://dom.spec.whatwg.org/#concept-element">elements</a> that have a content model, in addition to the
+                      <a href="https://www.w3.org/TR/css-pseudo-4/#selectordef-marker"><code>::marker</code></a> pseudo element.
                       <ol class="acc-ol">
+                        <li id="comp_name_from_content_pseudo_element_marker">
+                          For <code>::marker</code> pseudo elements, <a class="termref informative" data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">User agents</a> <em class="rfc2119">MUST</em> append <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space, to
+                          the textual content of the <code>current node</code> if the <code>current node</code> supports <code>::marker</code>.
+                        </li>
                         <li id="comp_name_from_content_pseudo_element_before">
                           For <code>::before</code> pseudo elements, <a class="termref informative" data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">User agents</a> <em class="rfc2119">MUST</em> prepend <abbr title="Cascading Style Sheets">CSS</abbr> textual content, without a space,
                           to the textual content of the <code>current node</code>.
